@@ -2,7 +2,9 @@ import DefaultLayout from "../../layout/DefaultLayout";
 
 const Home = () => {
   return (
-    <DefaultLayout/>
+    <div>
+      <DefaultLayout/>
+    </div>
   );
 }
 
