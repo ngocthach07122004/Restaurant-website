@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
+import ProductCard from '../../pages/ProductCard';
 
 const DefaultLayout = ({ children }) => {
   return (
@@ -9,6 +10,7 @@ const DefaultLayout = ({ children }) => {
       <main className="flex-grow-1" style={{ marginTop: '76px' }}>
         {children}
       </main>
+
       <Footer />
     </div>
   );
