@@ -1,6 +1,6 @@
 // src/components/Header.jsx
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import logo from '../../assets/jollibee.png';
 import tel from '../../assets/delivery-lg-rs.png';
@@ -8,9 +8,11 @@ import './styles.css';
 
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
   const location = useLocation();
+
   const navLinks = [
     { path: '/', label: 'TRANG CHỦ' },
     { path: '/about', label: 'VỀ JOLLIBEE' },
@@ -39,7 +41,11 @@ const Header = () => {
           </div>
           <div className="d-flex gap-3 align-items-center">
             <i className="bi bi-person-fill text-danger"></i>
-            <span className="text-danger">ĐĂNG KÝ / ĐĂNG NHẬP</span>
+            <span className="text-danger">
+              <button onClick={() => navigate('signup')}>ĐĂNG KÝ</button> 
+              / 
+              <button onClick={() => navigate('signin')}>ĐĂNG NHẬP</button> 
+            </span>
           </div>
         </div>
       </div>
