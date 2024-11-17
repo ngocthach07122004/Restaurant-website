@@ -142,6 +142,7 @@ CREATE TABLE MonAn (
     gia 				DECIMAL(15,2),
     tenMonAn 			VARCHAR(100),
     moTa 			VARCHAR(100),
+    loaiMonAn VARCHAR(100)
 );
 CREATE TABLE MaKhuyenMai (
     idKhuyenMai 		VARCHAR(100) PRIMARY KEY,
@@ -233,13 +234,13 @@ CREATE TABLE ThongTin (
 	soDienThoai 			VARCHAR(100),
 	maTaiKhoan 			VARCHAR(100),
 	cccdQuanTriVien 		VARCHAR(100),
-	FOREIGN KEY (CCCD_QuanTriVien) REFERENCES ThongTin(CCCD)
+	FOREIGN KEY (cccd_QuanTriVien) REFERENCES ThongTin(cccd)
 );
 CREATE TABLE SoDienThoai (
-	CCCD 				VARCHAR(100),
-	SoDienThoai 			VARCHAR(100),
-	PRIMARY KEY (CCCD, SoDienThoai),
-	FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD)
+	cccd 				VARCHAR(100),
+	soDienThoai 			VARCHAR(100),
+	PRIMARY KEY (cccd, soDienThoai),
+	FOREIGN KEY (cccd) REFERENCES ThongTin(cccd)
 );
 CREATE TABLE KhachHang (
     cccd VARCHAR(100) PRIMARY KEY,
@@ -247,7 +248,7 @@ CREATE TABLE KhachHang (
 	loaiKhachHang VARCHAR(100),
     soDonDaDat int,
     soDonDaHuy int,
-	FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD)
+	FOREIGN KEY (cccd) REFERENCES ThongTin(cccd)
 );
 
 
@@ -256,9 +257,9 @@ CREATE TABLE KhachHang (
 
 
 CREATE TABLE QuanTriVien (
-	CCCD 			VARCHAR(100) PRIMARY KEY,
-	MoTaVaiTro 		VARCHAR(100),
-	FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD)
+	cccd 			VARCHAR(100) PRIMARY KEY,
+	moTaVaiTro 		VARCHAR(100),
+	FOREIGN KEY (cccd) REFERENCES ThongTin(cccd)
 );
 CREATE TABLE NhanVien (
 	cccd 			VARCHAR(100) PRIMARY KEY,
@@ -266,56 +267,56 @@ CREATE TABLE NhanVien (
 	luong 			DECIMAL(15, 2),
 	cccd_quan_ly 		VARCHAR(100),
 	maChiNhanh 		VARCHAR(100)
-	-- FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD),
-	-- FOREIGN KEY (QL_CCCD) REFERENCES ThongTin(CCCD)
+	-- FOREIGN KEY (cccd) REFERENCES ThongTin(cccd),
+	-- FOREIGN KEY (QL_cccd) REFERENCES ThongTin(cccd)
 );
 
 
 CREATE TABLE NhanVienQuanLy (
-	CCCD 			VARCHAR(100) PRIMARY KEY,
-	MaChiNhanh 		VARCHAR(100),
-	FOREIGN KEY (CCCD) REFERENCES NhanVien(CCCD)
+	cccd 			VARCHAR(100) PRIMARY KEY,
+	maChiNhanh 		VARCHAR(100),
+	FOREIGN KEY (cccd) REFERENCES NhanVien(cccd)
 );
 CREATE TABLE NhanVienPhucVu (
-	CCCD 				VARCHAR(100) PRIMARY KEY,
-	FOREIGN KEY (CCCD) REFERENCES NhanVien(CCCD)
+	cccd 				VARCHAR(100) PRIMARY KEY,
+	FOREIGN KEY (cccd) REFERENCES NhanVien(cccd)
 );
 
 CREATE TABLE NhanVienThuNgan (
-	CCCD 				VARCHAR(100) PRIMARY KEY,
-	FOREIGN KEY (CCCD) REFERENCES NhanVien(CCCD)
+	cccd 				VARCHAR(100) PRIMARY KEY,
+	FOREIGN KEY (cccd) REFERENCES NhanVien(cccd)
 );
 
 CREATE TABLE NhanVienTongDai (
-	CCCD 				VARCHAR(100) PRIMARY KEY,
-	FOREIGN KEY (CCCD) REFERENCES NhanVien(CCCD)
+	cccd 				VARCHAR(100) PRIMARY KEY,
+	FOREIGN KEY (cccd) REFERENCES NhanVien(cccd)
 );
 
 CREATE TABLE NhanVienGiaoHang (
-	CCCD 				VARCHAR(100) PRIMARY KEY,
-	TinhTrangHoatDong 		VARCHAR(100),
-	FOREIGN KEY (CCCD) REFERENCES NhanVien(CCCD)
+	cccd 				VARCHAR(100) PRIMARY KEY,
+	tinhTrangHoatDong 		VARCHAR(100),
+	FOREIGN KEY (cccd) REFERENCES NhanVien(cccd)
 );
 
 CREATE TABLE PhuongTien (
-	BienSoXe VARCHAR(100) PRIMARY KEY,
-	LoaiPhuongTien VARCHAR(100) NOT NULL
+	bienSoXe VARCHAR(100) PRIMARY KEY,
+	loaiPhuongTien VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE BangLai (
-	CCCD VARCHAR(100),
-	BangLaiXe VARCHAR(100),
-	PRIMARY KEY (CCCD, BangLaiXe),
-	FOREIGN KEY (CCCD) REFERENCES NhanVienGiaoHang(CCCD)
+	cccd VARCHAR(100),
+	bangLaiXe VARCHAR(100),
+	PRIMARY KEY (cccd, bangLaiXe),
+	FOREIGN KEY (cccd) REFERENCES NhanVienGiaoHang(cccd)
 );
 
 -- Table for SuDung
 CREATE TABLE SuDung (
-	CCCD 			VARCHAR(100),
-	BienSoXe 		VARCHAR(100),
-	PRIMARY KEY (CCCD, BienSoXe),
-	FOREIGN KEY (CCCD) REFERENCES NhanVienGiaoHang(CCCD),
-	FOREIGN KEY (BienSoXe) REFERENCES PhuongTien(BienSoXe)
+	cccd 			VARCHAR(100),
+	bienSoXe 		VARCHAR(100),
+	PRIMARY KEY (cccd, bienSoXe),
+	FOREIGN KEY (cccd) REFERENCES NhanVienGiaoHang(cccd),
+	FOREIGN KEY (bienSoXe) REFERENCES PhuongTien(bienSoXe)
 );
 
 

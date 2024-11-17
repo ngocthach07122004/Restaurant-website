@@ -67,3 +67,79 @@ cccdQuanTriVien_Arg);
 
 end; 
 
+
+
+
+
+
+
+create procedure handler_Update_NhanVien (in maNhanVienArg varchar(100), in newSalary decimal(15,2))
+begin
+      declare oldSalary decimal(15,2) default -1;
+      if maNhanVienArg is null or maNhanVienArg =''
+      then
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Mã nhân viên không hợp lệ';
+      end if;
+      select NhanVien.luong into oldSalary
+      from NhanVien 
+      where NhanVien.cccd = maNhanVienArg;
+
+      if oldSalary = -1
+      then 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Mã nhân viên không tồn tại';
+      end if;
+     
+      if newSalary < oldSalary 
+      then 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Lương mới phải lớn hơn hoặc bằng lương cũ';
+      end if;
+
+      update NhanVien 
+      set NhanVien.luong = newSalary
+      where NhanVien.cccd = maNhanVienArg;
+        
+      
+end;
+
+
+
+
+
+create procedure handler_Delete_ChiNhanh (
+   in maChiNhanhArg varchar(100)
+)
+begin 
+  if maChiNhanhArg is null or maChiNhanhArg = ''
+  then 
+  SIGNAL SQLSTATE  '45000'
+  SET MESSAGE_TEXT ='Mã chi nhánh không hợp lệ';
+  end if;
+
+  if exists (select 1 from MonAnThuocVe
+  where MonAnThuocVe.maChiNhanh =maChiNhanhArg)
+  then 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Chi nhánh này đang chứa các món ăn';
+   elseif exists (select 1 from SuKienUuDai where SuKienUuDai.maChiNhanh = maChiNhanhArg )
+    then 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Chi nhánh này đang tổ chức các sự kiện ưu đãi';
+   elseif exists (select 1 from NhanVienQuanLy where NhanVienQuanLy.maChiNhanh = maChiNhanhArg)
+   then 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Chi nhánh này đang có nhân viên quản lý';
+   elseif exists (select 1 from DonMonAn where DonMonAn.maChiNhanh =maChiNhanhArg )
+   then 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Chi nhánh này đang xử lý đơn món ăn';
+   elseif exists (select 1 from NhanVien where NhanVien.maChiNhanh = maChiNhanhArg) 
+   then 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Chi nhánh này đang có nhân viên làm việc';
+   end if;
+   delete from ChiNhanh
+   where ChiNhanh.maChiNhanh = maChiNhanhArg;
+end;
