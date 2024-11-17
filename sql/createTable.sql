@@ -149,8 +149,10 @@ CREATE TABLE MaKhuyenMai (
     giaTriGiamGia 		DECIMAL(15,2),
     dieuKienDung 		VARCHAR(100),
     maDon 			VARCHAR(100), 
+    ten            VARCHAR(100), 
     maChiNhanh 		VARCHAR(100)
 );
+
 
 ALTER TABLE MaKhuyenMai ADD CONSTRAINT fk_MaKhuyenMai_DonMonAn
 FOREIGN KEY(maDon) REFERENCES DonMonAn(maDon);
@@ -166,6 +168,10 @@ CREATE TABLE PhuongTien (
     thoiGianDangKy 		DATE,
     thoiGianHetHan 		DATE
 );
+
+
+
+
 CREATE TABLE SuKienUuDai (
     maUuDai 			VARCHAR(100),
     maChiNhanh 		VARCHAR(100),
@@ -189,6 +195,31 @@ FOREIGN KEY(maChiNhanh) REFERENCES ChiNhanh(maChiNhanh);
 		- Nhân viên Tổng đài
 		- Nhân viên Thu ngân
 	- Số điện thoại (thuộc tính đa trị) */
+create table ThoiGianSuKien (
+     maUuDai varchar(100) ,
+     thoiGianPhatHanh date, 
+     thoiGianHetHan date,
+     primary key(maUuDai,thoiGianPhatHanh,thoiGianHetHan)
+);
+
+-- alter table ThoiGianSuKien add constraint fk_ThoiGianSuKien_maUuDai
+-- foreign key(maUuDai) references SuKienUuDai (maUuDai);
+
+
+
+create table ChuaMonAn (
+    maUuDai varchar(100) , 
+    maChiNhanh  varchar(100)  ,
+    maMonAn  varchar(100),
+    primary key(maUuDai, maChiNhanh, maMonAn)
+);
+
+-- alter table ChuaMonAn add constraint fk_ChuaMonAn_maUuDai_maChiNhanh
+-- foreign key(maUuDai,maChiNhanh  ) references SuKienUuDai (maUuDai,maChiNhanh);
+
+-- alter table ChuaMonAn add constraint fk_ChuaMonAn_maMonAn
+-- foreign key(cccdThuNgan) references MonAn (maMonAn);
+
 
 CREATE TABLE ThongTin (
     cccd 		VARCHAR(100) 	PRIMARY KEY,
@@ -230,14 +261,15 @@ CREATE TABLE QuanTriVien (
 	FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD)
 );
 CREATE TABLE NhanVien (
-	CCCD 			VARCHAR(100) PRIMARY KEY,
-	NgayVaoLam 		DATE,
-	Luong 			DECIMAL(15, 2),
-	QL_CCCD 		VARCHAR(100),
-	MaChiNhanh 		VARCHAR(100),
-	FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD),
-	FOREIGN KEY (QL_CCCD) REFERENCES ThongTin(CCCD)
+	cccd 			VARCHAR(100) PRIMARY KEY,
+	ngayVaoLam 		DATE,
+	luong 			DECIMAL(15, 2),
+	cccd_quan_ly 		VARCHAR(100),
+	maChiNhanh 		VARCHAR(100)
+	-- FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD),
+	-- FOREIGN KEY (QL_CCCD) REFERENCES ThongTin(CCCD)
 );
+
 
 CREATE TABLE NhanVienQuanLy (
 	CCCD 			VARCHAR(100) PRIMARY KEY,
