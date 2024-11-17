@@ -27,8 +27,10 @@ create table ChiNhanh (
     tenChiNhanh 		VARCHAR(100),
     thoiGianMoCua 		DATE,
     thoiGianDongCua 		DATE,
-    cccdQuanTriVien 		VARCHAR(100)
+    cccdQuanTriVien 		VARCHAR(100),
+    doanhThu DECIMAL(15,2)
 );
+
 
 
 alter table DonGiaoHang add constraint fk_ChiNhanh_cccdQuanTriVien
@@ -45,8 +47,11 @@ create table DonMonAn (
     maChiNhanh 		VARCHAR(100),
     cccdKhachHang 		VARCHAR(100),
     cccdNhanVienThuNgan 	VARCHAR(100),
-    tinhTrangThanhToan 	VARCHAR(100)
+    tinhTrangThanhToan 	VARCHAR(100), 
+    tinhTrangDonMonAn VARCHAR(1)
 );
+
+
 
 
 
@@ -206,11 +211,18 @@ CREATE TABLE SoDienThoai (
 	FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD)
 );
 CREATE TABLE KhachHang (
-	CCCD VARCHAR(100) PRIMARY KEY,
-	NgayThamGia DATE,
-	LoaiKhachHang VARCHAR(100),
+    cccd VARCHAR(100) PRIMARY KEY,
+	ngayThamGia DATE,
+	loaiKhachHang VARCHAR(100),
+    soDonDaDat int,
+    soDonDaHuy int,
 	FOREIGN KEY (CCCD) REFERENCES ThongTin(CCCD)
 );
+
+
+
+
+
 
 CREATE TABLE QuanTriVien (
 	CCCD 			VARCHAR(100) PRIMARY KEY,
@@ -304,7 +316,8 @@ CREATE TABLE ThongBao(
 
  create table BaoGom( 
      maMonAn VARCHAR(100),
-     maDon VARCHAR(100)
+     maDon VARCHAR(100),
+     soLuongMonAn int
 ); 
 
 
