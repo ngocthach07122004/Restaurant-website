@@ -1,13 +1,14 @@
 create table DonGiaoHang (
-    maDon 			VARCHAR(100)(100) PRIMARY KEY,
-    tenNguoiNhan 		VARCHAR(100)(100),
+    maDon 			VARCHAR(100)PRIMARY KEY,
+    tenNguoiNhan 		VARCHAR(100),
     thoiGianGiaoDuKien 	DATE,
     thoiGianNhanThucTe 	DATE,
-    ghiChu 			VARCHAR(100)(100),
-    tinhTrangDonHang 	VARCHAR(100)(100),
-    diaChiNhan 		VARCHAR(100)(100),
+    ghiChu 			VARCHAR(100),
+    tinhTrangDonHang 	VARCHAR(100),
+    diaChiNhan 		VARCHAR(100),
     phiVanChuyen 		DECIMAL(15,2),
-    cccdThuNgan 		VARCHAR(100)(100)   
+    cccdThuNgan 		VARCHAR(100) , 
+    khoangCach DECIMAL(15,2)
 );
 
 
@@ -151,7 +152,8 @@ CREATE TABLE MaKhuyenMai (
     dieuKienDung 		VARCHAR(100),
     maDon 			VARCHAR(100), 
     ten            VARCHAR(100), 
-    maChiNhanh 		VARCHAR(100)
+    maChiNhanh 		VARCHAR(100),
+    loaiMa VARCHAR(100)
 );
 
 
@@ -375,7 +377,8 @@ create table GiaoHang(
 
 create table MonAnThuocVe(
      maMonAn VARCHAR(100),
-     maChiNhanh VARCHAR(100)
+     maChiNhanh VARCHAR(100),
+     soLuongMonAn INT
 );
 
 -- alter table MonAnThuocVe add constraint fk_MonAnThuocVe_maMonAn
@@ -401,7 +404,8 @@ create table ThoiGianMaKhuyenMai (
 
 create table SoHuu (
    cccdKhachHang VARCHAR(100) ,
-   idKhuyenMai VARCHAR(100)
+   idKhuyenMai VARCHAR(100),
+   soLuong int
 );
 
 
