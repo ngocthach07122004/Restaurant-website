@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import "./styles.scss"
 
 const Signin = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-
-  const navigate = useNavigate()
 
   const handleLogin = () => {
     // You'll update this function later...
     console.log(email);
     console.log(password);
+    const url = "http://127.0.0.1:8080/api/users/login"
+    const payload = { email, password }
+    fetch(url, {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.json)
+    .then(data => {console.log(data)})
+    .catch(err => {console.log(err)});
   }
 
   return (
@@ -31,7 +36,6 @@ const Signin = (props) => {
           type='email'
           required
         />
-        <label className="errorLabel">{emailError}</label>
       </div>
       <br />
       <div className={'inputContainer'}>
@@ -43,7 +47,6 @@ const Signin = (props) => {
           type="password"
           required
         />
-        <label className="errorLabel">{passwordError}</label>
       </div>
       <br />
       <div className={'inputContainer'}>

@@ -15,7 +15,7 @@ const Header = () => {
 
   const navLinks = [
     { path: '/', label: 'TRANG CHỦ' },
-    { path: '/about', label: 'VỀ JOLLIBEE' },
+    { path: '/about', label: 'VỀ PIKABEE' },
     { path: '/menu', label: 'THỰC ĐƠN' },
     { path: '/promotions', label: 'KHUYẾN MÃI' },
     { path: '/services', label: 'DỊCH VỤ' },
@@ -43,6 +43,7 @@ const Header = () => {
             <i className="bi bi-person-fill text-danger"></i>
             <span className="text-danger">
               <a 
+                // href='/signup'
                 onClick={() => navigate('signup')} 
                 style={{ color: 'black', fontSize:'14px',fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
                 onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
@@ -52,6 +53,7 @@ const Header = () => {
               </a> 
               / 
               <a 
+                // href='/signin'
                 onClick={() => navigate('signin')} 
                 style={{ color: 'black', fontSize:'14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
                 onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}

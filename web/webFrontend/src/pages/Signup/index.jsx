@@ -13,10 +13,21 @@ const Signup = (props) => {
 
   const navigate = useNavigate()
 
+  
   const handleSignup = () => {
     // You'll update this function later...
     console.log(email);
     console.log(password);
+    const url = "http://127.0.0.1:8080/api/users/register"
+    const payload = { email, password }
+    fetch(url, {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.json)
+    .then(data => {console.log(data)})
+    .catch(err => {console.log(err)});
   }
 
   return (
