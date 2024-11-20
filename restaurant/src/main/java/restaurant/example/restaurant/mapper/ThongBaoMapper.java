@@ -9,5 +9,6 @@ import restaurant.example.restaurant.entity.ThongBao;
 public interface ThongBaoMapper {
            @Mapping(target = "maThongBao", ignore = true)
           public ThongBao toThongBao (ThongBao chiNhanh);
+          @Mapping(target = "maThongBao", ignore = true)
           public void updateThongBao (@MappingTarget ThongBao chiNhanh, ThongBao chiNhanhUpdate);
 }

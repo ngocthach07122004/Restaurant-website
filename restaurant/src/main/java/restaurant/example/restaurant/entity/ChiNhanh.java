@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Data
 @Builder
@@ -21,8 +22,8 @@ public class ChiNhanh {
     String moTa; 
     String trangThaiHoatDong; 
     String tenChiNhanh; 
-    Date hoiGianMoCua;
-    Date hoiGianDongCua; 
+    LocalDate thoiGianMoCua;
+    LocalDate  thoiGianDongCua; 
     String cccdQuanTriVien; 
 
     

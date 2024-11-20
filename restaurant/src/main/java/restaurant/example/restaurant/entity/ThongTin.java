@@ -7,7 +7,8 @@ import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Data
 @Builder
@@ -24,10 +25,11 @@ public class ThongTin {
     String matKhau 	 ;
     String ho 				;
     String ten 				;
-    Date ngaySinh 			;
+    LocalDate ngaySinh 			;
     String email 				;
     String gioiTinh 			;
     String soDienThoai 			;
     String maTaiKhoan 			;
     String cccdQuanTriVien 		;
+
 }

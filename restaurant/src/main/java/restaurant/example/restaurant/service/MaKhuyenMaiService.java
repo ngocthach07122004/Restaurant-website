@@ -37,6 +37,7 @@ public class MaKhuyenMaiService {
              public String updateMaKhuyenMai (String maMaKhuyenMai, MaKhuyenMai maKhuyenMai) {
                   MaKhuyenMai maKhuyenMaiUpdate =getSpecificMaKhuyenMai(maMaKhuyenMai);
                   maKhuyenMaiMapper.updateMaKhuyenMai(maKhuyenMaiUpdate, maKhuyenMai);
+                  maKhuyenMaiRepository.save(maKhuyenMaiUpdate);
                   return "update success";
 
              }

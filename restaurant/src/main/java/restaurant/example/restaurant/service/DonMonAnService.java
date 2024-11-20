@@ -37,6 +37,7 @@ public class DonMonAnService {
              public String updateDonMonAn (String maDonMonAn, DonMonAn donMonAn) {
                   DonMonAn donMonAnUpdate =getSpecificDonMonAn(maDonMonAn);
                   donMonAnMapper.updateDonMonAn(donMonAnUpdate, donMonAn);
+                  donMonAnRepository.save(donMonAnUpdate);
                   return "update success";
 
              }

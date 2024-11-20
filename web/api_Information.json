@@ -1,0 +1,981 @@
+{
+  "mainUrl": "http://localhost:8080",
+  "api": [
+    {
+      "name": "DonGiaoHang",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "maDon": "",
+              "tenNguoiNhan": "",
+              "thoiGianGiaoDuKien": "",
+              "thoiGianNhanThucTe": "",
+              "ghiChu": "",
+              "tinhTrangDonHang": "",
+              "diaChiNhan": "",
+              "phiVanChuyen": "",
+              "cccdThuNgan": "",
+              "khoangCach": ""
+            },
+            "url": "http://localhost:8080/dongiaohang/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/dongiaohang/{maDonGiaoHang}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/dongiaohang/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "maDon": "",
+              "tenNguoiNhan": "",
+              "thoiGianGiaoDuKien": "",
+              "thoiGianNhanThucTe": "",
+              "ghiChu": "",
+              "tinhTrangDonHang": "",
+              "diaChiNhan": "",
+              "phiVanChuyen": "",
+              "cccdThuNgan": "",
+              "khoangCach": ""
+            },
+            "url": "http://localhost:8080/dongiaohang/update/{maDonGiaoHang}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/dongiaohang/delete/{maDonGiaoHang}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ChiNhanh",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "diaChi": "",
+              "moTa": "",
+              "trangThaiHoatDong": "",
+              "tenChiNhanh": "",
+              "hoiGianMoCua": "",
+              "hoiGianDongCua": "",
+              "cccdQuanTriVien": ""
+            },
+            "url": "http://localhost:8080/chinhanh/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/chinhanh/{maChiNhanh}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/chinhanh/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "diaChi": "",
+              "moTa": "",
+              "trangThaiHoatDong": "",
+              "tenChiNhanh": "",
+              "hoiGianMoCua": "",
+              "hoiGianDongCua": "",
+              "cccdQuanTriVien": ""
+            },
+            "url": "http://localhost:8080/chinhanh/update/{maChiNhanh}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/chinhanh/delete/{maChiNhanh}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DonMonAn",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "thoiGianDat": "",
+              "tongGiaTien": "",
+              "maChiNhanh": "",
+              "cccdKhachHang": "",
+              "cccdNhanVienThuNgan": "",
+              "tinhTrangThanhToan": ""
+            },
+            "url": "http://localhost:8080/donMonAn/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/donMonAn/{maDon}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/donMonAn/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "thoiGianDat": "",
+              "tongGiaTien": "",
+              "maChiNhanh": "",
+              "cccdKhachHang": "",
+              "cccdNhanVienThuNgan": "",
+              "tinhTrangThanhToan": ""
+            },
+            "url": "http://localhost:8080/donMdontaiquan/update/{maDon}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/dontaiquan/delete/{maDon}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DonTaiQuan",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "maDon": "",
+              "tenNguoiNhan": "",
+              "thoiGianGiaoDuKien": "",
+              "thoiGianNhanThucTe": "",
+              "ghiChu": "",
+              "tinhTrangDonHang": "",
+              "diaChiNhan": "",
+              "phiVanChuyen": "",
+              "cccdThuNgan": "",
+              "khoangCach": ""
+            },
+            "url": "http://localhost:8080/dontaiquan/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/dontaiquan/{maDonTaiQuan}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/dontaiquan/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "maDon": "",
+              "tenNguoiNhan": "",
+              "thoiGianGiaoDuKien": "",
+              "thoiGianNhanThucTe": "",
+              "ghiChu": "",
+              "tinhTrangDonHang": "",
+              "diaChiNhan": "",
+              "phiVanChuyen": "",
+              "cccdThuNgan": "",
+              "khoangCach": ""
+            },
+            "url": "http://localhost:8080/dongiaohang/update/{maDonTaiQuan}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/dongiaohang/delete/{maDonTaiQuan}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MonAn",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "gia": "",
+              "tenMonAn": "",
+              "moTa": ""
+            },
+            "url": "http://localhost:8080/monAn/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/monAn/{maMonAn}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/monAn/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "gia": "",
+              "tenMonAn": "",
+              "moTa": ""
+            },
+            "url": "http://localhost:8080/monAn/update/{maMonAn}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/monAn/delete/{maMonAn}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MaKhuyenMai",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "moTa": "",
+              "giaTriGiamGia": "",
+              "dieuKienDung": "",
+              "maDon": "",
+              "maChiNhanh": ""
+            },
+            "url": "http://localhost:8080/maKhuyenMai/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/maKhuyenMai/{idKhuyenMai}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/maKhuyenMai/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "moTa": "",
+              "giaTriGiamGia": "",
+              "dieuKienDung": "",
+              "maDon": "",
+              "maChiNhanh": ""
+            },
+            "url": "http://localhost:8080/maKhuyenMai/update/{idKhuyenMai}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/maKhuyenMai/delete/{idKhuyenMai}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SuKienUuDai",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "maChiNhanh": "",
+              "loaiMa": "",
+              "giaTriGiamGia": ""
+            },
+            "url": "http://localhost:8080/suKienUuDai/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/suKienUuDai/{maUuDai}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/suKienUuDai/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "maChiNhanh": "",
+              "loaiMa": "",
+              "giaTriGiamGia": ""
+            },
+            "url": "http://localhost:8080/suKienUuDai/update/{maUuDai}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/suKienUuDai/delete/{maUuDai}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ThongBao",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "noiDungThongBao": "",
+              "tthoiGian": "",
+              "cccdThongTin": "",
+              "cccdQuanLy": "",
+              "cccdQuanTriVien": ""
+            },
+            "url": "http://localhost:8080/thongBao/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/thongBao/{maThongBao}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/thongBao/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "noiDungThongBao": "",
+              "tthoiGian": "",
+              "cccdThongTin": "",
+              "cccdQuanLy": "",
+              "cccdQuanTriVien": ""
+            },
+            "url": "http://localhost:8080/thongBao/update/{maThongBao}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/thongBao/delete/{maThongBao}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DonKhieuNai",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "noiDung": "",
+              "thoiGian": "",
+              "maDon": "",
+              "cccdQuanLy": "",
+              "cccdKhachHang": "",
+              "cccdTongDaiVien": ""
+            },
+            "url": "http://localhost:8080/donKhieuNai/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/donKhieuNai/{maDonKhieuNai}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/donKhieuNai/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "noiDung": "",
+              "thoiGian": "",
+              "maDon": "",
+              "cccdQuanLy": "",
+              "cccdKhachHang": "",
+              "cccdTongDaiVien": ""
+            },
+            "url": "http://localhost:8080/donKhieuNai/update/{maDonKhieuNai}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/donKhieuNai/delete/{maDonKhieuNai}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ThongTin",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "tenDangNhap": "",
+              "matKhau": "",
+              "ho": "",
+              "ten": "",
+              "ngaySinh": "",
+              "email": "",
+              "gioiTinh": "",
+              "soDienThoai": "",
+              "maTaiKhoan": "",
+              "cccdQuanTriVien": ""
+            },
+            "url": "http://localhost:8080/thongTin/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/thongTin/{cccd}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/thongTin/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "tenDangNhap": "",
+              "matKhau": "",
+              "ho": "",
+              "ten": "",
+              "ngaySinh": "",
+              "email": "",
+              "gioiTinh": "",
+              "soDienThoai": "",
+              "maTaiKhoan": "",
+              "cccdQuanTriVien": ""
+            },
+            "url": "http://localhost:8080/thongTin/update/{cccd}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/thongTin/delete/{cccd}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "KhachHang",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "cccd": "",
+              "ngayThamGia": "",
+              "loaiKhachHang": "",
+              "soDonDaDat": "",
+              "soDonDaHuy": ""
+            },
+            "url": "http://localhost:8080/khachhang/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/khachhang/{maKhachHang}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/khachhang/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "cccd": "",
+              "ngayThamGia": "",
+              "loaiKhachHang": "",
+              "soDonDaDat": "",
+              "soDonDaHuy": ""
+            },
+            "url": "http://localhost:8080/khachhang/update/{maKhachHang}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/khachhang/delete/{maKhachHang}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "QuanTriVien",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "cccd": "",
+              "moTaVaiTro": ""
+            },
+            "url": "http://localhost:8080/quantrivien/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/quantrivien/{maQuanTriVien}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/quantrivien/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "cccd": "",
+              "moTaVaiTro": ""
+            },
+            "url": "http://localhost:8080/quantrivien/update/{maQuanTriVien}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/quantrivien/delete/{maQuanTriVien}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NhanVien",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "cccd": "",
+              "ngayVaoLam": "",
+              "luong": "",
+              "cccd_quan_ly": "",
+              "maChiNhanh": ""
+            },
+            "url": "http://localhost:8080/nhanvien/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvien/{maNhanVien}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvien/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "cccd": "",
+              "ngayVaoLam": "",
+              "luong": "",
+              "cccd_quan_ly": "",
+              "maChiNhanh": ""
+            },
+            "url": "http://localhost:8080/nhanvien/update/{maNhanVien}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/nhanvien/delete/{maNhanVien}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NhanVienQuanLy",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "cccd": "",
+              "maChiNhanh": ""
+            },
+            "url": "http://localhost:8080/nhanvienquanly/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienquanly/{maNhanVienQuanLy}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienquanly/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "cccd": "",
+              "maChiNhanh": ""
+            },
+            "url": "http://localhost:8080/nhanvienquanly/update/{maNhanVienQuanLy}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienquanly/delete/{maNhanVienQuanLy}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NhanVienGiaoHang",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "cccd": "",
+              "tinhTrangHoatDong": ""
+            },
+            "url": "http://localhost:8080/nhanviengiaohang/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanviengiaohang/{maNhanVienGiaoHang}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanviengiaohang/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "cccd": "",
+              "tinhTrangHoatDong": ""
+            },
+            "url": "http://localhost:8080/nhanviengiaohang/update/{maNhanVienGiaoHang}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/nhanviengiaohang/delete/{maNhanVienGiaoHang}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NhanVienPhucVu",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "cccd": ""
+            },
+            "url": "http://localhost:8080/nhanvienphucvu/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienphucvu/{maNhanVienPhucVu}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienphucvu/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "cccd": ""
+            },
+            "url": "http://localhost:8080/nhanvienphucvu/update/{maNhanVienPhucVu}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienphucvu/delete/{maNhanVienPhucVu}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NhanVienThuNgan",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "cccd": ""
+            },
+            "url": "http://localhost:8080/nhanvienthungan/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienthungan/{maNhanVienThuNgan}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienthungan/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "cccd": ""
+            },
+            "url": "http://localhost:8080/nhanvienthungan/update/{maNhanVienThuNgan}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/nhanvienthungan/delete/{maNhanVienThuNgan}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NhanVienTongDai",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "cccd": ""
+            },
+            "url": "http://localhost:8080/nhanvientongdai/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvientongdai/{maNhanVienTongDai}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/nhanvientongdai/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "cccd": ""
+            },
+            "url": "http://localhost:8080/nhanvientongdai/update/{maNhanVienTongDai}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/nhanvientongdai/delete/{maNhanVienTongDai}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PhuongTien",
+      "listApi": [
+        {
+          "request": {
+            "method": "Post",
+            "body": {
+              "loaiPhuongTien": "",
+              "giayphepSoHuu": "",
+              "thongTinDangKy": "",
+              "thoiGianDangKy": "",
+              "thoiGianHetHan": ""
+            },
+            "url": "http://localhost:8080/phuongTien/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/phuongTien/{bienSoXe}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {},
+            "url": "http://localhost:8080/phuongTien/all"
+          }
+        },
+        {
+          "request": {
+            "method": "Put",
+            "body": {
+              "loaiPhuongTien": "",
+              "giayphepSoHuu": "",
+              "thongTinDangKy": "",
+              "thoiGianDangKy": "",
+              "thoiGianHetHan": ""
+            },
+            "url": "http://localhost:8080/phuongTien/update/{bienSoXe}"
+          }
+        },
+        {
+          "request": {
+            "method": "Delete",
+            "body": {},
+            "url": "http://localhost:8080/phuongTien/delete/{bienSoXe}"
+          }
+        }
+      ]
+    }
+  ]
+}

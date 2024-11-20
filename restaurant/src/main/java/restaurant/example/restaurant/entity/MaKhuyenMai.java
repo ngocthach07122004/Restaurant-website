@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @FieldDefaults(level =  AccessLevel.PRIVATE)
@@ -19,7 +21,7 @@ public class MaKhuyenMai {
     @Id
     String idKhuyenMai ;
     String moTa ;
-    Double giaTriGiamGia 	;
+    BigDecimal giaTriGiamGia 	;
     String dieuKienDung ;
     String maDon ;
     String maChiNhanh ;

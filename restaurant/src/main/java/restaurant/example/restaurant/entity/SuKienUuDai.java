@@ -7,7 +7,9 @@ import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 
 @Data
 @Builder
@@ -22,6 +24,6 @@ public class SuKienUuDai {
     String maUuDai 			;
     String maChiNhanh 		;
     String  loaiMa 			;
-    Date giaTriGiamGia 		;
+    BigDecimal giaTriGiamGia 		;
 
 }

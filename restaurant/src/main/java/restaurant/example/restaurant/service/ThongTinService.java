@@ -37,6 +37,7 @@ public class ThongTinService {
              public String updateThongTin (String maThongTin, ThongTin thongTin) {
                   ThongTin thongTinUpdate =getSpecificThongTin(maThongTin);
                   thongTinMapper.updateThongTin(thongTinUpdate, thongTin);
+                  thongTinRepository.save(thongTinUpdate);
                   return "update success";
 
              }

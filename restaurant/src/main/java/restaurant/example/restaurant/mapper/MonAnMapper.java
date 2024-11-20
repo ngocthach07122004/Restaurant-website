@@ -9,5 +9,6 @@ import restaurant.example.restaurant.entity.MonAn;
 public interface MonAnMapper {
            @Mapping(target = "maMonAn", ignore = true)
           public MonAn toMonAn (MonAn chiNhanh);
+          @Mapping(target = "maMonAn", ignore = true)
           public void updateMonAn (@MappingTarget MonAn chiNhanh, MonAn chiNhanhUpdate);
 }

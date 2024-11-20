@@ -9,5 +9,6 @@ import restaurant.example.restaurant.entity.MaKhuyenMai;
 public interface MaKhuyenMaiMapper {
            @Mapping(target = "idKhuyenMai", ignore = true)
           public MaKhuyenMai toMaKhuyenMai (MaKhuyenMai chiNhanh);
+          @Mapping(target = "idKhuyenMai", ignore = true)
           public void updateMaKhuyenMai (@MappingTarget MaKhuyenMai chiNhanh, MaKhuyenMai chiNhanhUpdate);
 }

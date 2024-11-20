@@ -9,5 +9,6 @@ import restaurant.example.restaurant.entity.ThongTin;
 public interface ThongTinMapper {
            @Mapping(target = "cccd", ignore = true)
           public ThongTin toThongTin (ThongTin chiNhanh);
+          @Mapping(target = "cccd", ignore = true)
           public void updateThongTin (@MappingTarget ThongTin chiNhanh, ThongTin chiNhanhUpdate);
 }

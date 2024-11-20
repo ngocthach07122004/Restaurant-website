@@ -37,6 +37,7 @@ public class SuKienUuDaiService {
              public String updateSuKienUuDai (String maSuKienUuDai, SuKienUuDai suKienUuDai) {
                   SuKienUuDai suKienUuDaiUpdate =getSpecificSuKienUuDai(maSuKienUuDai);
                   suKienUuDaiMapper.updateSuKienUuDai(suKienUuDaiUpdate, suKienUuDai);
+                  suKienUuDaiRepository.save(suKienUuDaiUpdate);
                   return "update success";
 
              }

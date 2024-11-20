@@ -232,11 +232,11 @@ CREATE TABLE ThongTin (
 	ten 				VARCHAR(100),
 	ngaySinh 			DATE,
 	email 				VARCHAR(100),
-	gioiTinh 			ENUM('M', 'F'),
+	gioiTinh 			VARCHAR(1),
 	soDienThoai 			VARCHAR(100),
 	maTaiKhoan 			VARCHAR(100),
-	cccdQuanTriVien 		VARCHAR(100),
-	FOREIGN KEY (cccd_QuanTriVien) REFERENCES ThongTin(cccd)
+	cccdQuanTriVien 		VARCHAR(100)
+	-- FOREIGN KEY (cccd_QuanTriVien) REFERENCES ThongTin(cccd)
 );
 CREATE TABLE SoDienThoai (
 	cccd 				VARCHAR(100),
@@ -302,7 +302,11 @@ CREATE TABLE NhanVienGiaoHang (
 
 CREATE TABLE PhuongTien (
 	bienSoXe VARCHAR(100) PRIMARY KEY,
-	loaiPhuongTien VARCHAR(100) NOT NULL
+	loaiPhuongTien VARCHAR(100) NOT NULL, 
+    giayPhepSoHuu VARCHAR(100), 
+    thongTinDangKy VARCHAR(100), 
+    thoiGianDangKy DATE, 
+    thoiGianHetHan DATE
 );
 
 CREATE TABLE BangLai (

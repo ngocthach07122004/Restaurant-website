@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @FieldDefaults(level =  AccessLevel.PRIVATE)
@@ -18,7 +20,7 @@ public class MonAn {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     String maMonAn 			 ;
-    Double gia 				;
+    BigDecimal gia 				;
     String tenMonAn 			;
     String moTa 			;
 
