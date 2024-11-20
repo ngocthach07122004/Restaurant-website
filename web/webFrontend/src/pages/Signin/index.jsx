@@ -25,7 +25,7 @@ const Signin = (props) => {
       <div className={'inputContainer'}>
         <input
           value={email}
-          placeholder="Enter your email here"
+          placeholder="Email"
           onChange={(ev) => setEmail(ev.target.value)}
           className={'inputBox'}
           type='email'
@@ -37,7 +37,7 @@ const Signin = (props) => {
       <div className={'inputContainer'}>
         <input
           value={password}
-          placeholder="Enter your password here"
+          placeholder="Mật khẩu"
           onChange={(ev) => setPassword(ev.target.value)}
           className={'inputBox'}
           type="password"

@@ -20,7 +20,7 @@ const Signup = (props) => {
   }
 
   return (
-    <div className={'mainContainer'}>
+    <div className={'container-fluid d-flex flex-column align-items-center'}>
       <div className={'titleContainer'}>
         <div>Sign up</div>
       </div>

@@ -42,9 +42,23 @@ const Header = () => {
           <div className="d-flex gap-3 align-items-center">
             <i className="bi bi-person-fill text-danger"></i>
             <span className="text-danger">
-              <button onClick={() => navigate('signup')}>ĐĂNG KÝ</button> 
+              <a 
+                onClick={() => navigate('signup')} 
+                style={{ color: 'black', fontSize:'14px',fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
+                onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
+              >
+                ĐĂNG KÝ
+              </a> 
               / 
-              <button onClick={() => navigate('signin')}>ĐĂNG NHẬP</button> 
+              <a 
+                onClick={() => navigate('signin')} 
+                style={{ color: 'black', fontSize:'14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
+                onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
+              >
+                ĐĂNG NHẬP
+              </a>
             </span>
           </div>
         </div>
@@ -84,55 +98,6 @@ const Header = () => {
                   </Link>
                 </li>
               ))}
-
-              {/* <li className="nav-item">
-                <NavLink className={({ isActive }) =>
-                  `nav-link text-white position-relative ${isActive ? 'active-nav' : ''}`
-                }
-                  to="/">
-                  <span className='fw-bold fs-6'>TRANG CHỦ</span>
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/about">
-                  <span className='fw-bold fs-6'>VỀ JOLLIBEE</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/menu">
-                  <span className='fw-bold fs-6'>THỰC ĐƠN</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/promotions">
-                  <span className='fw-bold fs-6'>KHUYẾN MÃI</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/services">
-                  <span className='fw-bold fs-6'>DỊCH VỤ</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/news">
-                  <span className='fw-bold fs-6'>TIN TỨC</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/stores">
-                  <span className='fw-bold fs-6'>CỬA HÀNG</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/contact">
-                  <span className='fw-bold fs-6'>LIÊN HỆ</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/careers">
-                  <span className='fw-bold fs-6'>TUYỂN DỤNG</span>
-                </Link>
-              </li> */}
             </ul>
           </div>
 
@@ -142,11 +107,6 @@ const Header = () => {
               PICK UP
             </button>
             <div className="d-none d-lg-flex align-items-center text-white">
-              {/* <i className="bi bi-telephone-fill me-2"></i>
-              <span>1900-1533</span>
-              <small className="d-block text-uppercase ms-2" style={{ fontSize: '0.7rem' }}>
-                GIAO HÀNG TẬN NƠI
-              </small> */}
               <img src={tel} alt="Giao hàng tận nơi" height="40" />
             </div>
           </div>
