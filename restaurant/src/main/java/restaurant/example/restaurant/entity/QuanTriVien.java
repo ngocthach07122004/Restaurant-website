@@ -17,7 +17,7 @@ import lombok.experimental.FieldDefaults;
 @Entity
 
 public class QuanTriVien {
-    @GeneratedValue(strategy = GenerationType.UUID)
+    // @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     String cccd 			 ;
 	String moTaVaiTro 		;

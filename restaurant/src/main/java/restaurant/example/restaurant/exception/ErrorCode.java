@@ -9,7 +9,8 @@ public enum ErrorCode {
          PHUONGTIEN_NOT_EXIST ("6","PHUONGTIEN is not exist, please try again"),
          SUKIENUUDAI_NOT_EXIST ("7","SUKIENUUDAI is not exist, please try again"),
          THONGBAO_NOT_EXIST ("8","THONGBAO is not exist, please try again"),
-         THONGTIN_NOT_EXIST ("9","THONGTIN is not exist, please try again");
+         THONGTIN_NOT_EXIST ("9","THONGTIN is not exist, please try again"),
+         USERNAME_NOT_EXIST("401","USERNAME is not exits, please try again");
      private ErrorCode (String code , String message ) {
               this.code= code;
               this.message= message;

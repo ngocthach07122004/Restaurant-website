@@ -19,7 +19,7 @@ import java.time.LocalDate;
 @Entity
 
 public class  DonGiaoHang {
-    @GeneratedValue(strategy = GenerationType.UUID)
+    // @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     String maDon ;
     String tenNguoiNhan ;

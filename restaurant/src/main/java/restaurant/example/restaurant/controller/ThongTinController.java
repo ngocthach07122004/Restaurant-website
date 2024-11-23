@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.*;
+import restaurant.example.restaurant.dto.request.ThongTinRequest;
+import restaurant.example.restaurant.dto.response.ApiResponse;
 import restaurant.example.restaurant.entity.ThongTin;
 import restaurant.example.restaurant.service.ThongTinService;
 
@@ -37,5 +39,9 @@ public class ThongTinController {
      @DeleteMapping("/delete/{cccd}")
      public String deleteThongTin (@PathVariable String maThongTin) {
             return thongTinService.deleteThongTin(maThongTin);
+     }
+     @PostMapping("/authenticate")
+    public ApiResponse<?> authenticateThongTin (@RequestBody ThongTinRequest thongTinRequest){
+           return thongTinService.authenticateThongTin(thongTinRequest);
      }
 }

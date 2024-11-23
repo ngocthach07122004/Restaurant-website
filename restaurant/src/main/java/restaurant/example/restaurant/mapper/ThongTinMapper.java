@@ -7,8 +7,10 @@ import restaurant.example.restaurant.entity.ThongTin;
 
 @Mapper(componentModel = "spring")
 public interface ThongTinMapper {
-           @Mapping(target = "cccd", ignore = true)
-          public ThongTin toThongTin (ThongTin chiNhanh);
-          @Mapping(target = "cccd", ignore = true)
-          public void updateThongTin (@MappingTarget ThongTin chiNhanh, ThongTin chiNhanhUpdate);
+        //    @Mapping(target = "cccd", ignore = true)
+           @Mapping(target = "matKhau" , ignore = true)
+          public ThongTin toThongTin (ThongTin thongTin);
+        //   @Mapping(target = "cccd", ignore = true)
+
+          public void updateThongTin (@MappingTarget ThongTin thongTin, ThongTin thongTinUpdate);
 }

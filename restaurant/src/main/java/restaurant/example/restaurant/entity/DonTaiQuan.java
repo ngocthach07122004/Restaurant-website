@@ -17,7 +17,7 @@ import lombok.experimental.FieldDefaults;
 @Entity
 
 public class DonTaiQuan {
-    @GeneratedValue(strategy = GenerationType.UUID)
+    // @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     String maDon 			;  
     String yeuCauCuaKhachHang 	; 

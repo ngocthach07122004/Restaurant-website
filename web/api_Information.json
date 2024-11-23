@@ -496,6 +496,7 @@
           "request": {
             "method": "Post",
             "body": {
+              "cccd": "",
               "tenDangNhap": "",
               "matKhau": "",
               "ho": "",
@@ -508,6 +509,16 @@
               "cccdQuanTriVien": ""
             },
             "url": "http://localhost:8080/thongTin/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
+            "body": {
+              "tenDangNhap": "",
+              "matKhau": ""
+            },
+            "url": "http://localhost:8080/thongTin/authenticate"
           }
         },
         {

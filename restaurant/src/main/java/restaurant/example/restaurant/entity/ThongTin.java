@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Entity
 
 public class ThongTin {
-    @GeneratedValue(strategy = GenerationType.UUID)
+
     @Id
     String cccd 		;
     String tenDangNhap  ;

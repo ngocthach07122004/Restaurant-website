@@ -8,7 +8,7 @@ import restaurant.example.restaurant.entity.ThongBao;
 @Mapper(componentModel = "spring")
 public interface ThongBaoMapper {
            @Mapping(target = "maThongBao", ignore = true)
-          public ThongBao toThongBao (ThongBao chiNhanh);
+          public ThongBao toThongBao (ThongBao thongBao);
           @Mapping(target = "maThongBao", ignore = true)
-          public void updateThongBao (@MappingTarget ThongBao chiNhanh, ThongBao chiNhanhUpdate);
+          public void updateThongBao (@MappingTarget ThongBao thongBao, ThongBao thongBaoUpdate);
 }

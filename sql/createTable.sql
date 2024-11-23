@@ -238,6 +238,10 @@ CREATE TABLE ThongTin (
 	cccdQuanTriVien 		VARCHAR(100)
 	-- FOREIGN KEY (cccd_QuanTriVien) REFERENCES ThongTin(cccd)
 );
+ALTER TABLE ThongTin
+MODIFY COLUMN tenDangNhap VARCHAR(100) COLLATE utf8mb4_bin;
+
+
 CREATE TABLE SoDienThoai (
 	cccd 				VARCHAR(100),
 	soDienThoai 			VARCHAR(100),
