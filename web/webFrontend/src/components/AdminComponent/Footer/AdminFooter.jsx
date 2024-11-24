@@ -1,6 +1,8 @@
+import "./AdminFooter.scss"
+
 const AdminFooter = () => {
     return (
-        <div>
+        <div className="adminFooter">
             Admin Footer
         </div>
     )
