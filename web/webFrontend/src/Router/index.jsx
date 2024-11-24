@@ -4,9 +4,12 @@ import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import Menu from "../pages/Menu";
 import DefaultLayout from "../layout/DefaultLayout";
-import AdminLayout from "../layout/Admin/AdminLayout";
+import AdminLayout from "../layout/Admin/AdminLayout/AdminLayout";
 import AdminDashboard from "../pages/Admin/Dashboard";
 import ProductManagement from "../pages/Admin/ProductManagement"
+import Users from "../pages/Admin/Users";
+import OrderManagement from "../pages/Admin/OrderManagement";
+
 // const checkAdminAuth = async () => {
 //     const user = await fetch('/api/check-auth'); 
 //     if (!user || user.role !== 'admin') {
@@ -27,13 +30,15 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "/admin/",
+        path: "/admin/*",
         element: <AdminLayout />,
         // loader: checkAdminAuth, // Secure admin routes
         children: [
             {index: true, element: <AdminDashboard />},
-            {path: "users/", element: <AdminDashboard />},
+            // {path: "users/", element: <AdminDashboard />},
             {path: "products/", element: <ProductManagement />},
+            {path: "users/", element: <Users />},
+            {path: "orders/", element: <OrderManagement />},
         ]
     }
 ]);

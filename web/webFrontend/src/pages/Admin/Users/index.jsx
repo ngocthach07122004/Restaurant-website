@@ -4,33 +4,32 @@ import { toast } from "react-toastify";
 import { Button, Input, Form } from "antd";
 import { useNavigate } from 'react-router-dom';
 
-const ProductManagement = () => {
+const Users = () => {
     const [isReceived, setIsReceived] = useState(false);
-    const [products, setProducts] = useState([]);
+    const [users, setUsers] = useState([]);
     const navigate = useNavigate();
     const handleShowDetail = (id) => navigate(`${id}`);
-
     const columns = [
     {
-      title: 'Ma mon an',
-      dataIndex: 'maMonAn',
-      key: 'maMonAn',
+      title: 'CCCD',
+      dataIndex: 'cccd',
+      key: 'cccd',
       // render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Ten mon an',
-      dataIndex: 'tenMonAn',
-      key: 'tenMonAn',
+      title: 'Ten dang nhap',
+      dataIndex: 'tenDangNhap',
+      key: 'tenDangNhap',
     },
     {
-      title: 'Gia',
-      dataIndex: 'gia',
-      key: 'gia',
+      title: 'Gioi Tinh',
+      dataIndex: 'gioiTinh',
+      key: 'gioiTinh',
     },
     {
-      title: 'Mo ta',
-      dataIndex: 'moTa',
-      key: 'moTa',
+      title: 'So dien thoai',
+      dataIndex: 'soDienThoai',
+      key: 'soDienThoai',
     },
     // {
     //   title: 'Quan Tri Vien',
@@ -56,25 +55,16 @@ const ProductManagement = () => {
       render: (values) => (
         <Space size="middle">
           <Tag color={'geekblue'}>
-            <div className='cursor-pointer' onClick={() => {handleShowDetail(values.maMonAn)}}>Details</div>
+            <div className='cursor-pointer' onClick={() => {handleShowDetail(values.cccd)}}>Details</div>
           </Tag>
         </Space>
       ),
     },
   ];
 
-  const data = [
-    {
-      maMonAn: '1',
-      tenMonAn: 'MoMo',
-      gia: `$${32}`,
-      moTa: '2024-10-27'
-    }
-  ];
-
     useEffect(() => {
         // Fetch users from API
-        const url = "http://localhost:8080/monAn/all"
+        const url = "http://localhost:8080/thongTin/all"
         fetch(url, {
             method: 'GET',
             headers: {
@@ -83,20 +73,19 @@ const ProductManagement = () => {
         })
         .then(res => res.json())
         .then(data => {
-            setProducts(data);
+            setUsers(data);
             console.log(data); 
         })
     //    .then(data => setUsers(data))
         .catch(error => console.error('Error:', error))
     }, [isReceived])
 
-
     return (
         <div>   
-            hi mom, this is products management page
-            <Table columns={columns} dataSource={products} />
+            hi mom, this is user UserManagement
+            <Table columns={columns} dataSource={users} />
         </div>
     )
 }
 
-export default ProductManagement;
+export default Users;

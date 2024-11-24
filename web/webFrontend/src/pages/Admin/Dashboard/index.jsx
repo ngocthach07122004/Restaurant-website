@@ -4,123 +4,24 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { Button, Input, Form } from "antd";
 import { useNavigate } from 'react-router-dom';
+import "./styles.scss"
+
 // import AdminDashboard from './index';
 
 
-
-
-
 const AdminDashboard = () => {
-    const handleShowDetail = (id) => {
-      console.log(id);
-      navigate(`${id}`)
-    }
-    
-    const columns = [
-      {
-        title: 'ID',
-        dataIndex: 'id',
-        key: 'id',
-        // render: (text) => <a>{text}</a>,
-      },
-      {
-        title: 'Date',
-        dataIndex: 'date',
-        key: 'date',
-      },
-      {
-        title: 'Total',
-        dataIndex: 'total',
-        key: 'total',
-      },
-      {
-        title: 'Payment method',
-        dataIndex: 'method',
-        key: 'method',
-      },
-      {
-        title: 'Paid',
-        key: 'tags',
-        dataIndex: 'tags',
-        render: (_, { tags }) => (
-          <>
-            {tags.map((tag) => {
-    
-              let color = tag === false ? 'volcano' : 'green';
-              // let color = tag.length > 5 ? 'geekblue' : 'green';
-              // if (tag === 'loser') {
-              //   color = 'volcano';
-              // }
-              return (
-                <Tag color={color} key={tag}>
-                  {/* {tag.toUpperCase()} */}
-                  isPaid
-                </Tag>
-              );
-            })}
-          </>
-        ),
-      },
-      {
-        title: 'Action',
-        dataIndex: null,
-        render: (values) => (
-          <Space size="middle">
-            <Tag color={'geekblue'}>
-              <div className='cursor-pointer' onClick={() => {handleShowDetail(values.id)}}>Details</div>
-            </Tag>
-          </Space>
-        ),
-      },
-    ];
-  const navigate = useNavigate();
-  
-  const [orders, setOrders] = useState();
-  const [isReceived, setIsReceived] = useState(false);
-  // const [page, setPage] = useState(1);
-
-  // useEffect(() => {
-  //   const url = "http://"
-  //   fetch(url, {
-  //     method: 'GET',
-  //     headers: {"Content-Type": "application/json"}
-  //   })
-  //   .then((res) => {
-  //     setOrders(res.payload.response);
-  //     setIsReceived(true);
-  //     console.log(res);
-  //   });
-  // }, [isReceived]);
-
-  const data = [
-    {
-      id: '1',
-      method: 'MoMo',
-      total: `$${32}`,
-      date: '2024-10-27',
-      tags: [false],
-    },
-    {
-      id: '2',
-      method: 'MoMo',
-      total: `$${32}`,
-      date: '2024-10-27',
-      tags: [true],
-    },
-    {
-      id: '3',      
-      method: 'MoMo',
-      total: `$${32}`,
-      date: '2024-10-27',
-      tags: [true],
-    },
-  ];
-
-  return (
-    <div>
-      <Table columns={columns} dataSource={data} />;
-      hi mom
-    </div>
-  );
+    return (
+      <div className="dashboard">
+        <div className="box box1">Box1</div>
+        <div className="box box2">Box2</div>
+        <div className="box box3">Box3</div>
+        <div className="box box4">Box4</div>
+        <div className="box box5">Box5</div>
+        <div className="box box6">Box6</div>
+        <div className="box box7">Box7</div>
+        <div className="box box8">Box8</div>
+        <div className="box box9">Box9</div>
+      </div>
+    );
 };
 export default AdminDashboard;

@@ -4,17 +4,17 @@ import { toast } from "react-toastify";
 import { Button, Input, Form } from "antd";
 import { useNavigate } from 'react-router-dom';
 
-const ProductManagement = () => {
+const OrderManagement = () => {
     const [isReceived, setIsReceived] = useState(false);
-    const [products, setProducts] = useState([]);
+    const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
     const handleShowDetail = (id) => navigate(`${id}`);
 
     const columns = [
     {
-      title: 'Ma mon an',
-      dataIndex: 'maMonAn',
-      key: 'maMonAn',
+      title: 'Ma don mon',
+      dataIndex: 'maDon',
+      key: 'maDon',
       // render: (text) => <a>{text}</a>,
     },
     {
@@ -65,7 +65,7 @@ const ProductManagement = () => {
 
   const data = [
     {
-      maMonAn: '1',
+      maDon: '1',
       tenMonAn: 'MoMo',
       gia: `$${32}`,
       moTa: '2024-10-27'
@@ -74,7 +74,7 @@ const ProductManagement = () => {
 
     useEffect(() => {
         // Fetch users from API
-        const url = "http://localhost:8080/monAn/all"
+        const url = "http://localhost:8080/donMonAn/all"
         fetch(url, {
             method: 'GET',
             headers: {
@@ -83,7 +83,7 @@ const ProductManagement = () => {
         })
         .then(res => res.json())
         .then(data => {
-            setProducts(data);
+            setOrders(data);
             console.log(data); 
         })
     //    .then(data => setUsers(data))
@@ -93,10 +93,10 @@ const ProductManagement = () => {
 
     return (
         <div>   
-            hi mom, this is products management page
-            <Table columns={columns} dataSource={products} />
+            hi mom, this is order management page
+            <Table columns={columns} dataSource={data} />
         </div>
     )
 }
 
-export default ProductManagement;
+export default OrderManagement;
