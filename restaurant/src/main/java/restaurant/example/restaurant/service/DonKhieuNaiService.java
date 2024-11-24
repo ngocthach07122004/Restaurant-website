@@ -37,6 +37,7 @@ public class DonKhieuNaiService {
              public String updateDonKhieuNai (String maDonKhieuNai, DonKhieuNai donKhieuNai) {
                   DonKhieuNai donKhieuNaiUpdate =getSpecificDonKhieuNai(maDonKhieuNai);
                   donKhieuNaiMapper.updateDonKhieuNai(donKhieuNaiUpdate, donKhieuNai);
+                  donKhieuNaiRepository.save(donKhieuNaiUpdate);
                   return "update success";
 
              }

@@ -37,6 +37,7 @@ public class PhuongTienService {
              public String updatePhuongTien (String maPhuongTien, PhuongTien phuongTien) {
                   PhuongTien phuongTienUpdate =getSpecificPhuongTien(maPhuongTien);
                   phuongTienMapper.updatePhuongTien(phuongTienUpdate, phuongTien);
+                  phuongTienRepository.save(phuongTienUpdate);
                   return "update success";
 
              }

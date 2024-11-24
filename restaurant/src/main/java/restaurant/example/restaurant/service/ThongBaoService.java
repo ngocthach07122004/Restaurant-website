@@ -37,6 +37,7 @@ public class ThongBaoService {
              public String updateThongBao (String maThongBao, ThongBao thongBao) {
                   ThongBao thongBaoUpdate =getSpecificThongBao(maThongBao);
                   thongBaoMapper.updateThongBao(thongBaoUpdate, thongBao);
+                  thongBaoRepository.save(thongBaoUpdate);
                   return "update success";
 
              }

@@ -37,6 +37,7 @@ public class ChiNhanhService {
              public String updateChiNhanh (String maChiNhanh, ChiNhanh chiNhanh) {
                   ChiNhanh chiNhanhUpdate =getSpecificChiNhanh(maChiNhanh);
                   chiNhanhMapper.updateChiNhanh(chiNhanhUpdate, chiNhanh);
+                   chiNhanhRepository.save(chiNhanhUpdate);
                   return "update success";
 
              }

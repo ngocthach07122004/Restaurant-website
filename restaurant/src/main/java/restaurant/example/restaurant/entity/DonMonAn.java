@@ -7,7 +7,9 @@ import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 
 @Data
 @Builder
@@ -20,8 +22,8 @@ public class DonMonAn {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     String maDon 		 ;
-    Date thoiGianDat 		 ;
-    Date tongGiaTien 	;
+    LocalDate  thoiGianDat 		 ;
+    BigDecimal tongGiaTien 	;
 
     String maChiNhanh 		 ;
     String cccdKhachHang 		 ;

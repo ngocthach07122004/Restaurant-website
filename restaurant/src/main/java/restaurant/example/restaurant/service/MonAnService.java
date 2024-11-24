@@ -37,6 +37,7 @@ public class MonAnService {
              public String updateMonAn (String maMonAn, MonAn monAn) {
                   MonAn monAnUpdate =getSpecificMonAn(maMonAn);
                   monAnMapper.updateMonAn(monAnUpdate, monAn);
+                  monAnRepository.save(monAnUpdate);
                   return "update success";
 
              }
