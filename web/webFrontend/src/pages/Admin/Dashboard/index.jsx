@@ -1,8 +1,9 @@
+import UserManagement from "./../UserManagement/index"
+
 const AdminDashboard = () => {
     return (
       <div>
-        <h1>Admin Dashboard</h1>
-        <p>Welcome to the admin panel!</p>
+        <UserManagement></UserManagement>
       </div>
     );
   };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import "./styles.scss"
 
 const Signup = (props) => {
@@ -11,7 +11,7 @@ const Signup = (props) => {
   const [lastname, setLastname] = useState('')
   const [gender, setGender] = useState('')
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   
   const handleSignup = () => {
