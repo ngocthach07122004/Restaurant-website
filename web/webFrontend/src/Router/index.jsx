@@ -6,7 +6,7 @@ import Menu from "../pages/Menu";
 import DefaultLayout from "../layout/DefaultLayout";
 import AdminLayout from "../layout/Admin/AdminLayout";
 import AdminDashboard from "../pages/Admin/Dashboard";
-
+import ProductManagement from "../pages/Admin/ProductManagement"
 // const checkAdminAuth = async () => {
 //     const user = await fetch('/api/check-auth'); 
 //     if (!user || user.role !== 'admin') {
@@ -31,7 +31,9 @@ const router = createBrowserRouter([
         element: <AdminLayout />,
         // loader: checkAdminAuth, // Secure admin routes
         children: [
-            {index: true, element: <AdminDashboard />}
+            {index: true, element: <AdminDashboard />},
+            {path: "users/", element: <AdminDashboard />},
+            {path: "products/", element: <ProductManagement />},
         ]
     }
 ]);
