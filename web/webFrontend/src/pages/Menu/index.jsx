@@ -12,7 +12,9 @@ const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState([]);
   const [sortOption, setSortOption] = useState('none');
-  const [priceRange, setPriceRange] = useState({ min: '', max: '' });
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 100000 });
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(100000);
 
   useEffect(() => {
     fetch('http://localhost:8080/monAn/all')
@@ -25,6 +27,14 @@ const Menu = () => {
           ...new Set(data.map((product) => product.loaiMonAn)),
         ];
         setCategories(uniqueCategories);
+
+        // Determine min and max prices
+        const prices = data.map((product) => product.gia);
+        const minProductPrice = Math.min(...prices);
+        const maxProductPrice = Math.max(...prices);
+        setMinPrice(minProductPrice);
+        setMaxPrice(maxProductPrice);
+        setPriceRange({ min: minProductPrice, max: maxProductPrice });
       })
       .catch((error) => {
         console.error('Error fetching products:', error);
@@ -39,25 +49,25 @@ const Menu = () => {
   // Filter products based on search query and category
   let filteredProducts = products
     .filter((product) =>
-      product.tenMonAn.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(searchQuery.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
+      product.tenMonAn
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .includes(
+          searchQuery
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase()
+        )
     )
     .filter((product) =>
       selectedCategory === 'all' ? true : product.loaiMonAn === selectedCategory
     );
 
   // Filter products based on price range
-  const minPrice = parseFloat(priceRange.min);
-  const maxPrice = parseFloat(priceRange.max);
-
   filteredProducts = filteredProducts.filter((product) => {
     const price = product.gia;
-    if (!isNaN(minPrice) && price < minPrice) {
-      return false;
-    }
-    if (!isNaN(maxPrice) && price > maxPrice) {
-      return false;
-    }
-    return true;
+    return price >= priceRange.min && price <= priceRange.max;
   });
 
   // Sort products based on price
@@ -68,11 +78,11 @@ const Menu = () => {
   }
 
   return (
-    <div className='menu-container'>
+    <div className="menu-container">
       <SearchBar
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder='🔎 Tìm kiếm sản phẩm...'
+        placeholder="🔎 Tìm kiếm sản phẩm..."
       />
       <FilterBar
         categories={categories}
@@ -82,14 +92,16 @@ const Menu = () => {
         onSelectSortOption={setSortOption}
         priceRange={priceRange}
         onSetPriceRange={setPriceRange}
+        minPrice={minPrice}
+        maxPrice={maxPrice}
       />
-      <div className='products-grid'>
+      <div className="products-grid">
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.maMonAn}
             name={product.tenMonAn}
             price={product.gia}
-            image={product.image}
+            // image={product.image}
           />
         ))}
       </div>
