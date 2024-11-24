@@ -4,8 +4,9 @@ import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import Menu from "../pages/Menu";
 import DefaultLayout from "../layout/DefaultLayout";
-import AdminLayout from "../layout/Admin/AdminLayout";
+import AdminLayout from "../layout/Admin/AdminLayout/AdminLayout";
 import AdminDashboard from "../pages/Admin/Dashboard";
+import Users from "../pages/Admin/Users";
 
 // const checkAdminAuth = async () => {
 //     const user = await fetch('/api/check-auth'); 
@@ -27,11 +28,12 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "/admin/",
+        path: "/admin/*",
         element: <AdminLayout />,
         // loader: checkAdminAuth, // Secure admin routes
         children: [
-            {index: true, element: <AdminDashboard />}
+            {index: true, element: <AdminDashboard />},
+            {path: "users/", element: <Users />}
         ]
     }
 ]);
