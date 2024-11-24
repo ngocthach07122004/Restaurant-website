@@ -35,7 +35,7 @@ public class SuKienUuDaiController {
 
      }
      @DeleteMapping("/delete/{maUuDai}")
-     public String deleteSuKienUuDai (@PathVariable String maSuKienUuDai) {
-            return suKienUuDaiService.deleteSuKienUuDai(maSuKienUuDai);
+     public String deleteSuKienUuDai (@PathVariable String maUuDai) {
+            return suKienUuDaiService.deleteSuKienUuDai(maUuDai);
      }
 }

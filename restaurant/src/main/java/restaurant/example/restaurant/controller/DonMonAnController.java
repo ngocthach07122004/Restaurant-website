@@ -35,7 +35,7 @@ public class DonMonAnController {
 
      }
      @DeleteMapping("/delete/{maDon}")
-     public String deleteDonMonAn (@PathVariable String maDonMonAn) {
-            return donMonAnService.deleteDonMonAn(maDonMonAn);
+     public String deleteDonMonAn (@PathVariable String maDon) {
+            return donMonAnService.deleteDonMonAn(maDon);
      }
 }

@@ -37,8 +37,8 @@ public class ThongTinController {
 
      }
      @DeleteMapping("/delete/{cccd}")
-     public String deleteThongTin (@PathVariable String maThongTin) {
-            return thongTinService.deleteThongTin(maThongTin);
+     public String deleteThongTin (@PathVariable String cccd) {
+            return thongTinService.deleteThongTin(cccd);
      }
      @PostMapping("/authenticate")
     public ApiResponse<?> authenticateThongTin (@RequestBody ThongTinRequest thongTinRequest){
