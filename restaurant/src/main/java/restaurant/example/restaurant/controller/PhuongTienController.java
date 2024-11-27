@@ -35,7 +35,7 @@ public class PhuongTienController {
 
      }
      @DeleteMapping("/delete/{bienSoXe}")
-     public String deletePhuongTien (@PathVariable String maPhuongTien) {
-            return phuongTienService.deletePhuongTien(maPhuongTien);
+     public String deletePhuongTien (@PathVariable String bienSoXe) {
+            return phuongTienService.deletePhuongTien(bienSoXe);
      }
 }
