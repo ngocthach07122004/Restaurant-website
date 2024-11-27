@@ -18,3 +18,32 @@ docker pull mysql
 3. mysql -u root -p  
    enter your password
 4. create dabase restaurant_service_database_v1
+
+# run database
+
+CREATE TABLE ThongTin (
+cccd VARCHAR(100) PRIMARY KEY,
+
+    tenDangNhap 		VARCHAR(100) NOT NULL,
+    matKhau 			VARCHAR(100) NOT NULL,
+    ho 				VARCHAR(100),
+    ten 				VARCHAR(100),
+    ngaySinh 			DATE,
+    email 				VARCHAR(100),
+    gioiTinh 			VARCHAR(1),
+    soDienThoai 			VARCHAR(100),
+    maTaiKhoan 			VARCHAR(100),
+    cccdQuanTriVien 		VARCHAR(100),
+    anhThongTin          VARCHAR(800)
+    -- FOREIGN KEY (cccd_QuanTriVien) REFERENCES ThongTin(cccd)
+
+);
+
+CREATE TABLE MonAn (
+maMonAn VARCHAR(100) PRIMARY KEY,
+gia DECIMAL(15,2),
+tenMonAn VARCHAR(100),
+moTa VARCHAR(100),
+loaiMonAn VARCHAR(100),
+anhMonAn VARCHAR(800)
+);

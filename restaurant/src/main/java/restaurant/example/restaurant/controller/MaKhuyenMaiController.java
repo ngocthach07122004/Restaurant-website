@@ -35,7 +35,7 @@ public class MaKhuyenMaiController {
 
      }
      @DeleteMapping("/delete/{idKhuyenMai}")
-     public String deleteMaKhuyenMai (@PathVariable String maMaKhuyenMai) {
-            return maKhuyenMaiService.deleteMaKhuyenMai(maMaKhuyenMai);
+     public String deleteMaKhuyenMai (@PathVariable String idKhuyenMai) {
+            return maKhuyenMaiService.deleteMaKhuyenMai(idKhuyenMai);
      }
 }

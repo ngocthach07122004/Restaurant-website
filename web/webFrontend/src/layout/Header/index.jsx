@@ -1,14 +1,16 @@
 // src/components/Header.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu } from 'lucide-react';
+import { Menu, ShoppingBag } from 'lucide-react';
 import logo from '../../assets/jollibee.png';
 import tel from '../../assets/delivery-lg-rs.png';
+import { CartContext } from '../../context/CartContext';
 import './styles.css';
 
 
 const Header = () => {
   const navigate = useNavigate();
+  const { cartItems } = useContext(CartContext);
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
   const location = useLocation();
@@ -42,26 +44,34 @@ const Header = () => {
           <div className="d-flex gap-3 align-items-center">
             <i className="bi bi-person-fill text-danger"></i>
             <span className="text-danger">
-              <a 
+              <a
                 // href='/signup'
-                onClick={() => navigate('signup')} 
-                style={{ color: 'black', fontSize:'14px',fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
+                onClick={() => navigate('signup')}
+                style={{ color: 'black', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
                 onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
                 onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
               >
                 ĐĂNG KÝ
-              </a> 
-              / 
-              <a 
+              </a>
+              /
+              <a
                 // href='/signin'
-                onClick={() => navigate('signin')} 
-                style={{ color: 'black', fontSize:'14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
+                onClick={() => navigate('signin')}
+                style={{ color: 'black', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
                 onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
                 onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
               >
                 ĐĂNG NHẬP
               </a>
             </span>
+            <Link to='/cart'>
+              <div className='nav-bag'>
+                <ShoppingBag className='bi bi-handbag-fill' size={24} />
+                <span className='badge bg-danger rounded-pill bag-quantity'>
+                  <span>{cartItems.length}</span>
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

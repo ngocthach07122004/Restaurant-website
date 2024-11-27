@@ -66,3 +66,8 @@
 .nav-list .nav-link.active::after {
     width: 100%;
 }
+
+.bag-quantity {
+    vertical-align: top;
+    margin-left: -10px;
+}

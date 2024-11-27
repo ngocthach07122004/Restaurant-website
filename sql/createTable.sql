@@ -143,7 +143,8 @@ CREATE TABLE MonAn (
     gia 				DECIMAL(15,2),
     tenMonAn 			VARCHAR(100),
     moTa 			VARCHAR(100),
-    loaiMonAn VARCHAR(100)
+    loaiMonAn VARCHAR(100),
+    anhMonAn VARCHAR(800)
 );
 CREATE TABLE MaKhuyenMai (
     idKhuyenMai 		VARCHAR(100) PRIMARY KEY,
@@ -226,6 +227,7 @@ create table ChuaMonAn (
 
 CREATE TABLE ThongTin (
     cccd 		VARCHAR(100) 	PRIMARY KEY,
+    
 	tenDangNhap 		VARCHAR(100) NOT NULL,
 	matKhau 			VARCHAR(100) NOT NULL,
 	ho 				VARCHAR(100),
@@ -235,7 +237,8 @@ CREATE TABLE ThongTin (
 	gioiTinh 			VARCHAR(1),
 	soDienThoai 			VARCHAR(100),
 	maTaiKhoan 			VARCHAR(100),
-	cccdQuanTriVien 		VARCHAR(100)
+	cccdQuanTriVien 		VARCHAR(100),
+    anhThongTin          VARCHAR(800)
 	-- FOREIGN KEY (cccd_QuanTriVien) REFERENCES ThongTin(cccd)
 );
 ALTER TABLE ThongTin

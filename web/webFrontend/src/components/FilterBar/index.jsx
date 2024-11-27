@@ -1,5 +1,7 @@
 // src/components/FilterBar/index.jsx
 import React from 'react';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import './styles.scss';
 
 const FilterBar = ({
@@ -10,9 +12,12 @@ const FilterBar = ({
   onSelectSortOption,
   priceRange,
   onSetPriceRange,
+  minPrice,
+  maxPrice,
 }) => {
   return (
     <div className="filter-bar">
+      {/* Category Filter */}
       <label htmlFor="category-select">Danh mục:</label>
       <select
         id="category-select"
@@ -20,13 +25,14 @@ const FilterBar = ({
         onChange={(e) => onSelectCategory(e.target.value)}
       >
         <option value="all">Tất cả</option>
-        {categories.map((category) => (
-          <option key={category} value={category}>
+        {categories.map((category, index) => (
+          <option key={index} value={category}>
             {category}
           </option>
         ))}
       </select>
 
+      {/* Sort Option */}
       <label htmlFor="sort-select">Sắp xếp theo giá:</label>
       <select
         id="sort-select"
@@ -38,23 +44,23 @@ const FilterBar = ({
         <option value="desc">Giá giảm dần</option>
       </select>
 
-      <label htmlFor="min-price">Giá từ:</label>
-      <input
-        type="number"
-        id="min-price"
-        placeholder="Thấp nhất"
-        value={priceRange.min}
-        onChange={(e) => onSetPriceRange({ ...priceRange, min: e.target.value })}
-      />
-
-      <label htmlFor="max-price">đến:</label>
-      <input
-        type="number"
-        id="max-price"
-        placeholder="Cao nhất"
-        value={priceRange.max}
-        onChange={(e) => onSetPriceRange({ ...priceRange, max: e.target.value })}
-      />
+      {/* Price Range Slider */}
+      <label>Khoảng giá:</label>
+      <div className="price-range-slider">
+        <Slider
+          range
+          min={minPrice}
+          max={maxPrice}
+          value={[priceRange.min, priceRange.max]}
+          onChange={(values) => {
+            onSetPriceRange({ min: values[0], max: values[1] });
+          }}
+        />
+        <div className="price-labels">
+          <span>{priceRange.min}.000₫</span>
+          <span>{priceRange.max}.000₫</span>
+        </div>
+      </div>
     </div>
   );
 };
