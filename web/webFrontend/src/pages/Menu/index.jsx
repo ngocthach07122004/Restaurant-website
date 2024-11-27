@@ -99,6 +99,7 @@ const Menu = () => {
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.maMonAn}
+            id={product.maMonAn}
             name={product.tenMonAn}
             price={product.gia}
             // image={product.image}
