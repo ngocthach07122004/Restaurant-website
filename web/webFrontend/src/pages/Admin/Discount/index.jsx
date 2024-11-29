@@ -1,39 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { Space, Table, Tag, Modal, Button, Descriptions } from "antd";
 import { toast } from "react-toastify";
-import CreateDiscountForm from "../../../components/AdminComponent/CreateDiscountForm/index"
+import CreateDiscountForm from "../../../components/AdminComponent/CreateDiscountForm";
 
 const Discount = () => {
   const [discounts, setDiscounts] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedDiscount, setSelectedDiscount] = useState(null);
+  const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [isAddDiscountModalVisible, setIsAddDiscountModalVisible] = useState(false);
-  const handleAddDiscount = () => {
-    setIsModalVisible(true);
-  };
+  const [selectedDiscount, setSelectedDiscount] = useState(null);
 
-  const handleFormSubmit = () => {
-    return;
-  }
+  const handleAddDiscount = () => {
+    setIsAddDiscountModalVisible(true);
+  };
 
   const handleCloseAddDiscountModal = () => {
     setIsAddDiscountModalVisible(false);
   };
 
-  // const handleCloseDetailModal = () => {
-  //   setIsModalVisible(false);
-  //   setSelectedDiscount(null);
-  // };
-
-  const handleRemove = (maMonAn) => {
-    const url = `http://localhost:8080/monAn/delete/${maMonAn}`;
+  const handleRemove = (idKhuyenMai) => {
+    const url = `http://localhost:8080/maKhuyenMai/delete/${idKhuyenMai}`;
     fetch(url, { method: 'DELETE' })
       .then(() => {
-        toast.success("Product deleted successfully");
-        setDiscounts(discounts.filter(discount => discount.maMonAn !== maMonAn));
+        toast.success("Discount deleted successfully");
+        setDiscounts(discounts.filter(discount => discount.idKhuyenMai !== idKhuyenMai));
       })
       .catch(error => console.error(error));
   };
+
+  const handleFormSubmit = (values) => {
+    const url = "http://localhost:8080/maKhuyenMai/create";
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values)
+    })
+      .then(res => res.json())
+      .then(data => {
+        setDiscounts([...discounts, { ...data, key: data.maDon }]);
+        toast.success("Discount created successfully");
+        setIsAddDiscountModalVisible(false);
+      })
+      .catch(error => console.error(error));
+  };
+
 
   useEffect(() => {
     fetch("http://localhost:8080/maKhuyenMai/all")
@@ -53,7 +62,7 @@ const Discount = () => {
       key: "idKhuyenMai",
     },
     {
-      title: "Mô tả",
+      title: "Mô tả khuyến mãi",
       dataIndex: "moTa",
       key: "moTa",
     },
@@ -85,6 +94,7 @@ const Discount = () => {
       </div>
 
       <Table columns={columns} dataSource={discounts} />
+
       <Modal
         title="Add Discount"
         visible={isAddDiscountModalVisible}

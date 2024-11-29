@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React, { useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, ShoppingBag } from 'lucide-react';
@@ -6,7 +5,6 @@ import logo from '../../assets/jollibee.png';
 import tel from '../../assets/delivery-lg-rs.png';
 import { CartContext } from '../../context/CartContext';
 import './styles.css';
-
 
 const Header = () => {
   const navigate = useNavigate();
@@ -27,6 +25,9 @@ const Header = () => {
     { path: '/careers', label: 'TUYỂN DỤNG' }
   ];
 
+  const userData = localStorage.getItem('userdata');
+  const username = userData ? JSON.parse(userData).username : "---";
+
   return (
     <>
       {/* Top Bar */}
@@ -45,7 +46,6 @@ const Header = () => {
             <i className="bi bi-person-fill text-danger"></i>
             <span className="text-danger">
               <a
-                // href='/signup'
                 onClick={() => navigate('signup')}
                 style={{ color: 'black', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
                 onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
@@ -55,7 +55,6 @@ const Header = () => {
               </a>
               /
               <a
-                // href='/signin'
                 onClick={() => navigate('signin')}
                 style={{ color: 'black', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
                 onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
@@ -73,7 +72,9 @@ const Header = () => {
               </div>
             </Link>
 
-            <Link to='/profile' >{localStorage.getItem('userdata')['username']?localStorage.getItem('userdata')['username']:"---"}</Link>
+            <Link to='/profile'>
+              {username}
+            </Link>
           </div>
         </div>
       </div>

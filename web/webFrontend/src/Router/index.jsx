@@ -13,6 +13,7 @@ import Cart from "../pages/Cart";
 import ProductDetail from "../pages/ProductDetail";
 import Profile from "../pages/UserProfile";
 import Discount from "../pages/Admin/Discount"
+import Employee from "../pages/Admin/Employee"
 
 // const checkAdminAuth = async () => {
 //     const user = await fetch('/api/check-auth'); 
@@ -46,7 +47,8 @@ const router = createBrowserRouter([
             {path: "products/", element: <ProductManagement />},
             {path: "users/", element: <Users />},
             {path: "orders/", element: <OrderManagement />},
-            {path: "discount/", element: <Discount />}
+            {path: "discount/", element: <Discount />},
+            {path: "employee/", element: <Employee />}
         ]
     }
 ]);
