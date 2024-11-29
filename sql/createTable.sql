@@ -144,7 +144,9 @@ CREATE TABLE MonAn (
     tenMonAn 			VARCHAR(100),
     moTa 			VARCHAR(100),
     loaiMonAn VARCHAR(100),
-    anhMonAn VARCHAR(800)
+    anhMonAn VARCHAR(800),
+    thoiGianHoanTat VARCHAR(100), 
+    khauPhan VARCHAR(100)
 );
 CREATE TABLE MaKhuyenMai (
     idKhuyenMai 		VARCHAR(100) PRIMARY KEY,

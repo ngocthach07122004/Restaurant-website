@@ -20,9 +20,9 @@ public class SuKienUuDaiController {
             return suKienUuDaiService.createSuKienUuDai(suKienUuDai);
      }
      @GetMapping("/{maUuDai}")
-     public SuKienUuDai getSpecificSuKienUuDai  (@PathVariable String maSuKienUuDai) {
+     public SuKienUuDai getSpecificSuKienUuDai  (@PathVariable String maUuDai) {
 
-         return suKienUuDaiService.getSpecificSuKienUuDai(maSuKienUuDai);
+         return suKienUuDaiService.getSpecificSuKienUuDai(maUuDai);
 
      }
      @GetMapping("/all")
@@ -30,8 +30,8 @@ public class SuKienUuDaiController {
           return suKienUuDaiService.getAllSuKienUuDai();
      }
      @PutMapping("/update/{maUuDai}")
-     public String updateSuKienUuDai (@PathVariable String maSuKienUuDai,@RequestBody SuKienUuDai suKienUuDai) {
-         return suKienUuDaiService.updateSuKienUuDai(maSuKienUuDai,suKienUuDai);
+     public String updateSuKienUuDai (@PathVariable String maUuDai,@RequestBody SuKienUuDai suKienUuDai) {
+         return suKienUuDaiService.updateSuKienUuDai(maUuDai,suKienUuDai);
 
      }
      @DeleteMapping("/delete/{maUuDai}")

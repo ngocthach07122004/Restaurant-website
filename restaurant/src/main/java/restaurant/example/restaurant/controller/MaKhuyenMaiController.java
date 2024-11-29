@@ -20,9 +20,9 @@ public class MaKhuyenMaiController {
             return maKhuyenMaiService.createMaKhuyenMai(maKhuyenMai);
      }
      @GetMapping("/{idKhuyenMai}")
-     public MaKhuyenMai getSpecificMaKhuyenMai  (@PathVariable String maMaKhuyenMai) {
+     public MaKhuyenMai getSpecificMaKhuyenMai  (@PathVariable String idKhuyenMai) {
 
-         return maKhuyenMaiService.getSpecificMaKhuyenMai(maMaKhuyenMai);
+         return maKhuyenMaiService.getSpecificMaKhuyenMai(idKhuyenMai);
 
      }
      @GetMapping("/all")
@@ -30,8 +30,8 @@ public class MaKhuyenMaiController {
           return maKhuyenMaiService.getAllMaKhuyenMai();
      }
      @PutMapping("/update/{idKhuyenMai}")
-     public String updateMaKhuyenMai (@PathVariable String maMaKhuyenMai,@RequestBody MaKhuyenMai maKhuyenMai) {
-         return maKhuyenMaiService.updateMaKhuyenMai(maMaKhuyenMai,maKhuyenMai);
+     public String updateMaKhuyenMai (@PathVariable String idKhuyenMai,@RequestBody MaKhuyenMai maKhuyenMai) {
+         return maKhuyenMaiService.updateMaKhuyenMai(idKhuyenMai,maKhuyenMai);
 
      }
      @DeleteMapping("/delete/{idKhuyenMai}")

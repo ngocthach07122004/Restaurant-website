@@ -19,23 +19,23 @@ public class DonTaiQuanController {
       public DonTaiQuan createDonTaiQuan (@RequestBody DonTaiQuan dontaiquan) {
             return donTaiQuanService.createDonTaiQuan(dontaiquan);
      }
-     @GetMapping("/{maDonTaiQuan}")
-     public DonTaiQuan getSpecificDonTaiQuan  (@PathVariable String maDonTaiQuan) {
+     @GetMapping("/{maDon}")
+     public DonTaiQuan getSpecificDonTaiQuan  (@PathVariable String maDon) {
 
-         return donTaiQuanService.getSpecificDonTaiQuan(maDonTaiQuan);
+         return donTaiQuanService.getSpecificDonTaiQuan(maDon);
 
      }
      @GetMapping("/all")
      public List<DonTaiQuan> getAllDonTaiQuan (){
           return donTaiQuanService.getAllDonTaiQuan();
      }
-     @PutMapping("/update/{maDonTaiQuan}")
-     public String updateDonTaiQuan (@PathVariable String maDonTaiQuan,@RequestBody DonTaiQuan donTaiQuan) {
-         return donTaiQuanService.updateDonTaiQuan(maDonTaiQuan,donTaiQuan);
+     @PutMapping("/update/{maDon}")
+     public String updateDonTaiQuan (@PathVariable String maDon,@RequestBody DonTaiQuan donTaiQuan) {
+         return donTaiQuanService.updateDonTaiQuan(maDon,donTaiQuan);
 
      }
-     @DeleteMapping("/delete/{maDonTaiQuan}")
-     public String deleteDonTaiQuan (@PathVariable String maDonTaiQuan) {
-            return donTaiQuanService.deleteDonTaiQuan(maDonTaiQuan);
+     @DeleteMapping("/delete/{maDon}")
+     public String deleteDonTaiQuan (@PathVariable String maDon) {
+            return donTaiQuanService.deleteDonTaiQuan(maDon);
      }
 }

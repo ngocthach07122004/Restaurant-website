@@ -45,5 +45,15 @@ gia DECIMAL(15,2),
 tenMonAn VARCHAR(100),
 moTa VARCHAR(100),
 loaiMonAn VARCHAR(100),
-anhMonAn VARCHAR(800)
+anhMonAn VARCHAR(800),
+thoiGianHoanTat VARCHAR(100),
+khauPhan VARCHAR(100)
+);
+
+create table DanhGia(
+maDanhGia VARCHAR(100) ,
+cccdKhachHang VARCHAR(100),
+maMonAn VARCHAR(100),
+noiDung VARCHAR(100),
+thoiGian DATE
 );

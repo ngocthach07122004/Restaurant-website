@@ -20,9 +20,9 @@ public class PhuongTienController {
             return phuongTienService.createPhuongTien(phuongTien);
      }
      @GetMapping("/{bienSoXe}")
-     public PhuongTien getSpecificPhuongTien  (@PathVariable String maPhuongTien) {
+     public PhuongTien getSpecificPhuongTien  (@PathVariable String bienSoXe) {
 
-         return phuongTienService.getSpecificPhuongTien(maPhuongTien);
+         return phuongTienService.getSpecificPhuongTien(bienSoXe);
 
      }
      @GetMapping("/all")
@@ -30,8 +30,8 @@ public class PhuongTienController {
           return phuongTienService.getAllPhuongTien();
      }
      @PutMapping("/update/{bienSoXe}")
-     public String updatePhuongTien (@PathVariable String maPhuongTien,@RequestBody PhuongTien phuongTien) {
-         return phuongTienService.updatePhuongTien(maPhuongTien,phuongTien);
+     public String updatePhuongTien(@PathVariable String bienSoXe, @RequestBody PhuongTien phuongTien) {
+         return phuongTienService.updatePhuongTien(bienSoXe,phuongTien);
 
      }
      @DeleteMapping("/delete/{bienSoXe}")

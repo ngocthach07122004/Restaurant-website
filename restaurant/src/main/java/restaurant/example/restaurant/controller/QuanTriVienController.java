@@ -19,23 +19,23 @@ public class QuanTriVienController {
       public QuanTriVien createQuanTriVien (@RequestBody QuanTriVien quantrivien) {
             return quanTriVienService.createQuanTriVien(quantrivien);
      }
-     @GetMapping("/{maQuanTriVien}")
-     public QuanTriVien getSpecificQuanTriVien  (@PathVariable String maQuanTriVien) {
+     @GetMapping("/{cccd}")
+     public QuanTriVien getSpecificQuanTriVien  (@PathVariable String cccd) {
 
-         return quanTriVienService.getSpecificQuanTriVien(maQuanTriVien);
+         return quanTriVienService.getSpecificQuanTriVien(cccd);
 
      }
      @GetMapping("/all")
      public List<QuanTriVien> getAllQuanTriVien (){
           return quanTriVienService.getAllQuanTriVien();
      }
-     @PutMapping("/update/{maQuanTriVien}")
-     public String updateQuanTriVien (@PathVariable String maQuanTriVien,@RequestBody QuanTriVien quanTriVien) {
-         return quanTriVienService.updateQuanTriVien(maQuanTriVien,quanTriVien);
+     @PutMapping("/update/{cccd}")
+     public String updateQuanTriVien (@PathVariable String cccd,@RequestBody QuanTriVien quanTriVien) {
+         return quanTriVienService.updateQuanTriVien(cccd,quanTriVien);
 
      }
-     @DeleteMapping("/delete/{maQuanTriVien}")
-     public String deleteQuanTriVien (@PathVariable String maQuanTriVien) {
-            return quanTriVienService.deleteQuanTriVien(maQuanTriVien);
+     @DeleteMapping("/delete/{cccd}")
+     public String deleteQuanTriVien (@PathVariable String cccd) {
+            return quanTriVienService.deleteQuanTriVien(cccd);
      }
 }

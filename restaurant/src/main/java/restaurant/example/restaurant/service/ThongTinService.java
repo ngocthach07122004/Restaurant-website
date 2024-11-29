@@ -27,10 +27,16 @@ public class ThongTinService {
              ThongTinMapper thongTinMapper;
              PasswordEncoder passwordEncoder;
              public ThongTin createThongTin (ThongTin thongTin) {
-                   ThongTin newThongTin = thongTinMapper.toThongTin(thongTin);
+                 Optional<ThongTin> existThongTin = thongTinRepository.findByTenDangNhap(thongTin.getTenDangNhap());
+                 if(!existThongTin.isPresent() ) {
+                     ThongTin newThongTin = thongTinMapper.toThongTin(thongTin);
 //                   newThongTin.setCccd(thongTin.getCccd());
-                   newThongTin.setMatKhau(passwordEncoder.encode(thongTin.getMatKhau()));
-                    return thongTinRepository.save(newThongTin);
+                     newThongTin.setMatKhau(passwordEncoder.encode(thongTin.getMatKhau()));
+                     return thongTinRepository.save(newThongTin);
+                 }
+                 else {
+                      throw  new AppException(ErrorCode.USERNAME_ALREADY_EXIST);
+                 }
              }
              public ThongTin getSpecificThongTin (String maThongTin) {
 
@@ -53,7 +59,7 @@ public class ThongTinService {
                     thongTinRepository.deleteById(maThongTin);
                     return "delete success";
              }
-             public ApiResponse<?> authenticateThongTin (ThongTinRequest thongTinRequest){
+             public ApiResponse<ThongTin> authenticateThongTin (ThongTinRequest thongTinRequest){
 
                  ThongTin thongTinUser = thongTinRepository.findByTenDangNhap(thongTinRequest.getTenDangNhap()).orElseThrow(
                          ()-> new AppException(ErrorCode.USERNAME_NOT_EXIST)
@@ -63,10 +69,10 @@ public class ThongTinService {
 
                  boolean authenticate = passwordEncoder.matches(thongTinRequest.getMatKhau(),thongTinUser.getMatKhau());
                  if(authenticate) {
-                         return ApiResponse.builder().message("success").code("200").build();
+                         return ApiResponse.<ThongTin>builder().code("200").message("success").entity(thongTinUser).build();
                  }
                  else {
-                     return ApiResponse.builder().message("fail").code("401").build();
+                     return ApiResponse.<ThongTin>builder().code("401").message("fail").build();
                  }
 
              }

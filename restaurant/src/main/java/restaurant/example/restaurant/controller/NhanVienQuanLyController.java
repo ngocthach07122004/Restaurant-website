@@ -19,23 +19,23 @@ public class NhanVienQuanLyController {
       public NhanVienQuanLy createNhanVienQuanLy (@RequestBody NhanVienQuanLy nhanvienquanly) {
             return nhanVienQuanLyService.createNhanVienQuanLy(nhanvienquanly);
      }
-     @GetMapping("/{maNhanVienQuanLy}")
-     public NhanVienQuanLy getSpecificNhanVienQuanLy  (@PathVariable String maNhanVienQuanLy) {
+     @GetMapping("/{cccd}")
+     public NhanVienQuanLy getSpecificNhanVienQuanLy  (@PathVariable String cccd) {
 
-         return nhanVienQuanLyService.getSpecificNhanVienQuanLy(maNhanVienQuanLy);
+         return nhanVienQuanLyService.getSpecificNhanVienQuanLy(cccd);
 
      }
      @GetMapping("/all")
      public List<NhanVienQuanLy> getAllNhanVienQuanLy (){
           return nhanVienQuanLyService.getAllNhanVienQuanLy();
      }
-     @PutMapping("/update/{maNhanVienQuanLy}")
-     public String updateNhanVienQuanLy (@PathVariable String maNhanVienQuanLy,@RequestBody NhanVienQuanLy nhanVienQuanLy) {
-         return nhanVienQuanLyService.updateNhanVienQuanLy(maNhanVienQuanLy,nhanVienQuanLy);
+     @PutMapping("/update/{cccd}")
+     public String updateNhanVienQuanLy (@PathVariable String cccd,@RequestBody NhanVienQuanLy nhanVienQuanLy) {
+         return nhanVienQuanLyService.updateNhanVienQuanLy(cccd,nhanVienQuanLy);
 
      }
-     @DeleteMapping("/delete/{maNhanVienQuanLy}")
-     public String deleteNhanVienQuanLy (@PathVariable String maNhanVienQuanLy) {
-            return nhanVienQuanLyService.deleteNhanVienQuanLy(maNhanVienQuanLy);
+     @DeleteMapping("/delete/{cccd}")
+     public String deleteNhanVienQuanLy (@PathVariable String cccd) {
+            return nhanVienQuanLyService.deleteNhanVienQuanLy(cccd);
      }
 }

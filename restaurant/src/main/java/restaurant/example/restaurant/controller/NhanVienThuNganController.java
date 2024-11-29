@@ -19,23 +19,23 @@ public class NhanVienThuNganController {
       public NhanVienThuNgan createNhanVienThuNgan (@RequestBody NhanVienThuNgan nhanvienthungan) {
             return nhanVienThuNganService.createNhanVienThuNgan(nhanvienthungan);
      }
-     @GetMapping("/{maNhanVienThuNgan}")
-     public NhanVienThuNgan getSpecificNhanVienThuNgan  (@PathVariable String maNhanVienThuNgan) {
+     @GetMapping("/{cccd}")
+     public NhanVienThuNgan getSpecificNhanVienThuNgan  (@PathVariable String cccd) {
 
-         return nhanVienThuNganService.getSpecificNhanVienThuNgan(maNhanVienThuNgan);
+         return nhanVienThuNganService.getSpecificNhanVienThuNgan(cccd);
 
      }
      @GetMapping("/all")
      public List<NhanVienThuNgan> getAllNhanVienThuNgan (){
           return nhanVienThuNganService.getAllNhanVienThuNgan();
      }
-     @PutMapping("/update/{maNhanVienThuNgan}")
-     public String updateNhanVienThuNgan (@PathVariable String maNhanVienThuNgan,@RequestBody NhanVienThuNgan nhanVienThuNgan) {
-         return nhanVienThuNganService.updateNhanVienThuNgan(maNhanVienThuNgan,nhanVienThuNgan);
+     @PutMapping("/update/{cccd}")
+     public String updateNhanVienThuNgan (@PathVariable String cccd,@RequestBody NhanVienThuNgan nhanVienThuNgan) {
+         return nhanVienThuNganService.updateNhanVienThuNgan(cccd,nhanVienThuNgan);
 
      }
-     @DeleteMapping("/delete/{maNhanVienThuNgan}")
-     public String deleteNhanVienThuNgan (@PathVariable String maNhanVienThuNgan) {
-            return nhanVienThuNganService.deleteNhanVienThuNgan(maNhanVienThuNgan);
+     @DeleteMapping("/delete/{cccd}")
+     public String deleteNhanVienThuNgan (@PathVariable String cccd) {
+            return nhanVienThuNganService.deleteNhanVienThuNgan(cccd);
      }
 }

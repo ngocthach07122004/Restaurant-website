@@ -19,23 +19,23 @@ public class NhanVienController {
       public NhanVien createNhanVien (@RequestBody NhanVien nhanvien) {
             return nhanVienService.createNhanVien(nhanvien);
      }
-     @GetMapping("/{maNhanVien}")
-     public NhanVien getSpecificNhanVien  (@PathVariable String maNhanVien) {
+     @GetMapping("/{cccd}")
+     public NhanVien getSpecificNhanVien  (@PathVariable String cccd) {
 
-         return nhanVienService.getSpecificNhanVien(maNhanVien);
+         return nhanVienService.getSpecificNhanVien(cccd);
 
      }
      @GetMapping("/all")
      public List<NhanVien> getAllNhanVien (){
           return nhanVienService.getAllNhanVien();
      }
-     @PutMapping("/update/{maNhanVien}")
-     public String updateNhanVien (@PathVariable String maNhanVien,@RequestBody NhanVien nhanVien) {
-         return nhanVienService.updateNhanVien(maNhanVien,nhanVien);
+     @PutMapping("/update/{cccd}")
+     public String updateNhanVien (@PathVariable String cccd,@RequestBody NhanVien nhanVien) {
+         return nhanVienService.updateNhanVien(cccd,nhanVien);
 
      }
-     @DeleteMapping("/delete/{maNhanVien}")
-     public String deleteNhanVien (@PathVariable String maNhanVien) {
-            return nhanVienService.deleteNhanVien(maNhanVien);
+     @DeleteMapping("/delete/{cccd}")
+     public String deleteNhanVien (@PathVariable String cccd) {
+            return nhanVienService.deleteNhanVien(cccd);
      }
 }
