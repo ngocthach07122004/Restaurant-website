@@ -43,6 +43,7 @@ public class MonAnService {
              }
              public String deleteMonAn (String maMonAn) {
                     monAnRepository.deleteById(maMonAn);
+
                     return "delete success";
              }
 

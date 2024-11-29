@@ -19,23 +19,23 @@ public class DonGiaoHangController {
       public DonGiaoHang createDonGiaoHang (@RequestBody DonGiaoHang dongiaohang) {
             return donGiaoHangService.createDonGiaoHang(dongiaohang);
      }
-     @GetMapping("/{maDonGiaoHang}")
-     public DonGiaoHang getSpecificDonGiaoHang  (@PathVariable String maDonGiaoHang) {
+     @GetMapping("/{maDon}")
+     public DonGiaoHang getSpecificDonGiaoHang  (@PathVariable String maDon) {
 
-         return donGiaoHangService.getSpecificDonGiaoHang(maDonGiaoHang);
+         return donGiaoHangService.getSpecificDonGiaoHang(maDon);
 
      }
      @GetMapping("/all")
      public List<DonGiaoHang> getAllDonGiaoHang (){
           return donGiaoHangService.getAllDonGiaoHang();
      }
-     @PutMapping("/update/{maDonGiaoHang}")
-     public String updateDonGiaoHang (@PathVariable String maDonGiaoHang,@RequestBody DonGiaoHang donGiaoHang) {
-         return donGiaoHangService.updateDonGiaoHang(maDonGiaoHang,donGiaoHang);
+     @PutMapping("/update/{maDon}")
+     public String updateDonGiaoHang (@PathVariable String maDon,@RequestBody DonGiaoHang donGiaoHang) {
+         return donGiaoHangService.updateDonGiaoHang(maDon,donGiaoHang);
 
      }
-     @DeleteMapping("/delete/{maDonGiaoHang}")
-     public String deleteDonGiaoHang (@PathVariable String maDonGiaoHang) {
-            return donGiaoHangService.deleteDonGiaoHang(maDonGiaoHang);
+     @DeleteMapping("/delete/{maDon}")
+     public String deleteDonGiaoHang (@PathVariable String maDon) {
+            return donGiaoHangService.deleteDonGiaoHang(maDon);
      }
 }

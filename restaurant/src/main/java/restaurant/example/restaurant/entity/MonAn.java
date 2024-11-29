@@ -1,13 +1,14 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -23,5 +24,8 @@ public class MonAn {
     BigDecimal gia 				;
     String tenMonAn 			;
     String moTa 			;
+    @OneToMany(mappedBy = "maMonAnBaoGom", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+    private List<BaoGom> listBaoGom = new ArrayList<>();
 
 }

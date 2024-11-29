@@ -22,9 +22,9 @@ public class ThongTinController {
             return thongTinService.createThongTin(thongTin);
      }
      @GetMapping("/{cccd}")
-     public ThongTin getSpecificThongTin  (@PathVariable String maThongTin) {
+     public ThongTin getSpecificThongTin  (@PathVariable String cccd) {
 
-         return thongTinService.getSpecificThongTin(maThongTin);
+         return thongTinService.getSpecificThongTin(cccd);
 
      }
      @GetMapping("/all")
@@ -32,8 +32,8 @@ public class ThongTinController {
           return thongTinService.getAllThongTin();
      }
      @PutMapping("/update/{cccd}")
-     public String updateThongTin (@PathVariable String maThongTin,@RequestBody ThongTin thongTin) {
-         return thongTinService.updateThongTin(maThongTin,thongTin);
+     public String updateThongTin (@PathVariable String cccd,@RequestBody ThongTin thongTin) {
+         return thongTinService.updateThongTin(cccd,thongTin);
 
      }
      @DeleteMapping("/delete/{cccd}")

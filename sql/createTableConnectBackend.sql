@@ -49,7 +49,8 @@ create table DonMonAn (
     cccdKhachHang 		VARCHAR(100),
     cccdNhanVienThuNgan 	VARCHAR(100),
     tinhTrangThanhToan 	VARCHAR(100), 
-    tinhTrangDonMonAn VARCHAR(1)
+    tinhTrangDonMonAn VARCHAR(1), 
+    
 );
 
 
@@ -136,7 +137,9 @@ CREATE TABLE MonAn (
     tenMonAn 			VARCHAR(100),
     moTa 			VARCHAR(100),
     loaiMonAn VARCHAR(100),
-    anhMonAn VARCHAR(800)
+    anhMonAn VARCHAR(800),
+    thoiGianHoanTat VARCHAR(100), 
+    khauPhan VARCHAR(100)
 );
 CREATE TABLE MaKhuyenMai (
     idKhuyenMai 		VARCHAR(100) PRIMARY KEY,
@@ -149,6 +152,14 @@ CREATE TABLE MaKhuyenMai (
     loaiMa VARCHAR(100)
 );
 
+
+ create table DanhGia(
+      maDanhGia VARCHAR(100) ,
+      cccdKhachHang VARCHAR(100),
+      maMonAn VARCHAR(100),
+      noiDung VARCHAR(100),
+      thoiGian DATE
+ );
 
 ALTER TABLE MaKhuyenMai ADD CONSTRAINT fk_MaKhuyenMai_DonMonAn
 FOREIGN KEY(maDon) REFERENCES DonMonAn(maDon);

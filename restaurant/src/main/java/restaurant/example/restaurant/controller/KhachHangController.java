@@ -19,23 +19,23 @@ public class KhachHangController {
       public KhachHang createKhachHang (@RequestBody KhachHang khachhang) {
             return khachHangService.createKhachHang(khachhang);
      }
-     @GetMapping("/{maKhachHang}")
-     public KhachHang getSpecificKhachHang  (@PathVariable String maKhachHang) {
+     @GetMapping("/{cccd}")
+     public KhachHang getSpecificKhachHang  (@PathVariable String cccd) {
 
-         return khachHangService.getSpecificKhachHang(maKhachHang);
+         return khachHangService.getSpecificKhachHang(cccd);
 
      }
      @GetMapping("/all")
      public List<KhachHang> getAllKhachHang (){
           return khachHangService.getAllKhachHang();
      }
-     @PutMapping("/update/{maKhachHang}")
-     public String updateKhachHang (@PathVariable String maKhachHang,@RequestBody KhachHang khachHang) {
-         return khachHangService.updateKhachHang(maKhachHang,khachHang);
+     @PutMapping("/update/{cccd}")
+     public String updateKhachHang (@PathVariable String cccd,@RequestBody KhachHang khachHang) {
+         return khachHangService.updateKhachHang(cccd,khachHang);
 
      }
-     @DeleteMapping("/delete/{maKhachHang}")
-     public String deleteKhachHang (@PathVariable String maKhachHang) {
-            return khachHangService.deleteKhachHang(maKhachHang);
+     @DeleteMapping("/delete/{cccd}")
+     public String deleteKhachHang (@PathVariable String cccd) {
+            return khachHangService.deleteKhachHang(cccd);
      }
 }

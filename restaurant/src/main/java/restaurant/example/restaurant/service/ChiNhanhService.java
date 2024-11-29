@@ -19,9 +19,9 @@ import java.util.List;
 public class ChiNhanhService {
              ChiNhanhRepository chiNhanhRepository;
              ChiNhanhMapper chiNhanhMapper;
-             public ChiNhanh createChiNhanh (ChiNhanh chinhanh) {
-                   ChiNhanh newChiNhanh = chiNhanhMapper.toChiNhanh(chinhanh);
-                   newChiNhanh.setMaChiNhanh(chinhanh.getMaChiNhanh());
+             public ChiNhanh createChiNhanh (ChiNhanh chiNhanh) {
+                   ChiNhanh newChiNhanh = chiNhanhMapper.toChiNhanh(chiNhanh);
+                   newChiNhanh.setMaChiNhanh(chiNhanh.getMaChiNhanh());
                     return chiNhanhRepository.save(newChiNhanh);
              }
              public ChiNhanh getSpecificChiNhanh (String maChiNhanh) {

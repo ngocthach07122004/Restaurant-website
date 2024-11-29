@@ -498,18 +498,25 @@
           "request": {
             "method": "Post",
             "body": {
-              "cccd": "",
-              "tenDangNhap": "",
-              "matKhau": "",
-              "ho": "",
-              "ten": "",
-              "ngaySinh": "",
-              "email": "",
-              "gioiTinh": "",
-              "soDienThoai": "",
-              "maTaiKhoan": "",
-              "cccdQuanTriVien": "",
-              "anhThongTin": ""
+              "cccd": "123456789",
+              "tenDangNhap": "minhLan124",
+              "matKhau": "12345678",
+              "ho": "Nguyen",
+              "ten": "Van A",
+              "ngaySinh": "2000-01-01",
+              "email": "user@example.com",
+              "gioiTinh": "Nam",
+              "soDienThoai": ["0123456789", "0987654321"],
+              "maTaiKhoan": "TK12345",
+              "cccdQuanTriVien": {
+                "cccd": "132123"
+              },
+              "anhThongTin": "link-to-avatar.png",
+              "listThongBao": [
+                {
+                  "maThongBao": "123123"
+                }
+              ]
             },
             "url": "http://localhost:8080/thongTin/create"
           }

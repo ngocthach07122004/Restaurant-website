@@ -1,13 +1,11 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -28,8 +26,22 @@ public class ThongTin {
     LocalDate ngaySinh 			;
     String email 				;
     String gioiTinh 			;
-    String soDienThoai 			;
+    @ElementCollection
+    @CollectionTable(name = "SoDienThoai", joinColumns = @JoinColumn(name = "cccd"))
+    @Column(name = "soDienThoai")
+     List<String> soDienThoai;
+//    String soDienThoai 			;
     String maTaiKhoan 			;
-    String cccdQuanTriVien 		;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cccdQuanTriVien")
+    NhanVienQuanLy cccdQuanTriVien 		;
+    String anhThongTin;
+//    List<KhachHang> listKhachHang;
+
+    @OneToMany(mappedBy = "cccdThongTin", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ThongBao> listThongBao;
+
 
 }
+
+

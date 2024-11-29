@@ -19,23 +19,23 @@ public class NhanVienPhucVuController {
       public NhanVienPhucVu createNhanVienPhucVu (@RequestBody NhanVienPhucVu nhanvienphucvu) {
             return nhanVienPhucVuService.createNhanVienPhucVu(nhanvienphucvu);
      }
-     @GetMapping("/{maNhanVienPhucVu}")
-     public NhanVienPhucVu getSpecificNhanVienPhucVu  (@PathVariable String maNhanVienPhucVu) {
+     @GetMapping("/{cccd}")
+     public NhanVienPhucVu getSpecificNhanVienPhucVu  (@PathVariable String cccd) {
 
-         return nhanVienPhucVuService.getSpecificNhanVienPhucVu(maNhanVienPhucVu);
+         return nhanVienPhucVuService.getSpecificNhanVienPhucVu(cccd);
 
      }
      @GetMapping("/all")
      public List<NhanVienPhucVu> getAllNhanVienPhucVu (){
           return nhanVienPhucVuService.getAllNhanVienPhucVu();
      }
-     @PutMapping("/update/{maNhanVienPhucVu}")
-     public String updateNhanVienPhucVu (@PathVariable String maNhanVienPhucVu,@RequestBody NhanVienPhucVu nhanVienPhucVu) {
-         return nhanVienPhucVuService.updateNhanVienPhucVu(maNhanVienPhucVu,nhanVienPhucVu);
+     @PutMapping("/update/{cccd}")
+     public String updateNhanVienPhucVu (@PathVariable String cccd,@RequestBody NhanVienPhucVu nhanVienPhucVu) {
+         return nhanVienPhucVuService.updateNhanVienPhucVu(cccd,nhanVienPhucVu);
 
      }
-     @DeleteMapping("/delete/{maNhanVienPhucVu}")
-     public String deleteNhanVienPhucVu (@PathVariable String maNhanVienPhucVu) {
-            return nhanVienPhucVuService.deleteNhanVienPhucVu(maNhanVienPhucVu);
+     @DeleteMapping("/delete/{cccd}")
+     public String deleteNhanVienPhucVu (@PathVariable String cccd) {
+            return nhanVienPhucVuService.deleteNhanVienPhucVu(cccd);
      }
 }

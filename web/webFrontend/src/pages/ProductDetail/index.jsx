@@ -1,147 +1,114 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router';
 import Skeleton from 'react-loading-skeleton';
 import { NavLink } from 'react-router-dom';
+import { MoveLeft, Star } from 'lucide-react';
+import './styles.scss';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { CartContext } from '../../context/CartContext';
 
 function Product() {
-
     const { id } = useParams();
-    const [product, setProduct] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
     const { addToCart } = useContext(CartContext);
-    const handleAddToCart = () => {
-        const cartproduct = {
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-          };
-        addToCart(cartproduct);
-    };
 
     useEffect(() => {
-        const getProduct = async () => {
-            setLoading(true);
-            const response = await fetch(`http://localhost:8080/monAn/${id}`);
-            const data = await response.json();
-            setProduct(data);
-            console.log(data);
-            setLoading(false);
-        }
-        getProduct();
+        const fetchProduct = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch(`http://localhost:8080/monAn/${id}`);
+                const data = await response.json();
+                setProduct(data);
+            } catch (error) {
+                console.error("Error fetching product data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProduct();
     }, [id]);
 
-    const Loading = () => {
-        return (
-            <>
-                <div className="row d-flex justify-content-center">
-                    <div className="col-md-12">
-                        <NavLink className="text-decoration-none text-dark" to={`/`}>
-                            <div className="d-flex align-items-center m-3">
-                                <Skeleton height={20} width={50} />
-                            </div>
-                        </NavLink>
-                        <div>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="images p-3">
-                                        <div className="text-center p-4">
-                                            <Skeleton height={300} width={250} />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="border p-4">
-                                        <div className="mt-4 mb-3"> <span className="text-uppercase text-muted brand">                                                <Skeleton height={30} width={150} />
-                                        </span>
-                                            <h5 className="text-uppercase">
-                                                <Skeleton height={30} width={200} />
-                                            </h5>
-                                            <div className="price d-flex flex-row align-items-center">
-                                                <span className="act-price">
-                                                    <Skeleton height={20} width={70} />
-                                                    <Skeleton height={30} width={100} />
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <p className="about">
-                                            <Skeleton height={10} width={300} />
-                                            <Skeleton height={10} width={300} />
-                                            <Skeleton height={10} width={300} />
-                                            <Skeleton height={10} width={300} />
-                                        </p>
-                                        <div className="cart mt-4 align-items-center">
-                                            <Skeleton height={40} width={150} />
+    const handleAddToCart = () => {
+      const productToAdd = {
+        id: product.maMonAn,
+        name: product.tenMonAn,
+        price: product.gia,
+        // image: product.image,
+      }  
+      addToCart(productToAdd);
+    };
 
-                                        </div>
-                                    </div>
+    const LoadingSkeleton = () => (
+        <div className="container product-skeleton py-5">
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    <Skeleton height={400} width="100%" />
+                </div>
+                <div className="col-md-6">
+                    <Skeleton height={40} width="80%" />
+                    <Skeleton height={30} width="50%" />
+                    <Skeleton height={20} width="60%" />
+                    <Skeleton height={20} width="60%" />
+                    <Skeleton height={50} width="40%" />
+                </div>
+            </div>
+        </div>
+    );
+
+    const ProductDetails = () => (
+        <div className="container product-page">
+            <div className="row justify-content-center">
+                <div className="col-lg-10 product-container">
+                    <NavLink to="/menu" className="back-link btn btn-outline-primary">
+                        <MoveLeft /> Back to Menu
+                    </NavLink>
+                    <div className="row">
+                        <div className="col-md-6 text-center">
+                            <img
+                                src={product.image || 'https://www.recipetineats.com/wp-content/uploads/2019/04/Beef-Pho_3.jpg'}
+                                alt={product.tenMonAn || "Product"}
+                                className="product-image img-fluid"
+                            />
+                        </div>
+                        <div className="col-md-6">
+                            <div className="product-details">
+                                <h2 className="product-title">{product.tenMonAn}</h2>
+                                <p className="product-category">{product.category}</p>
+                                <div className="product-rating">
+                                    Rating: 5/5 <Star />
+                                    <i className="fa fa-star rating-icon"></i>
                                 </div>
+                                <h3 className="product-price">
+                                    {product.gia} VND
+                                </h3>
+                                <p className="product-description">{product.moTa}</p>
+                                <button className="btn btn-buy">
+                                    Buy Now
+                                </button>
+                                <button className="btn btn-cart" onClick={handleAddToCart}>
+                                    Add to Cart
+                                </button>
+                            </div>
+                            <div className="product-details-section">
+                                <h3>Chi tiết</h3>
+                                <p className="text-muted">
+                                    Chi tiết sản phẩm sẽ được cập nhật chi tiết về món ăn, 
+                                    nguyên liệu, và thông tin bổ sung.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </>
-        )
-    }
-
-    const ShowDetails = () => {
-        return (
-            <>
-                <div className="row d-flex justify-content-center">
-                    <div className="col-md-12">
-                        <NavLink className="text-decoration-none text-dark" to={`/menu`}>
-                            <div className="d-flex align-items-center m-3">
-                                <i className="fa fa-long-arrow-left"></i>
-                                <span className="ml-1">&nbsp;Back</span>
-                            </div>
-                        </NavLink>
-                        <div>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="images">
-                                        <div className="text-center ">
-                                            <img id="main-image" alt="product" src={product.image?product.image:'https://www.recipetineats.com/wp-content/uploads/2019/04/Beef-Pho_3.jpg'} width="450" height={450} />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="border p-4">
-                                        <div className="mt-4 mb-3">
-
-                                        <span className="text-muted text-capitalize">{product.category}</span>
-
-                                            <h5 className="text-uppercase">
-                                                {product.tenMonAn}
-                                            </h5>
-                                            Rating: 5/5
-                                            <i className="fa fa-star text-warning"></i>
-
-                                            <div className="price d-flex flex-row align-items-center">
-                                                <big className="display-6"><b>{product.gia} VND</b></big>
-                                            </div>
-                                        </div>
-                                        <p className="text-muted">{product.moTa}</p>
-                                        <div className="cart mt-4 align-items-center"> <button className="btn btn-outline-dark text-uppercase mr-2 px-4" onClick={handleAddToCart}>Buy</button> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </>
-        )
-    }
+            </div>
+        </div>
+    );
 
     return (
         <>
-            <div className="container px-0 mb-5" style={{ marginTop: "66px" }}>
-
-                {loading ? <Loading /> : <ShowDetails />}
-
-            </div>
+            {loading ? <LoadingSkeleton /> : product && <ProductDetails />}
         </>
-    )
+    );
 }
 
-export default Product
+export default Product;

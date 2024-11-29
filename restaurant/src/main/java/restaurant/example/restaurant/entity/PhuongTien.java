@@ -1,13 +1,12 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -26,4 +25,8 @@ public class PhuongTien {
     String thongTinDangKy 		 ;
     LocalDate thoiGianDangKy 		 ;
     LocalDate  thoiGianHetHan 		;
+    @ManyToMany(mappedBy = "listPhuongTien")
+    @JsonBackReference
+    List<NhanVienGiaoHang> listNhanVienGiaoHang;
 }
+
