@@ -72,6 +72,8 @@ const Header = () => {
                 </span>
               </div>
             </Link>
+
+            <Link to='/profile' >{localStorage.getItem('userdata')['username']?localStorage.getItem('userdata')['username']:"---"}</Link>
           </div>
         </div>
       </div>

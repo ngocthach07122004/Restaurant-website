@@ -75,3 +75,42 @@
   border: 1px solid grey;
   padding-left: 8px;
 }
+
+
+.inputContainer input[type="date"] {
+  height: 48px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background-color: #ffffff;
+  border: 1px solid grey;
+  // transition: border-color 0.3s, box-shadow 0.3s;
+}
+.inputContainer select {
+  height: 48px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background-color: #ffffff;
+  border: 1px solid grey;
+  // transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.inputContainer input[type="date"]:hover {
+  border-color: #888;
+}
+
+.inputContainer input[type="date"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.inputContainer input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
