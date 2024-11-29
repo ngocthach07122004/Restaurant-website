@@ -1,14 +1,16 @@
 // src/components/Header.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, ShoppingBag } from 'lucide-react';
 import logo from '../../assets/jollibee.png';
 import tel from '../../assets/delivery-lg-rs.png';
+import { CartContext } from '../../context/CartContext';
 import './styles.css';
 
 
 const Header = () => {
   const navigate = useNavigate();
+  const { cartItems } = useContext(CartContext);
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
   const location = useLocation();
@@ -66,7 +68,7 @@ const Header = () => {
               <div className='nav-bag'>
                 <ShoppingBag className='bi bi-handbag-fill' size={24} />
                 <span className='badge bg-danger rounded-pill bag-quantity'>
-                  <span>0</span>
+                  <span>{cartItems.length}</span>
                 </span>
               </div>
             </Link>

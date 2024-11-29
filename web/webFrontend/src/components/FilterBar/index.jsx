@@ -48,6 +48,7 @@ const FilterBar = ({
       <label>Khoảng giá:</label>
       <div className="price-range-slider">
         <Slider
+          range
           min={minPrice}
           max={maxPrice}
           value={[priceRange.min, priceRange.max]}

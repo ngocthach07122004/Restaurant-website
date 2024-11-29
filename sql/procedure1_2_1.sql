@@ -76,6 +76,7 @@ end;
 create procedure handler_Update_NhanVien (in maNhanVienArg varchar(100), in newSalary decimal(15,2))
 begin
       declare oldSalary decimal(15,2) default -1;
+      
       if maNhanVienArg is null or maNhanVienArg =''
       then
         SIGNAL SQLSTATE '45000'

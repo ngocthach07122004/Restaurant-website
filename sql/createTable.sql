@@ -18,8 +18,6 @@ alter table DonGiaoHang add constraint fk_DonGiaoHang_cccdThuNgan
 foreign key(cccdThuNgan) references NhanVienThuNgan (cccd);
 
 
-
-
 create table ChiNhanh (
     maChiNhanh 		VARCHAR(100) PRIMARY KEY,
     diaChi 			VARCHAR(100),
