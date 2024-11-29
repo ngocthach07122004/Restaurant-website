@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BadgeDollarSign, Home, ListOrdered, User, ShoppingBasket } from "lucide-react"
+import { BadgeDollarSign, Home, ListOrdered, User, UserRoundCog, ShoppingBasket } from "lucide-react"
 import "./styles.scss";
 
 
@@ -28,9 +28,9 @@ const AdminMenu = () => {
                     <BadgeDollarSign />
                     <span className="listItemTitle">Discount</span>
                 </Link>
-                <Link to="/admin/users" className="listItem">
-                    <User/>
-                    <span className="listItemTitle">Users</span>
+                <Link to="/admin/employee" className="listItem">
+                    <UserRoundCog />
+                    <span className="listItemTitle">Staff</span>
                 </Link>
             </div>
         </div>
