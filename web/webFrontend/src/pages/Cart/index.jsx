@@ -36,7 +36,7 @@ const Cart = () => {
                     />
                   </td>
                   <td>{item.name}</td>
-                  <td>{item.price.toLocaleString()}.000₫</td>
+                  {/* <td>{item.price.toLocaleString()}.000₫</td> */}
                   <td><Trash2 color='#e10600' /></td>
                 </tr>
               ))}

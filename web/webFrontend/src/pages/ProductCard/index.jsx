@@ -8,7 +8,7 @@ const ProductCard = (props) => {
   const { addToCart } = useContext(CartContext);
 
   const handleClickProductCard = () => {
-    navigate('');
+    navigate(`details/${props.id}`);
   };
 
   const handleAddToCart = () => {
