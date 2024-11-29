@@ -63,14 +63,6 @@ const OrderManagement = () => {
     },
   ];
 
-  const data = [
-    {
-      maDon: '1',
-      tenMonAn: 'MoMo',
-      gia: `$${32}`,
-      moTa: '2024-10-27'
-    }
-  ];
 
     useEffect(() => {
         // Fetch users from API
@@ -94,7 +86,7 @@ const OrderManagement = () => {
     return (
         <div>   
             hi mom, this is order management page
-            <Table columns={columns} dataSource={data} />
+            <Table columns={columns} dataSource={orders} />
         </div>
     )
 }

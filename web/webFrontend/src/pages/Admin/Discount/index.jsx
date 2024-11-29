@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Space, Table, Tag, Modal, Button, Descriptions } from "antd";
 import { toast } from "react-toastify";
-import CreateDiscountForm from "../../../components/AdminComponent/CreateDiscountForm/index"
+import CreateDiscountForm from "../../../components/AdminComponent/CreateDiscountForm"
 
 const Discount = () => {
   const [discounts, setDiscounts] = useState([]);

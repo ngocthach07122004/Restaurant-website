@@ -1,9 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Space, Table, Tag, Modal, Button, Descriptions } from 'antd';
+import CreateFeedbackForm from '../../components/CreateFeedbackForm/index';
+
 const Profile = () => {
   const [userData, setUserData] = useState({});
+  const [orders, setOrders] = useState([]);
+  const [isReceived, setIsReceived] = useState(false);
   const [receiveData, setReceiveData] = useState(false);
+  const [maDonToFeedBack, setMaDonToFeedBack] = useState(null);
   const navigate = useNavigate();
+  const [isAddFeedbackModalVisible, setIsAddFeedbackModalVisible] = useState(false);
+
+
+  
+  
+  const handleCloseAddFeedbackModal = () => {
+    setIsAddFeedbackModalVisible(false);
+  };
+  const handleAddFeedback = (id) => {
+    setMaDonToFeedBack(id);
+    console.log(id);
+    console.log(localStorage.getItem('cccd'));
+    // setIsAddFeedbackModalVisible(true);
+  };
+
+  const handleFormSubmit = (values) => {
+    const url = "http://localhost:8080/donKhieuNai/create";
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values)
+    })
+      .then(res => res.json())
+      .then(data => {console.log(data);})
+      .catch(error => console.error(error));
+  };
+
+
+
+    useEffect(() => {
+    // Fetch users from API
+    const url = "http://localhost:8080/donMonAn/all"
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        setOrders(data);
+        console.log(data); 
+    })
+//    .then(data => setUsers(data))
+    .catch(error => console.error('Error:', error))
+}, [isReceived])
 
   useEffect(() => {
     const cccd = localStorage.getItem('cccd');
@@ -15,9 +67,65 @@ const Profile = () => {
       .then((data) => {
         setUserData(data);
         setReceiveData(true);
+        console.log(cccd);
       })
       .catch((err) => console.log(err));
   }, [receiveData]);
+
+  const columns = [
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+        title: "Date",
+        dataIndex: "orderDate",
+        key: "orderDate",
+        render: (text) => {return text},
+    },
+    {
+      title: "Total",
+      dataIndex: "totalPrice",
+      key: "totalPrice",
+      render: (text) => {return text + "VND"} ,
+    },
+    {
+      title: "Payment method",
+      dataIndex: "paymentMethod",
+      key: "paymentMethod",
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (text) => {
+        if(text === 'pending')
+          return <Tag color={"orange"}>Pending</Tag>;
+        return <Tag color={"green"}>Done</Tag>;
+      },
+    },
+    {
+      title: "Action",
+      dataIndex: "id", // Ensure `id` is the field containing the unique identifier
+      key: "action",
+      render: (id) => (
+        <Tag color={"blue"} onClick={() => handleAddFeedback(id)}>
+          Khiếu nại
+        </Tag>
+      ),
+    },
+  ];
+
+  const data = [
+    {
+      id: '1',
+      orderDate: '2017-01-01',
+      totalPrice: 10000,
+      paymentMethod: 'Credit Card',
+      status: 'pending',
+    }
+  ];
 
   return (
     <div>
@@ -111,6 +219,8 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
+              <Table className="w-full lg:w-3/5" columns={columns} dataSource={data} />
+
 
                 {/* <div className="row">
                   <div className="col-md-12">
@@ -161,6 +271,16 @@ const Profile = () => {
           </div>
         </section>
       </div>
+
+      <Modal
+        title="Add Product"
+        visible={isAddFeedbackModalVisible}
+        onCancel={handleCloseAddFeedbackModal}
+        footer={null}
+        width={800}
+      >
+        <CreateFeedbackForm onSubmit={handleFormSubmit} onClose={handleCloseAddFeedbackModal} maDon={maDonToFeedBack}/>
+      </Modal>
     </div>
   );
 };
