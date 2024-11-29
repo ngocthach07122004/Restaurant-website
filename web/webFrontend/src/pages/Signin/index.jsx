@@ -23,10 +23,12 @@ const Signin = (props) => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data['message']);
+
+      console.log(data);
       // localStorage.setItem('userdata', JSON.stringify(data));
       if(data['message'] === 'success') {
         localStorage.setItem('isLogin', true);
+        localStorage.setItem('cccd', data['entity'].cccd);
         navigate('/')
       }
       else {

@@ -6,7 +6,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const cccd = '111222333444';
+    const cccd = localStorage.getItem('cccd');
     const url = `http://localhost:8080/thongTin/${cccd}`;
     fetch(url, {
       method: "GET",
@@ -64,7 +64,7 @@ const Profile = () => {
                         <p className="mb-0">Full Name</p>
                       </div>
                       <div className="col-sm-9">
-                        <p className="text-muted mb-0">{userData.name}</p>
+                        <p className="text-muted mb-0">{userData.ho} {userData.ten}</p>
                       </div>
                     </div>
                     <hr />

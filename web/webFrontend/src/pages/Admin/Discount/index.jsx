@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Space, Table, Tag, Modal, Button, Descriptions } from "antd";
 import { toast } from "react-toastify";
-// import CreateDiscountForm from "../../../components/AdminComponent/CreateDiscountForm";
+import CreateDiscountForm from "../../../components/AdminComponent/CreateDiscountForm/index"
 
 const Discount = () => {
   const [discounts, setDiscounts] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedDiscount, setSelectedDiscount] = useState(null);
-
-  // const handleAddDiscount = () => {
-  //   setIsModalVisible(true);
-  // };
-
-  // const handleCloseAddDiscountModal = () => {
-  //   setIsAddDiscountModalVisible(false);
-  // };
-
-  const handleCloseDetailModal = () => {
-    setIsModalVisible(false);
-    setSelectedDiscount(null);
+  const [isAddDiscountModalVisible, setIsAddDiscountModalVisible] = useState(false);
+  const handleAddDiscount = () => {
+    setIsModalVisible(true);
   };
+
+  const handleFormSubmit = () => {
+    return;
+  }
+
+  const handleCloseAddDiscountModal = () => {
+    setIsAddDiscountModalVisible(false);
+  };
+
+  // const handleCloseDetailModal = () => {
+  //   setIsModalVisible(false);
+  //   setSelectedDiscount(null);
+  // };
 
   const handleRemove = (maMonAn) => {
     const url = `http://localhost:8080/monAn/delete/${maMonAn}`;
@@ -45,8 +49,8 @@ const Discount = () => {
   const columns = [
     {
       title: "Mã khuyến mãi",
-      dataIndex: "maDon",
-      key: "maDon",
+      dataIndex: "idKhuyenMai",
+      key: "idKhuyenMai",
     },
     {
       title: "Mô tả",
@@ -75,13 +79,13 @@ const Discount = () => {
         <div className="col-sm">
           <h1>Discounts</h1>
         </div>
-        {/* <div className="col-sm-auto">
+        <div className="col-sm-auto">
           <Button type="primary" onClick={handleAddDiscount}>Add Discount</Button>
-        </div> */}
+        </div>
       </div>
 
       <Table columns={columns} dataSource={discounts} />
-      {/* <Modal
+      <Modal
         title="Add Discount"
         visible={isAddDiscountModalVisible}
         onCancel={handleCloseAddDiscountModal}
@@ -89,7 +93,7 @@ const Discount = () => {
         width={800}
       >
         <CreateDiscountForm onSubmit={handleFormSubmit} onClose={handleCloseAddDiscountModal} />
-      </Modal> */}
+      </Modal>
     </div>
   );
 };
