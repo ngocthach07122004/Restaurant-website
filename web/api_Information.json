@@ -68,15 +68,21 @@
       "listApi": [
         {
           "request": {
-            "method": "Post",
-            "body": {
-              "diaChi": "",
-              "moTa": "",
-              "trangThaiHoatDong": "",
-              "tenChiNhanh": "",
-              "hoiGianMoCua": "",
-              "hoiGianDongCua": "",
-              "cccdQuanTriVien": ""
+        
+            "diaChi":"HCM-01",
+            "moTa":"CHI NHANH 01",
+            "trangThaiHoatDong":"DANG HOAT DONG",
+            "tenChiNhanh":"CHI NHANH 01",
+            "thoiGianMoCua":"2024-12-07",
+            "thoiGianDongCua":"2030-12-07",
+            "listNhanVienQuanLy":[],
+            "cccdQuanTriVien":{
+                 "cccd": "999999999"
+            },
+            "listDonMonAn":[],
+            "listMaKhuyenMai":[],
+            "listSuKienUuDai":[],
+            "listMonAnChiNhanh":[]
             },
             "url": "http://localhost:8080/chinhanh/create"
           }
@@ -123,16 +129,64 @@
       "name": "DonMonAn",
       "listApi": [
         {
-          "request": {
-            "method": "Post",
-            "body": {
-              "thoiGianDat": "",
-              "tongGiaTien": "",
-              "maChiNhanh": "",
-              "cccdKhachHang": "",
-              "cccdNhanVienThuNgan": "",
-              "tinhTrangThanhToan": ""
-            },
+          "request":  {
+              
+        		  
+            "thoiGianDat":"2024-12-07", 		  
+            "tongGiaTien":"780000", 	 
+            "listMaKhuyenMai":[
+                  {
+                    "idKhuyenMai":"KM1"
+                  },
+                  {
+                    "idKhuyenMai":"KM2"
+                  },
+                  {
+                    "idKhuyenMai":"KM3"
+                  }
+                  
+            ], 
+            "maChiNhanh":{
+                 "maChiNhanh":"1111"
+            }, 
+            "cccdKhachHang":{
+                  "cccd":"2222"
+            }, 
+            "cccdNhanVienThuNgan":{
+                     "cccd":"3333"
+            }, 	  
+            "tinhTrangThanhToan":"DA THANH TOAN",   
+            "phuongThucThanhToan":[
+                 "ABC","EFG","JBM"
+            ], 
+            "listMonAnGioHang":[
+    
+                 {
+                     "monAn":{
+                          "maMonAn": "MA1"
+                     },
+                     "soLuong": 19
+                     
+                 },
+                 {
+                     "monAn":{
+                          "maMonAn": "MA2"
+                     },
+                     "soLuong": 12
+                     
+                 },
+                 {
+                     "monAn":{
+                          "maMonAn": "MA3"
+                     },
+                     "soLuong": 19
+                     
+                 }
+                 
+    
+            ]
+    
+    },
             "url": "http://localhost:8080/donMonAn/create"
           }
         },
@@ -290,13 +344,28 @@
       "listApi": [
         {
           "request": {
-            "method": "Post",
-            "body": {
-              "moTa": "",
-              "giaTriGiamGia": "",
-              "dieuKienDung": "",
-              "maDon": "",
-              "maChiNhanh": ""
+
+            "moTa":"MKM01",
+            "giaTriGiamGia":"15",
+            "dieuKienDung":"Đơn tối thiểu 150k",
+            "maDon": {
+                 "maDon":"0f86e6c0-fb0c-49ea-8420-6a03d4c865dc"
+            },
+            "maChiNhanh": {
+                  "maChiNhanh":"ba26a22d-4d3c-45e6-89d2-c39b83fa42a5"
+            },
+            "listMaKhuyenMaiKhachHang":[
+               {
+            "maKhuyenMai":"KM1",
+            "soLuong":"10",
+            "listKhachHang":[]
+            }, 
+            {
+            "maKhuyenMai":"KM2",
+            "soLuong":"100",
+            "listKhachHang":[]
+            }
+            ]
             },
             "url": "http://localhost:8080/maKhuyenMai/create"
           }
@@ -496,28 +565,28 @@
       "listApi": [
         {
           "request": {
-            "method": "Post",
-            "body": {
-              "cccd": "123456789",
-              "tenDangNhap": "minhLan124",
-              "matKhau": "12345678",
-              "ho": "Nguyen",
-              "ten": "Van A",
-              "ngaySinh": "2000-01-01",
-              "email": "user@example.com",
-              "gioiTinh": "Nam",
-              "soDienThoai": ["0123456789", "0987654321"],
-              "maTaiKhoan": "TK12345",
-              "cccdQuanTriVien": {
+            "cccd": "123456789",
+            "tenDangNhap": "minhLan124412",
+            "matKhau": "12345678",
+            "ho": "Nguyen",
+            "ten": "Van A",
+            "ngaySinh": "2000-01-01",
+            "email": "user@example.com",
+            "gioiTinh": "Nam",
+            "soDienThoai": ["0123456789", "0987654321"],
+            "maTaiKhoan": "TK12345",
+            "cccdQuanTriVien": {
                 "cccd": "132123"
-              },
-              "anhThongTin": "link-to-avatar.png",
-              "listThongBao": [
-                {
-                  "maThongBao": "123123"
-                }
-              ]
+               
             },
+            "anhThongTin": "link-to-avatar.png",
+            "listThongBao":[{
+                 "maThongBao":"123123"
+                
+        
+            }]
+        }
+        ,
             "url": "http://localhost:8080/thongTin/create"
           }
         },

@@ -1,5 +1,8 @@
 package restaurant.example.restaurant.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -14,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "cccd")
 public class ThongTin {
 
     @Id
@@ -30,16 +33,22 @@ public class ThongTin {
     @CollectionTable(name = "SoDienThoai", joinColumns = @JoinColumn(name = "cccd"))
     @Column(name = "soDienThoai")
      List<String> soDienThoai;
+
 //    String soDienThoai 			;
+
     String maTaiKhoan 			;
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne
     @JoinColumn(name = "cccdQuanTriVien")
-    NhanVienQuanLy cccdQuanTriVien 		;
+
+    QuanTriVien cccdQuanTriVien 		;
+
     String anhThongTin;
 //    List<KhachHang> listKhachHang;
 
-    @OneToMany(mappedBy = "cccdThongTin", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ThongBao> listThongBao;
+//    @OneToMany(mappedBy = "cccdThongTin", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cccdThongTin")
+    List<ThongBao> listThongBao;
 
 
 }

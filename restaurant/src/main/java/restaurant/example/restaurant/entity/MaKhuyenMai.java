@@ -1,13 +1,14 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Builder
@@ -15,7 +16,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idKhuyenMai")
 public class MaKhuyenMai {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
@@ -23,6 +24,19 @@ public class MaKhuyenMai {
     String moTa ;
     BigDecimal giaTriGiamGia 	;
     String dieuKienDung ;
-    String maDon ;
-    String maChiNhanh ;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name= "maDon")
+    @JsonIgnore
+    DonMonAn maDon ;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name= "maChiNhanh")
+    
+    ChiNhanh maChiNhanh ;
+
+
+    @OneToMany(mappedBy = "maKhuyenMai")
+   
+    List<MaKhuyenMaiKhachHang> listMaKhuyenMaiKhachHang;
 }

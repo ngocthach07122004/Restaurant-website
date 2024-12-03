@@ -4,9 +4,10 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.*;
-import restaurant.example.restaurant.entity.DonMonAnBaoGomMonAn;
+//import restaurant.example.restaurant.entity.DonMonAnBaoGomMonAn;
+//import restaurant.example.restaurant.entity.MonAn;
+//import restaurant.example.restaurant.service.DonMonAnBaoGomMonAnService;
 import restaurant.example.restaurant.entity.MonAn;
-import restaurant.example.restaurant.service.DonMonAnBaoGomMonAnService;
 import restaurant.example.restaurant.service.MonAnService;
 
 import java.util.List;
@@ -18,10 +19,10 @@ import java.util.List;
 public class MonAnController {
       MonAnService monAnService;
 
-      @PostMapping("/create")
-      public MonAn createMonAn (@RequestBody MonAn monAn) {
-            return monAnService.createMonAn(monAn);
-     }
+//      @PostMapping("/create")
+//      public MonAn createMonAn (@RequestBody MonAn monAn) {
+//            return monAnService.createMonAn(monAn);
+//     }
      @GetMapping("/{maMonAn}")
      public MonAn getSpecificMonAn  (@PathVariable String maMonAn) {
 

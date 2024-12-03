@@ -1,10 +1,17 @@
 package restaurant.example.restaurant.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+//import restaurant.example.restaurant.entity.BaoGom;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -12,14 +19,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MonAnThuocDonMonAnResponse {
-    String maDon 		 ;
-    LocalDate thoiGianDat 		 ;
-    BigDecimal tongGiaTien 	;
+    String maMonAn 			 ;
+    BigDecimal gia 				;
+    String tenMonAn 			;
+    String moTa 			;
+    String khauPhan;
+    String loaiMonAn;
+    String thoiGianHoanTat ;
+    String anhMonAn;
 
-    String maChiNhanh 		 ;
-    String cccdKhachHang 		 ;
-    String cccdNhanVienThuNgan 	 ;
-    String tinhTrangThanhToan  ;
     int soLuongMonAn;
 
 }

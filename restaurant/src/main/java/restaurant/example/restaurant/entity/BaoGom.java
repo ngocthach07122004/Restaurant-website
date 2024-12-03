@@ -1,37 +1,42 @@
-package restaurant.example.restaurant.entity;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDate;
-
-
-@Data
-@Builder
-@FieldDefaults(level =  AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-
-public class BaoGom {
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Id
-    String maBaoGom;
-    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "maMonAn", nullable = false)
-    @JoinColumn(name = "maMonAnBaoGom")
-//    @JsonBackReference
-     MonAn maMonAnBaoGom;
-    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "maDon", nullable = false)
-    @JoinColumn(name = "maDonBaoGom")
-//    @JsonBackReference
-     DonMonAn maDonBaoGom;
-    @Column(name = "soLuongMonAn")
-     int soLuongMonAn ;
-
-
-    
-}
+//package restaurant.example.restaurant.entity;
+//
+//import com.fasterxml.jackson.annotation.JsonBackReference;
+//import jakarta.persistence.*;
+//import lombok.*;
+//import lombok.experimental.FieldDefaults;
+//
+//import java.time.LocalDate;
+//
+//
+//@Data
+//@Builder
+//@FieldDefaults(level =  AccessLevel.PRIVATE)
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Entity
+//
+//public class BaoGom {
+//    @EmbeddedId
+//    MaMonAnMaDonKey maMonAnMaDonKey;
+//
+////    @JoinColumn(name = "maMonAn", nullable = false)
+////    @JoinColumn(name = "maMonAn")
+//    @ManyToOne(cascade = CascadeType.PERSIST)
+//    @JsonBackReference("monAn-reference")
+//    @MapsId("maMonAnId")
+//    @JoinColumn(name = "maMonAn", referencedColumnName = "maMonAn")
+//    MonAn monAn;
+//
+//
+////    @JoinColumn(name = "maDon", nullable = false)
+//@ManyToOne(cascade = CascadeType.PERSIST)
+//    @JsonBackReference("donMonAn-reference")
+//    @MapsId("maDonId")
+//    @JoinColumn(name = "maDon", referencedColumnName = "maDon")
+//     DonMonAn donMonAn ;
+//    @Column(name = "soLuongMonAn")
+//     int soLuongMonAn ;
+//
+//
+//
+//}

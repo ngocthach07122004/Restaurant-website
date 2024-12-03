@@ -1,13 +1,11 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -18,13 +16,29 @@ import java.time.LocalDate;
 @Entity
 
 public class KhachHang {
-    // @GeneratedValue(strategy = GenerationType.UUID)
+     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
-    String cccd   ; 
+     String maKhachHang;
+     @OneToOne
+    ThongTin cccd   ;
 	LocalDate ngayThamGia ;
-	String loaiKhachHang   ; 
-    int soDonDaDat ; 
-    int soDonDaHuy ; 
+	String loaiKhachHang   ;
 
+    @OneToMany(mappedBy = "cccdKhachHang")
+    List<DonMonAn> listDonMonAn ;
+
+    @OneToMany(mappedBy = "cccdKhachHang")
+    List<DonKhieuNai> listDonKhieuNai ;
+
+    int soDonDaDat =0;
+    int soDonDaHuy =0;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name ="SoHuu",
+            joinColumns = @JoinColumn(name = "cccd"),
+            inverseJoinColumns = @JoinColumn(name = "maMaKhuyenMaiKhachHang")
+
+    )
+    List<MaKhuyenMaiKhachHang> listMaKhuyenMaiKhachHang;
     
 }
