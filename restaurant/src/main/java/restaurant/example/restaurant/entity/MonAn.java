@@ -1,8 +1,6 @@
 package restaurant.example.restaurant.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -17,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "maMonAn")
 public class MonAn {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
@@ -36,6 +34,12 @@ public class MonAn {
 //    @OneToMany(mappedBy = "monAn", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
 //    @JsonManagedReference("monAn-reference")
 //     List<BaoGom> listBaoGom = new ArrayList<>();
+@ManyToMany(cascade = CascadeType.ALL)
+@JoinTable(name ="ChuaMonAn",
+        joinColumns = @JoinColumn(name = "maMonAn"),
+        inverseJoinColumns = @JoinColumn(name = "maUuDai")
 
+)
+
+        List<SuKienUuDai> listSuKienUuDai;
 }
-

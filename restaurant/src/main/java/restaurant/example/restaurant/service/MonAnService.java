@@ -8,9 +8,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 //import restaurant.example.restaurant.entity.BaoGom;
+import restaurant.example.restaurant.entity.MaKhuyenMai;
 import restaurant.example.restaurant.entity.MonAn;
+import restaurant.example.restaurant.entity.MonAnGioHang;
+import restaurant.example.restaurant.entity.SuKienUuDai;
 import restaurant.example.restaurant.exception.AppException;
 import restaurant.example.restaurant.exception.ErrorCode;
+import restaurant.example.restaurant.helper.EntityHelper;
 import restaurant.example.restaurant.mapper.MonAnMapper;
 import restaurant.example.restaurant.repository.MonAnRepository;
 
@@ -24,8 +28,64 @@ import java.util.List;
 public class MonAnService {
              MonAnRepository monAnRepository;
              MonAnMapper monAnMapper;
-    @PersistenceContext
+             @PersistenceContext
     EntityManager entityManager;
+
+    EntityHelper entityHelper;
+
+    @Transactional
+    public MonAn createMonAn (MonAn monAn) {
+        MonAn newMonAn = monAnMapper.toMonAn(monAn);
+                   newMonAn.setMaMonAn(monAn.getMaMonAn());
+        if (monAn.getListMonAnGioHang() != null) {
+            List<MonAnGioHang> updatedMonAnGioHangList = entityHelper.updateOrCreateRelatedEntities_OTM(
+                    newMonAn.getListMonAnGioHang(),
+                    MonAnGioHang::getMaMonAnGioHang, // Hàm lấy ID
+                    id -> entityManager.find(MonAnGioHang.class, id), // Hàm tìm kiếm trong cơ sở dữ liệu
+                    monAnGioHang -> monAnGioHang.setMonAn(newMonAn), // Thiết lập quan hệ ngược
+                    monAnGioHang -> entityManager.merge(monAnGioHang) // Lưu entity mới hoặc cập nhật
+            );
+        }
+            if (monAn.getListSuKienUuDai() != null) {
+                List<SuKienUuDai> updateSuKienUuDaiList = entityHelper.processEntityList_MTM(
+                        entityManager,
+                        monAn.getListSuKienUuDai(),
+                        SuKienUuDai.class,
+                        SuKienUuDai::getMaUuDai,
+                        "SuKienUuDai with ID"
+
+                );
+                newMonAn.setListSuKienUuDai(updateSuKienUuDaiList);
+            }
+
+
+//            List<Mission> listMission = newEmployee.getMissions();
+//            List<Mission> newListMission = new ArrayList<>();
+//            for( int i =0 ; i < listMission.size() ;i ++ ) {
+//                  if(listMission.get(i)!=null){
+//                       Mission mission = listMission.get(i);
+//                   if(mission.getIdMission()!=null){
+//                       Mission existingMission = entityManager.find(Mission.class,mission.getIdMission());
+//                       if (existingMission == null) {
+//                           throw new IllegalArgumentException("Address with ID " + mission.getIdMission()+ " does not exist.");
+//                       }
+//                       newListMission.add(existingMission);
+//
+//                   }
+//                   else {
+//                        Mission newMission = entityManager.merge(mission);
+//                       newListMission.add(newMission);
+//                   }
+//                  }
+//            }
+//            newEmployee.setMissions(newListMission);
+//
+//            newMonAn.setListMonAnGioHang(updatedMonAnGioHangList);
+//        }
+
+
+            return monAnRepository.save(newMonAn);
+        }
 //    @Transactional
 //             public MonAn createMonAn (MonAn monAn) {
 //                   MonAn newMonAn = monAnMapper.toMonAn(monAn);

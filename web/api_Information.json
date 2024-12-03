@@ -307,12 +307,32 @@
           "request": {
             "method": "Post",
             "body": {
-              "gia": "",
-              "tenMonAn": "",
-              "moTa": "",
-              "loaiMonAn": "",
-              "anhMonAn": ""
-            },
+
+              "gia":"50",
+              "tenMonAn":"Cơm gà",
+              "moTa":"Món cơm gà truyền thống",
+              "khauPhan":"1 người",
+              "loaiMonAn":"Mặn",
+              "thoiGianHoanTat":"5p",
+              "anhMonAn":"link ảnh",
+              "listMonAnGioHang":[
+                   {
+                      "monAn": {
+                        "maMonAn": "MA1"
+                    }, 
+                    "soLuong": "10",
+                    "listDonMonAn": []
+                   },
+                   {
+                      "monAn": {
+                        "maMonAn": "MA2"
+                    }, 
+                    "soLuong": "14",
+                    "listDonMonAn": []
+                   }
+              ],
+              "listSuKienUuDai":[]
+              } ,
             "url": "http://localhost:8080/monAn/create"
           }
         },
