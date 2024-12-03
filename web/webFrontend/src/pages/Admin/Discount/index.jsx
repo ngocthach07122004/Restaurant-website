@@ -28,21 +28,28 @@ const Discount = () => {
   };
 
   const handleFormSubmit = (values) => {
+    const payload = {
+      "dieuKienDung": values.dieuKienDung?values.dieuKienDung: "Áp dụng cho tất cả đơn hàng",
+      "giaTriGiamGia": values.giaTriGiamGia,
+      "moTa": values.moTa,
+      "maChiNhanh": values.maChiNhanh,
+      "maDon": null
+    }
+    console.log(payload)
     const url = "http://localhost:8080/maKhuyenMai/create";
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values)
+      body: JSON.stringify(payload)
     })
-      .then(res => res.json())
-      .then(data => {
-        setDiscounts([...discounts, { ...data, key: data.maDon }]);
-        toast.success("Discount created successfully");
-        setIsAddDiscountModalVisible(false);
-      })
-      .catch(error => console.error(error));
+    .then(res => res.json())
+    .then(data => {
+      setDiscounts([...discounts, { ...data, key: data.maDon }]);
+      toast.success("Discount created successfully");
+      setIsAddDiscountModalVisible(false);
+    })
+    .catch(error => console.error(error));
   };
-
 
   useEffect(() => {
     fetch("http://localhost:8080/maKhuyenMai/all")
