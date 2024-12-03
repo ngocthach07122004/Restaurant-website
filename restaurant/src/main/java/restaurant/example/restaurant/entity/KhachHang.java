@@ -20,11 +20,13 @@ public class KhachHang {
     @Id
      String maKhachHang;
      @OneToOne
+     @JoinColumn(name = "cccd", referencedColumnName = "cccd")
     ThongTin cccd   ;
 	LocalDate ngayThamGia ;
 	String loaiKhachHang   ;
 
     @OneToMany(mappedBy = "cccdKhachHang")
+
     List<DonMonAn> listDonMonAn ;
 
     @OneToMany(mappedBy = "cccdKhachHang")
@@ -42,3 +44,4 @@ public class KhachHang {
     List<MaKhuyenMaiKhachHang> listMaKhuyenMaiKhachHang;
     
 }
+ 

@@ -32,7 +32,21 @@ public class KhachHangService {
              public KhachHang createKhachHang (KhachHang khachhang) {
                    KhachHang newKhachHang = khachHangMapper.toKhachHang(khachhang);
                    newKhachHang.setMaKhachHang(khachhang.getMaKhachHang());
-                 if (khachhang.getListDonMonAn() != null) {
+
+                    // ONE TO ONE
+        if (khachhang.getCccd() != null) {
+            ThongTin cccd = entityHelper.findOrMerge_OTO(
+                    entityManager,
+                    khachhang.getCccd(),
+                    ThongTin.class,
+                    khachhang.getCccd().getCccd(),
+                    "ThongTin with ID "
+            );
+            newKhachHang.setCccd(cccd); // Thiết lập mối quan hệ One-to-One
+        }
+        entityManager.persist(newKhachHang);
+
+        if (khachhang.getListDonMonAn() != null) {
                      List<DonMonAn> updatedDonMonAnList = entityHelper.updateOrCreateRelatedEntities_OTM(
                              newKhachHang.getListDonMonAn(),
                              DonMonAn::getMaDon, // Hàm lấy ID

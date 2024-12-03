@@ -135,5 +135,9 @@ public class ChiNhanhService {
                     return "delete success";
              }
 
+             public List<MaKhuyenMai> getListMaKhuyenMai (String maChiNhanh ) {
+                    return getSpecificChiNhanh(maChiNhanh).getListMaKhuyenMai();
+             }
+
 
 }
