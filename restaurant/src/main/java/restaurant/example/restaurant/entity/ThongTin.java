@@ -40,7 +40,7 @@ public class ThongTin {
 
     @ManyToOne
     @JoinColumn(name = "cccdQuanTriVien")
-
+    @JsonIgnore
     QuanTriVien cccdQuanTriVien 		;
 
     String anhThongTin;
