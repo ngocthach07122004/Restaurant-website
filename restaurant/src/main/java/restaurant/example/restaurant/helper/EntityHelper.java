@@ -11,7 +11,32 @@ import java.util.function.Function;
 
 @Component
 public class EntityHelper {
-      // MANY TO ONE
+
+
+    // ONE TO ONE
+    public <T> T findOrMerge_OTO(EntityManager entityManager, T entity, Class<T> entityClass, Object id, String errorMessage) {
+        if (id != null) {
+            // Tìm kiếm đối tượng dựa trên ID
+            T existingEntity = entityManager.find(entityClass, id);
+            if (existingEntity == null) {
+                throw new IllegalArgumentException(errorMessage + id + " does not exist.");
+            }
+            return existingEntity;
+        } else if (entity != null) {
+            // Nếu không có ID nhưng có entity, kiểm tra và merge
+            if (entityManager.contains(entity)) {
+                return entity; // Nếu entity đã được quản lý, trả về trực tiếp
+            } else {
+                return entityManager.merge(entity); // Merge nếu entity không được quản lý
+            }
+        } else {
+            throw new IllegalArgumentException(errorMessage + "Entity or ID must not be null.");
+        }
+    }
+
+
+
+    // MANY TO ONE
     public <T> T findOrMerge_MTO(EntityManager entityManager, T entity, Class<T> entityClass, Object id, String errorMessage) {
         if (id != null) {
             T existingEntity = entityManager.find(entityClass, id);

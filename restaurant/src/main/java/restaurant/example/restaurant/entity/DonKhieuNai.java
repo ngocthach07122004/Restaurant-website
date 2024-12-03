@@ -30,5 +30,5 @@ public class DonKhieuNai {
     @JoinColumn(name="cccdKhachHang" )
     KhachHang cccdKhachHang;
 
-    String cccdTongDaiVien 		;
+    String cccdTongDaiVien ;
 }

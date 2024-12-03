@@ -19,10 +19,10 @@ import java.util.List;
 public class MonAnController {
       MonAnService monAnService;
 
-//      @PostMapping("/create")
-//      public MonAn createMonAn (@RequestBody MonAn monAn) {
-//            return monAnService.createMonAn(monAn);
-//     }
+      @PostMapping("/create")
+      public MonAn createMonAn (@RequestBody MonAn monAn) {
+            return monAnService.createMonAn(monAn);
+     }
      @GetMapping("/{maMonAn}")
      public MonAn getSpecificMonAn  (@PathVariable String maMonAn) {
 

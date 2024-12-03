@@ -27,8 +27,8 @@ public class ThongTin {
     String ho 				;
     String ten 				;
     LocalDate ngaySinh 			;
-    String email 				;
-    String gioiTinh 			;
+    String email 		;
+    String gioiTinh 	;
     @ElementCollection
     @CollectionTable(name = "SoDienThoai", joinColumns = @JoinColumn(name = "cccd"))
     @Column(name = "soDienThoai")
