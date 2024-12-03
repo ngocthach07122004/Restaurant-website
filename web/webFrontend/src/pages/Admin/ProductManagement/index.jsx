@@ -47,6 +47,7 @@ const ProductManagement = () => {
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         setProducts([...products, { ...data, key: data.maMonAn }]);
         toast.success("Product created successfully");
         setIsAddProductModalVisible(false);
@@ -86,11 +87,11 @@ const ProductManagement = () => {
       key: 'actions',
       render: (values) => (
         <Space size="middle">
-          <Tag color="geekblue" onClick={() => handleShowDetail(values.maMonAn)}>Details</Tag>
-          <Tag color="volcano" onClick={() => handleRemove(values.maMonAn)}>Delete</Tag>
+          <Tag key={`details-${values.maMonAn}`} color="geekblue" onClick={() => handleShowDetail(values.maMonAn)}>Details</Tag>
+          <Tag key={`delete-${values.maMonAn}`} color="volcano" onClick={() => handleRemove(values.maMonAn)}>Delete</Tag>
         </Space>
       ),
-    },
+    }
   ];
 
   return (
