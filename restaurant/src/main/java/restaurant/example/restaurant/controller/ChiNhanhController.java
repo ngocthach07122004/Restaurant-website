@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import restaurant.example.restaurant.entity.ChiNhanh;
+import restaurant.example.restaurant.entity.MaKhuyenMai;
 import restaurant.example.restaurant.service.ChiNhanhService;
 
 import java.util.List;
@@ -39,4 +40,9 @@ public class ChiNhanhController {
      public String deleteChiNhanh (@PathVariable String maChiNhanh) {
             return chiNhanhService.deleteChiNhanh(maChiNhanh);
      }
+     @GetMapping("/all/maKhuyenMai/{maChiNhanh}")
+    List<MaKhuyenMai> getListMaKhuyenMai (@PathVariable String maChiNhanh){
+            return chiNhanhService.getListMaKhuyenMai(maChiNhanh);
+     }
+
 }

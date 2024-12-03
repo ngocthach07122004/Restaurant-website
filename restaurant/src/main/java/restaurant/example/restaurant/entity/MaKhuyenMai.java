@@ -32,7 +32,7 @@ public class MaKhuyenMai {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name= "maChiNhanh")
-    
+    @JsonIgnore
     ChiNhanh maChiNhanh ;
 
 
