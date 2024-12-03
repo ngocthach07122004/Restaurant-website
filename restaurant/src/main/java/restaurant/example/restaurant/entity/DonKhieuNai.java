@@ -1,9 +1,6 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -24,7 +21,14 @@ public class DonKhieuNai {
     String  noiDung 			;
     LocalDate thoiGian 			;
     String  maDon 			;
-    String  cccdQuanLy 		;
-    String  cccdKhachHang 		;
+
+    @ManyToOne
+    @JoinColumn(name = "cccdNhanVienQuanLy")
+    NhanVienQuanLy  cccdNhanVienQuanLy 		;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="cccdKhachHang" )
+    KhachHang cccdKhachHang;
+
     String cccdTongDaiVien 		;
 }

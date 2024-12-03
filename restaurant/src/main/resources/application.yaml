@@ -4,7 +4,7 @@ spring:
   application:
     name: restaurant-service
   datasource:
-    url: "jdbc:mysql://localhost:3307/restaurant_service_database_v1"
+    url: "jdbc:mysql://localhost:3307/restaurant_service_database_v2"
     driverClassName: "com.mysql.cj.jdbc.Driver"
     username: root
     password: 12345678

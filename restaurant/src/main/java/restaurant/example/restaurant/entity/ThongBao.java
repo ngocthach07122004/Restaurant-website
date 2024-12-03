@@ -22,11 +22,19 @@ public class ThongBao {
     LocalDate thoiGian  ;
 //    String cccdThongTin  ;
     String cccdQuanLy  ;
-    String cccdQuanTriVien   ;
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne
+   @JoinColumn(name="cccdQuanTriVien")
+    QuanTriVien cccdQuanTriVien   ;
+
+    @ManyToOne
     @JoinColumn(name = "cccdThongTin")
     ThongTin cccdThongTin;
 
+
+    @ManyToOne
+    @JoinColumn(name = "cccdNhanVienQuanLy")
+    NhanVienQuanLy cccdNhanVienQuanLy;
 
 
 

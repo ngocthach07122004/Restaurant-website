@@ -1,12 +1,10 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
 
 
 @Data
@@ -22,5 +20,16 @@ public class QuanTriVien {
     String cccd 			 ;
 	String moTaVaiTro 		;
 
-    
+    @OneToMany(mappedBy = "cccdQuanTriVien")
+    List<ThongTin> listThongTin;
+
+    @OneToMany(mappedBy = "cccdQuanTriVien")
+    List<ChiNhanh> listChiNhanh;
+
+    @OneToMany(mappedBy = "cccdQuanTriVien")
+    List<ThongBao> listThongBao;
+
+
+
+
 }

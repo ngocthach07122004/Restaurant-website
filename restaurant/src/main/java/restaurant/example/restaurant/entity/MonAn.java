@@ -1,6 +1,7 @@
 package restaurant.example.restaurant.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,8 +25,17 @@ public class MonAn {
     BigDecimal gia 				;
     String tenMonAn 			;
     String moTa 			;
-    @OneToMany(mappedBy = "maMonAnBaoGom", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JsonManagedReference
-    private List<BaoGom> listBaoGom = new ArrayList<>();
+    String khauPhan;
+    String loaiMonAn;
+    String thoiGianHoanTat ;
+    String anhMonAn;
+
+    @OneToMany(mappedBy = "monAn")
+    @JsonIgnore
+    List<MonAnGioHang>  listMonAnGioHang;
+//    @OneToMany(mappedBy = "monAn", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+//    @JsonManagedReference("monAn-reference")
+//     List<BaoGom> listBaoGom = new ArrayList<>();
 
 }
+

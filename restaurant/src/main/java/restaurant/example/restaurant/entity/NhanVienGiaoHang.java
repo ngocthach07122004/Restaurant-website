@@ -31,8 +31,10 @@ public class NhanVienGiaoHang {
             inverseJoinColumns = @JoinColumn(name = "bienSoXe")
 
     )
-    @JsonManagedReference
     List<PhuongTien> listPhuongTien;
+
+
+
 
 
 }

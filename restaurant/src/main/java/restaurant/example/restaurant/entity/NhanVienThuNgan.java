@@ -1,12 +1,11 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
 
 
 @Data
@@ -20,6 +19,9 @@ public class NhanVienThuNgan {
     // @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     String cccd 				 ;
+    @OneToMany(mappedBy ="cccdNhanVienThuNgan" )
+            @JsonIgnore
+    List<DonMonAn> listDonMonAn;
 
     
 }

@@ -25,8 +25,8 @@ public class PhuongTien {
     String thongTinDangKy 		 ;
     LocalDate thoiGianDangKy 		 ;
     LocalDate  thoiGianHetHan 		;
+
     @ManyToMany(mappedBy = "listPhuongTien")
-    @JsonBackReference
     List<NhanVienGiaoHang> listNhanVienGiaoHang;
 }
 
