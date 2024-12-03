@@ -16,9 +16,12 @@ import java.util.List;
 @Entity
 
 public class NhanVienGiaoHang {
-    // @GeneratedValue(strategy = GenerationType.UUID)
+     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
-    String cccd 				 ;
+     String maNhanVienGiaoHang;
+     @OneToOne
+     @JoinColumn(name="cccd", referencedColumnName = "maNhanVien")
+     NhanVien cccd 				 ;
 	String tinhTrangHoatDong 		;
     @ElementCollection
     @CollectionTable(name = "BangLaiXe", joinColumns = @JoinColumn(name = "cccd"))

@@ -20,7 +20,7 @@ public class DonKhieuNai {
     String  maDonKhieuNai 		;
     String  noiDung 			;
     LocalDate thoiGian 			;
-    String  maDon 			;
+   
 
     @ManyToOne
     @JoinColumn(name = "cccdNhanVienQuanLy")
@@ -29,6 +29,13 @@ public class DonKhieuNai {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cccdKhachHang" )
     KhachHang cccdKhachHang;
+    // @ManyToOne
+    // @JoinColumn(name="cccdTongDaiVien" )
+    // NhanVienTongDai cccdTongDaiVien ;
+    @ManyToOne
+            @JoinColumn(name = "donMonAn")
+    DonMonAn donMonAn;
 
-    String cccdTongDaiVien ;
 }
+ 
+

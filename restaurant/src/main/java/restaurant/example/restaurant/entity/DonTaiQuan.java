@@ -1,9 +1,6 @@
 package restaurant.example.restaurant.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -17,11 +14,19 @@ import lombok.experimental.FieldDefaults;
 @Entity
 
 public class DonTaiQuan {
-    // @GeneratedValue(strategy = GenerationType.UUID)
+     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
-    String maDon 			;  
-    String yeuCauCuaKhachHang 	; 
-    String cccdPhucVu 			; 
+             String maDonTaiQuan;
+     @OneToOne
+             @JoinColumn(name = "maDon", referencedColumnName = "maDon")
+    DonMonAn maDon 			;
+    String yeuCauCuaKhachHang 	;
+    @ManyToOne
+    @JoinColumn(name="maNhanVienPhucVu" , referencedColumnName = "maNhanVienPhucVu")
+    NhanVienPhucVu maNhanVienPhucVu 			;
+
 
     
 }
+
+

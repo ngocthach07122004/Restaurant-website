@@ -8,17 +8,18 @@
           "request": {
             "method": "Post",
             "body": {
-              "maDon": "",
-              "tenNguoiNhan": "",
-              "thoiGianGiaoDuKien": "",
-              "thoiGianNhanThucTe": "",
-              "ghiChu": "",
-              "tinhTrangDonHang": "",
-              "diaChiNhan": "",
-              "phiVanChuyen": "",
-              "cccdThuNgan": "",
-              "khoangCach": ""
-            },
+              "maDon": {
+                   "maDon": "77bcbbdb-41fb-474a-bb1d-92c365a9da52"
+              },
+          "tenNguoiNhan":"",
+          "thoiGianGiaoDuKien":"",
+          "thoiGianNhanThucTe":"",
+          "ghiChu":"",
+          "tinhTrangDonHang":"",
+          "diaChiNhan":"",
+          "phiVanChuyen":"",
+          "khoangCach":""
+          },
             "url": "http://localhost:8080/dongiaohang/create"
           }
         },
@@ -245,17 +246,14 @@
           "request": {
             "method": "Post",
             "body": {
-              "maDon": "",
-              "tenNguoiNhan": "",
-              "thoiGianGiaoDuKien": "",
-              "thoiGianNhanThucTe": "",
-              "ghiChu": "",
-              "tinhTrangDonHang": "",
-              "diaChiNhan": "",
-              "phiVanChuyen": "",
-              "cccdThuNgan": "",
-              "khoangCach": ""
-            },
+              "maDon": {
+                   "maDon": "a674b76a-d512-482f-82cb-ebf809810593"
+              },
+              "yeuCauCuaKhachHang":"Giữ đồ ăn nóng",
+              "maNhanVienPhucVu": {
+                   "maNhanVienPhucVu": "NVPV1"
+              }
+              } ,
             "url": "http://localhost:8080/dontaiquan/create"
           }
         },
@@ -500,13 +498,20 @@
         {
           "request": {
             "method": "Post",
-            "body": {
-              "noiDungThongBao": "",
-              "tthoiGian": "",
-              "cccdThongTin": "",
-              "cccdQuanLy": "",
-              "cccdQuanTriVien": ""
-            },
+            "body":{
+              "noiDungThongBao":"Thông báo từ quản trị viên",
+              "thoiGian":"2024-12-07",
+              "cccdQuanTriVien": {
+                   "cccd": "999999999"
+              },
+              "cccdThongTin": {
+                   "cccd":"123456789_2"
+              },
+              "cccdNhanVienQuanLy":{
+                   "cccd":"NVQL1"
+              }
+              
+              } ,
             "url": "http://localhost:8080/thongBao/create"
           }
         },
@@ -553,13 +558,18 @@
           "request": {
             "method": "Post",
             "body": {
-              "noiDung": "",
-              "thoiGian": "",
-              "maDon": "",
-              "cccdQuanLy": "",
-              "cccdKhachHang": "",
-              "cccdTongDaiVien": ""
-            },
+              "noiDung":"Khiếu nại về chất lượng món ăn",
+              "thoiGian":"2024-12-07",
+              "cccdNhanVienQuanLy": {
+                   "maNhanVienQuanLy": "NVQL1"
+              },
+              "cccdKhachHang": {
+                  "maKhachHang":"KH1"
+              },
+              "donMonAn": {
+                   "maDon": "134dcbcc-65d9-47fb-8a8f-83ccbc7eeefe"
+              }
+              } ,
             "url": "http://localhost:8080/donKhieuNai/create"
           }
         },

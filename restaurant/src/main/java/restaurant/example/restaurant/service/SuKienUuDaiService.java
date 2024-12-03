@@ -79,6 +79,7 @@ public class SuKienUuDaiService {
                   return "update success";
 
              }
+
              public String deleteSuKienUuDai (String maSuKienUuDai) {
                     suKienUuDaiRepository.deleteById(maSuKienUuDai);
                     return "delete success";

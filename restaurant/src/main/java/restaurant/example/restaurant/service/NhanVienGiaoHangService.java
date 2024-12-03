@@ -21,8 +21,8 @@ public class NhanVienGiaoHangService {
              NhanVienGiaoHangMapper nhanVienGiaoHangMapper;
              public NhanVienGiaoHang createNhanVienGiaoHang (NhanVienGiaoHang nhanviengiaohang) {
                    NhanVienGiaoHang newNhanVienGiaoHang = nhanVienGiaoHangMapper.toNhanVienGiaoHang(nhanviengiaohang);
-                   newNhanVienGiaoHang.setCccd(nhanviengiaohang.getCccd());
-                    return nhanVienGiaoHangRepository.save(newNhanVienGiaoHang);
+                   newNhanVienGiaoHang.setMaNhanVienGiaoHang(nhanviengiaohang.getMaNhanVienGiaoHang());
+                   return nhanVienGiaoHangRepository.save(newNhanVienGiaoHang);
              }
              public NhanVienGiaoHang getSpecificNhanVienGiaoHang (String maNhanVienGiaoHang) {
 

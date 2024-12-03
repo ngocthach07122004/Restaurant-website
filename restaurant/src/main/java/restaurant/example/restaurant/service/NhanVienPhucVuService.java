@@ -21,7 +21,7 @@ public class NhanVienPhucVuService {
              NhanVienPhucVuMapper nhanVienPhucVuMapper;
              public NhanVienPhucVu createNhanVienPhucVu (NhanVienPhucVu nhanvienphucvu) {
                    NhanVienPhucVu newNhanVienPhucVu = nhanVienPhucVuMapper.toNhanVienPhucVu(nhanvienphucvu);
-                   newNhanVienPhucVu.setCccd(nhanvienphucvu.getCccd());
+                   newNhanVienPhucVu.setMaNhanVienPhucVu(nhanvienphucvu.getMaNhanVienPhucVu());
                     return nhanVienPhucVuRepository.save(newNhanVienPhucVu);
              }
              public NhanVienPhucVu getSpecificNhanVienPhucVu (String maNhanVienPhucVu) {

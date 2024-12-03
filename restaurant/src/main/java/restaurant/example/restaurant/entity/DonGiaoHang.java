@@ -19,9 +19,12 @@ import java.time.LocalDate;
 @Entity
 
 public class  DonGiaoHang {
-    // @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Id
-    String maDon ;
+    String maDonGiaoHang;
+    @OneToOne
+    @JoinColumn(name = "maDon" , referencedColumnName = "maDon")
+    DonMonAn maDon ;
     String tenNguoiNhan ;
     LocalDate thoiGianGiaoDuKien ;
     LocalDate  thoiGianNhanThucTe 	;
@@ -29,6 +32,13 @@ public class  DonGiaoHang {
     String tinhTrangDonHang ;
     String diaChiNhan 		;
     BigDecimal phiVanChuyen 	;
-    String cccdThuNgan 	;
+//    String cccdThuNgan 	;
     BigDecimal khoangCach ;
+//    @OneToOne
+//    @JoinColumn(name = "maNhanVienGiaoHang" , referencedColumnName = "maNhanVienGiaoHang")
+//    NhanVienGiaoHang maNhanVienGiaoHang;
+//
+//    @OneToOne
+//    @JoinColumn(name = "maKhachHang" , referencedColumnName = "maKhachHang")
+//    KhachHang maKhachHang ;
  }

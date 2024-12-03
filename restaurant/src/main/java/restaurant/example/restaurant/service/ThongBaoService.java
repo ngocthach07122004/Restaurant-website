@@ -1,12 +1,16 @@
 package restaurant.example.restaurant.service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
-import restaurant.example.restaurant.entity.ThongBao;
+import restaurant.example.restaurant.entity.*;
 import restaurant.example.restaurant.exception.AppException;
 import restaurant.example.restaurant.exception.ErrorCode;
+import restaurant.example.restaurant.helper.EntityHelper;
 import restaurant.example.restaurant.mapper.ThongBaoMapper;
 import restaurant.example.restaurant.repository.ThongBaoRepository;
 
@@ -19,9 +23,46 @@ import java.util.List;
 public class ThongBaoService {
              ThongBaoRepository thongBaoRepository;
              ThongBaoMapper thongBaoMapper;
+    @PersistenceContext
+    EntityManager entityManager;
+
+    EntityHelper entityHelper;
+
+    @Transactional
              public ThongBao createThongBao (ThongBao thongBao) {
                    ThongBao newThongBao = thongBaoMapper.toThongBao(thongBao);
                    newThongBao.setMaThongBao(thongBao.getMaThongBao());
+        if (thongBao.getCccdQuanTriVien()!= null) {
+            QuanTriVien quanTriVien = entityHelper.findOrMerge_MTO(
+                    entityManager,
+                    thongBao.getCccdQuanTriVien(),
+                    QuanTriVien.class,
+                    thongBao.getCccdQuanTriVien().getCccd(),
+                    "QuanTriVien with ID "
+            );
+            newThongBao.setCccdQuanTriVien(quanTriVien);
+        }
+        if (thongBao.getCccdThongTin()!= null) {
+            ThongTin thongTin = entityHelper.findOrMerge_MTO(
+                    entityManager,
+                    thongBao.getCccdThongTin(),
+                    ThongTin.class,
+                    thongBao.getCccdThongTin().getCccd(),
+                    "ThongTin with ID "
+            );
+            newThongBao.setCccdThongTin(thongTin);
+        }
+        if (thongBao.getCccdNhanVienQuanLy()!= null) {
+            NhanVienQuanLy nhanVienQuanLy = entityHelper.findOrMerge_MTO(
+                    entityManager,
+                    thongBao.getCccdNhanVienQuanLy(),
+                    NhanVienQuanLy.class,
+                    thongBao.getCccdNhanVienQuanLy().getMaNhanVienQuanLy(),
+                    "NhanVienQuanLy with ID "
+            );
+            newThongBao.setCccdNhanVienQuanLy(nhanVienQuanLy);
+        }
+
                     return thongBaoRepository.save(newThongBao);
              }
              public ThongBao getSpecificThongBao (String maThongBao) {

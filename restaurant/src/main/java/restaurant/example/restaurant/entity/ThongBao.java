@@ -1,5 +1,6 @@
 package restaurant.example.restaurant.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -21,10 +22,11 @@ public class ThongBao {
     String noiDungThongBao    ;
     LocalDate thoiGian  ;
 //    String cccdThongTin  ;
-    String cccdQuanLy  ;
+    // String cccdQuanLy  ;
 
     @ManyToOne
    @JoinColumn(name="cccdQuanTriVien")
+    @JsonIgnore
     QuanTriVien cccdQuanTriVien   ;
 
     @ManyToOne
@@ -39,3 +41,5 @@ public class ThongBao {
 
 
 }
+
+

@@ -7,8 +7,8 @@ import restaurant.example.restaurant.entity.NhanVienTongDai;
 
 @Mapper(componentModel = "spring")
 public interface NhanVienTongDaiMapper {
-//           @Mapping(target = "cccd", ignore = true)
+           @Mapping(target = "maNhanVienTongDai", ignore = true)
           public NhanVienTongDai toNhanVienTongDai (NhanVienTongDai nhanVienTongDai);
-          @Mapping(target = "cccd", ignore = true)
+          @Mapping(target = "maNhanVienTongDai", ignore = true)
           public void updateNhanVienTongDai (@MappingTarget NhanVienTongDai nhanVienTongDai, NhanVienTongDai nhanVienTongDaiUpdate);
 }

@@ -21,7 +21,7 @@ public class NhanVienQuanLyService {
              NhanVienQuanLyMapper nhanVienQuanLyMapper;
              public NhanVienQuanLy createNhanVienQuanLy (NhanVienQuanLy nhanvienquanly) {
                    NhanVienQuanLy newNhanVienQuanLy = nhanVienQuanLyMapper.toNhanVienQuanLy(nhanvienquanly);
-                   newNhanVienQuanLy.setCccd(nhanvienquanly.getCccd());
+                   newNhanVienQuanLy.setMaNhanVienQuanLy(nhanvienquanly.getMaNhanVienQuanLy());
                     return nhanVienQuanLyRepository.save(newNhanVienQuanLy);
              }
              public NhanVienQuanLy getSpecificNhanVienQuanLy (String maNhanVienQuanLy) {
