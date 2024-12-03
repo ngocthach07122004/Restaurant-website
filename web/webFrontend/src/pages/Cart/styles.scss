@@ -187,40 +187,70 @@
 .table {
     width: 100%;
     text-align: center;
-  
-    th, td {
-      vertical-align: middle;
+
+    th,
+    td {
+        vertical-align: middle;
     }
-  
+
     .table-img {
-      max-width: 80px;
-      border-radius: 8px;
-      object-fit: cover;
+        max-width: 80px;
+        border-radius: 8px;
+        object-fit: cover;
     }
-  
+
     .quantity-control {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  
-      button {
-        padding: 0.25rem 0.5rem;
-      }
-  
-      span {
-        margin: 0 0.5rem;
-        font-size: 1rem;
-        font-weight: 500;
-      }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            padding: 0.25rem 0.5rem;
+        }
+
+        span {
+            margin: 0 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+        }
     }
-  
+
     .close {
-      cursor: pointer;
-      color: #dc3545;
-  
-      &:hover {
-        color: #c82333;
-      }
+        cursor: pointer;
+        color: #dc3545;
+
+        &:hover {
+            color: #c82333;
+        }
     }
-  }
-  
+}
+
+// Animation 
+.cart-page {
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-out {
+  transform: translateX(-100%);
+}
+
+.message-box {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.message-box._success {
+  color: green;
+}
+
+.message-box._failed {
+  color: red;
+}
+
+.message-box i {
+  font-size: 50px;
+  margin-bottom: 20px;
+}

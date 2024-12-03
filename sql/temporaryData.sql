@@ -1,5 +1,5 @@
 insert into ChiNhanh(maChiNhanh,diaChi,moTa,tenChiNhanh,thoiGianDongCua,thoiGianMoCua,trangThaiHoatDong,cccdQuanTriVien)
-insert into KhachHang values("2222","KH","2024-12-07",0,0);
+insert into KhachHang values("2222","KH","2024-12-07",0,0, "123456");
 insert into NhanVienThuNgan values("3333");
 insert into MaKhuyenMai values("KM1","CHO",50,"MT","1111",null);
 insert into MaKhuyenMai values("KM2","CHO",100,"MT","1111",null);

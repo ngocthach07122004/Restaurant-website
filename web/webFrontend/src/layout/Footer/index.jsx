@@ -1,4 +1,5 @@
 import React from 'react';
+import { Twitter, Facebook, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -25,9 +26,32 @@ const Footer = () => {
           <div className="col-md-4">
             <h5>Connect With Us</h5>
             <div className="d-flex gap-3">
-              <a href="#" className="text-light"><i className="bi bi-facebook"></i></a>
-              <a href="#" className="text-light"><i className="bi bi-twitter"></i></a>
-              <a href="#" className="text-light"><i className="bi bi-instagram"></i></a>
+              <a 
+                href="#" 
+                data-mdb-ripple-init
+                className="btn text-white btn-floating p-2"
+                style={{"background-color": "#3b5998", "border-radius": "50%"}}
+                role="button"
+              >
+                <Facebook />
+              </a>
+              <a href="#" 
+                data-mdb-ripple-init
+                className="btn text-white btn-floating p-2"
+                style={{"background-color": "#55acee", "border-radius": "50%"}}
+                role="button"
+                >
+                  <Twitter />
+                </a>
+              <a 
+                href="#" 
+                data-mdb-ripple-init
+                className="btn text-white btn-floating p-2"
+                style={{"background-color": "#33333", "border-radius": "50%"}}
+                role="button"
+              >
+                <Github />
+              </a>
             </div>
           </div>
         </div>
