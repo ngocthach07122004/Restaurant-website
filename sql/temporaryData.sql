@@ -2,13 +2,13 @@ use restaurant_service_database_v2;
 show tables;
 
 describe ChiNhanh;
-  SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS = 0;
 
 SET FOREIGN_KEY_CHECKS = 1;
 insert into ChiNhanh(maChiNhanh,diaChi,moTa,tenChiNhanh,thoiGianDongCua,thoiGianMoCua,trangThaiHoatDong,cccdQuanTriVien)
 values("1111","HCM", "CN","LAU NUONG","2030-12-07","2024-12-07","TOT","123");
 
-insert into KhachHang values("2222","KH","2024-12-07",0,0);
+insert into KhachHang values("2222","KH","2024-12-07",0,0, "123456");
 
 insert into NhanVienThuNgan values("3333");
 
