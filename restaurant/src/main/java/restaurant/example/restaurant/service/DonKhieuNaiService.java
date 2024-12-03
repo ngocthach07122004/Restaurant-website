@@ -22,6 +22,8 @@ public class DonKhieuNaiService {
              public DonKhieuNai createDonKhieuNai (DonKhieuNai donKhieuNai) {
                    DonKhieuNai newDonKhieuNai = donKhieuNaiMapper.toDonKhieuNai(donKhieuNai);
                    newDonKhieuNai.setMaDonKhieuNai(donKhieuNai.getMaDonKhieuNai());
+
+
                     return donKhieuNaiRepository.save(newDonKhieuNai);
              }
              public DonKhieuNai getSpecificDonKhieuNai (String maDonKhieuNai) {

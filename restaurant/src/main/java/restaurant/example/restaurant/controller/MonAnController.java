@@ -30,7 +30,8 @@ public class MonAnController {
 
      }
      @GetMapping("/all")
-     public List<MonAn> getAllMonAn (){
+     public List<MonAn> getAllMonAn ()
+     {
           return monAnService.getAllMonAn();
      }
      @PutMapping("/update/{maMonAn}")

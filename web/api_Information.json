@@ -444,10 +444,19 @@
           "request": {
             "method": "Post",
             "body": {
-              "maChiNhanh": "",
-              "loaiMa": "",
-              "giaTriGiamGia": ""
-            },
+
+              "maChiNhanh":{
+                      "maChiNhanh": "577a0aa3-ab20-4224-b1b0-3b2b67313a66"
+              },
+              "loaiMa":"Dùng một lần",
+              "giaTriGiamGia":"500",
+              "thoiGianSuKien": [
+                   "2024-12-07", "2024-12-08"
+              ],
+              "listMonAn": [
+                         
+              ]
+              }  ,
             "url": "http://localhost:8080/suKienUuDai/create"
           }
         },
