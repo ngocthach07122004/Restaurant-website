@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -26,8 +26,8 @@ public class ChiNhanh {
     String moTa; 
     String trangThaiHoatDong; 
     String tenChiNhanh; 
-    LocalDate thoiGianMoCua;
-    LocalDate  thoiGianDongCua;
+    LocalDateTime thoiGianMoCua;
+    LocalDateTime  thoiGianDongCua;
 
     @OneToMany(mappedBy = "chiNhanh")
     List<NhanVienQuanLy> listNhanVienQuanLy;

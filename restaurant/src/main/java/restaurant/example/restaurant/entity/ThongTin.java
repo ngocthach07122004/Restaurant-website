@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -26,7 +26,7 @@ public class ThongTin {
     String matKhau 	 ;
     String ho 				;
     String ten 				;
-    LocalDate ngaySinh 			;
+    LocalDateTime ngaySinh 			;
     String email 		;
     String gioiTinh 	;
     @ElementCollection
@@ -47,7 +47,19 @@ public class ThongTin {
 //    List<KhachHang> listKhachHang;
 
 //    @OneToMany(mappedBy = "cccdThongTin", cascade = CascadeType.ALL, orphanRemoval = true)
-    @OneToMany(mappedBy = "cccdThongTin")
+
+//    @OneToMany(mappedBy = "cccdThongTin"  ,cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+//    List<ThongBao> listThongBao;
+
+
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name ="ChuaThongBao",
+//            joinColumns = @JoinColumn(name = "cccd"),
+//            inverseJoinColumns = @JoinColumn(name = "maThongBao")
+//
+//    )
+//    List<ThongBao> listThongBao;
+        @ManyToMany(mappedBy = "listThongTin")
     List<ThongBao> listThongBao;
 
 

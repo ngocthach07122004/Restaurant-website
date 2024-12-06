@@ -1,11 +1,6 @@
-<!-- Nhớ thêm dòng này ở bảng ThongTin để so sánh chuỗi có phân biệt hoa thường -->
-
-ALTER TABLE ThongTin
-MODIFY COLUMN tenDangNhap VARCHAR(100) COLLATE utf8mb4_bin;
-
 # run database
 
--pull mysql in docker hub
+pull mysql in docker hub
 
 docker pull mysql
 
@@ -15,45 +10,27 @@ docker pull mysql
 
 2. docker exec -it restaurant-service-db bash
 
-3. mysql -u root -p  
+3. mysql -u root -p
+
    enter your password
+
 4. create dabase restaurant_service_database_v1
 
-# run database
+# how to pull and run kafka
 
-CREATE TABLE ThongTin (
-cccd VARCHAR(100) PRIMARY KEY,
+pull kafka in docker hub
 
-    tenDangNhap 		VARCHAR(100) NOT NULL,
-    matKhau 			VARCHAR(100) NOT NULL,
-    ho 				VARCHAR(100),
-    ten 				VARCHAR(100),
-    ngaySinh 			DATE,
-    email 				VARCHAR(100),
-    gioiTinh 			VARCHAR(1),
-    soDienThoai 			VARCHAR(100),
-    maTaiKhoan 			VARCHAR(100),
-    cccdQuanTriVien 		VARCHAR(100),
-    anhThongTin          VARCHAR(800)
-    -- FOREIGN KEY (cccd_QuanTriVien) REFERENCES ThongTin(cccd)
+docker pull bitnami/kafka:3.7.0
 
-);
+-start kafka
 
-CREATE TABLE MonAn (
-maMonAn VARCHAR(100) PRIMARY KEY,
-gia DECIMAL(15,2),
-tenMonAn VARCHAR(100),
-moTa VARCHAR(100),
-loaiMonAn VARCHAR(100),
-anhMonAn VARCHAR(800),
-thoiGianHoanTat VARCHAR(100),
-khauPhan VARCHAR(100)
-);
+1. access to folder root
 
-create table DanhGia(
-maDanhGia VARCHAR(100) ,
-cccdKhachHang VARCHAR(100),
-maMonAn VARCHAR(100),
-noiDung VARCHAR(100),
-thoiGian DATE
-);
+2. docker-compose up -d
+
+## note
+
+to run restaurant backend service, first of all how have to run:
+
+- mysql image
+- kafka image

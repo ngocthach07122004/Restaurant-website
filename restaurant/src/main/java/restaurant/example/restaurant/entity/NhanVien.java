@@ -8,7 +8,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -25,7 +25,7 @@ public class NhanVien {
 	@OneToOne
      @JoinColumn(name = "cccd", referencedColumnName = "cccd")
     ThongTin cccd   ;
-	LocalDate ngayVaoLam 		;
+	LocalDateTime ngayVaoLam 		;
 	BigDecimal luong 			;
 
 	@ManyToOne

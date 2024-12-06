@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.*;
 import restaurant.example.restaurant.entity.QuanTriVien;
+import restaurant.example.restaurant.entity.ThongBao;
 import restaurant.example.restaurant.service.QuanTriVienService;
 
 import java.util.List;
@@ -38,4 +39,10 @@ public class QuanTriVienController {
      public String deleteQuanTriVien (@PathVariable String cccd) {
             return quanTriVienService.deleteQuanTriVien(cccd);
      }
+
+     @PostMapping("/notification")
+    public String sendNotification (@RequestBody ThongBao thongBao){
+           return quanTriVienService.sendNotification(thongBao);
+     }
+
 }

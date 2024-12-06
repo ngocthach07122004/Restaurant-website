@@ -5,7 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -26,8 +26,8 @@ public class  DonGiaoHang {
     @JoinColumn(name = "maDon" , referencedColumnName = "maDon")
     DonMonAn maDon ;
     String tenNguoiNhan ;
-    LocalDate thoiGianGiaoDuKien ;
-    LocalDate  thoiGianNhanThucTe 	;
+    LocalDateTime thoiGianGiaoDuKien ;
+    LocalDateTime  thoiGianNhanThucTe 	;
     String ghiChu 		;
     String tinhTrangDonHang ;
     String diaChiNhan 		;

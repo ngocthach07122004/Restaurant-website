@@ -660,6 +660,14 @@
         {
           "request": {
             "method": "Get",
+            "description" : "Get all notification of thongTin",
+            "body": {},
+            "url": "http://localhost:8080/thongTin/notification/{cccd}"
+          }
+        },
+        {
+          "request": {
+            "method": "Get",
             "body": {},
             "url": "http://localhost:8080/thongTin/all"
           }
@@ -761,6 +769,21 @@
               "moTaVaiTro": ""
             },
             "url": "http://localhost:8080/quantrivien/create"
+          }
+        },
+        {
+          "request": {
+            "method": "Post",
+            "description": "send notification for all user and employee in restaurant",
+            "body": {
+              "noiDungThongBao":"Thông báo từ quản trị viên",
+              "thoiGian":null,
+              "cccdQuanTriVien": null,
+              "listThongTin": null,
+              "cccdNhanVienQuanLy": null
+              
+              } ,
+            "url": "http://localhost:8080/quantrivien/notification"
           }
         },
         {
