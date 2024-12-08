@@ -39,7 +39,7 @@ const Signin = (props) => {
   }
 
   return (
-    <div className={'container-fuild mainContainer'}>
+    <div className='container-fuild loginmainContainer'>
       <div className={'titleContainer'}>
         <div>Login</div>
       </div>
