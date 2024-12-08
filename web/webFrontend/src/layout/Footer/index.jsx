@@ -30,7 +30,7 @@ const Footer = () => {
                 href="#" 
                 data-mdb-ripple-init
                 className="btn text-white btn-floating p-2"
-                style={{"background-color": "#3b5998", "border-radius": "50%"}}
+                style={{"backgroundColor": "#3b5998", "borderRadius": "50%"}}
                 role="button"
               >
                 <Facebook />
@@ -38,7 +38,7 @@ const Footer = () => {
               <a href="#" 
                 data-mdb-ripple-init
                 className="btn text-white btn-floating p-2"
-                style={{"background-color": "#55acee", "border-radius": "50%"}}
+                style={{"backgroundColor": "#55acee", "borderRadius": "50%"}}
                 role="button"
                 >
                   <Twitter />
@@ -47,7 +47,7 @@ const Footer = () => {
                 href="#" 
                 data-mdb-ripple-init
                 className="btn text-white btn-floating p-2"
-                style={{"background-color": "#33333", "border-radius": "50%"}}
+                style={{"backgroundColor": "#33333", "borderRadius": "50%"}}
                 role="button"
               >
                 <Github />

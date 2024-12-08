@@ -1,9 +1,9 @@
-.mainContainer {
+.loginmainContainer {
   flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 40vh;
 }
 
 .titleContainer {
@@ -59,7 +59,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin-bottom: 1em;
+  margin-bottom: 1em; 
 }
 
 .inputContainer > .errorLabel {

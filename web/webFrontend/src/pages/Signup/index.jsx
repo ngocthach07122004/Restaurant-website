@@ -180,7 +180,7 @@ const Signup = (props) => {
           />
         </div>
         <br />
-        <div className={"inputContainer"}>
+        <div className="inputContainer">
           <input
             ref={emailElement}
             id={"password"}
@@ -570,3 +570,7 @@ const Signup = (props) => {
 };
 
 export default Signup;
+
+
+
+
