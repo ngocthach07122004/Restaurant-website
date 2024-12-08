@@ -108,7 +108,7 @@ const Menu = () => {
             khauPhan={product.khauPhan?product.khauPhan:1}
             loaiMonAn={product.loaiMonAn?product.loaiMonAn:""} 
             moTa={product.moTa?(product.moTa.length>70?product.moTa.slice(0, 67)+"...": product.moTa):""}
-            // image={product.image}
+            image={product.anhMonAn}
           />
         ))}
       </div>
