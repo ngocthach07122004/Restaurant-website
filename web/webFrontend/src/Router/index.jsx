@@ -16,6 +16,8 @@ import Discount from "../pages/Admin/Discount"
 import Employee from "../pages/Admin/Employee"
 import BranchManagement from "../pages/Admin/BranchManagement"
 import Success from "../pages/Message/Success";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 // const checkAdminAuth = async () => {
 //     const user = await fetch('/api/check-auth'); 
@@ -37,7 +39,9 @@ const router = createBrowserRouter([
             {path: "menu/", element: <Menu />},
             {path: "menu/details/:id", element: <ProductDetail />},
             {path: "cart/", element: <Cart />},
-            {path: "successPayment/", element: <Success />}
+            {path: "successPayment/", element: <Success />},
+            {path: "about/", element: <About />},
+            {path: "contact/", element: <Contact />},
         ],
     },
     {
@@ -52,7 +56,7 @@ const router = createBrowserRouter([
             {path: "orders/", element: <OrderManagement />},
             {path: "discount/", element: <Discount />},
             {path: "employee/", element: <Employee />},
-            {path: "branch/", element: <BranchManagement />},,
+            {path: "branch/", element: <BranchManagement />},
         ]
     }
 ]);

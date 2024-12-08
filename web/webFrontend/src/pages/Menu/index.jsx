@@ -20,6 +20,7 @@ const Menu = () => {
     fetch('http://localhost:8080/monAn/all')
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setProducts(data);
         setLoading(false);
 
@@ -78,7 +79,9 @@ const Menu = () => {
   }
 
   return (
-    <div className="menu-container">
+    <div className="menu-container"  style={{ 
+      backgroundImage: `url("https://via.placeholder.com/500")` 
+    }}>
       <SearchBar
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
@@ -100,8 +103,11 @@ const Menu = () => {
           <ProductCard
             key={product.maMonAn}
             id={product.maMonAn}
-            name={product.tenMonAn}
+            name={product.tenMonAn?(product.tenMonAn.length>30?product.tenMonAn.slice(0, 27)+"...": product.tenMonAn):""}
             price={product.gia}
+            khauPhan={product.khauPhan?product.khauPhan:1}
+            loaiMonAn={product.loaiMonAn?product.loaiMonAn:""} 
+            moTa={product.moTa?(product.moTa.length>70?product.moTa.slice(0, 67)+"...": product.moTa):""}
             // image={product.image}
           />
         ))}
