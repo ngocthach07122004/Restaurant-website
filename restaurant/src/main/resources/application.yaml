@@ -3,15 +3,14 @@ server:
 spring:
   application:
 #    name: restaurant-service
-    name: defaultdb
+    name: newdb
   datasource:
-    url: jdbc:mysql://my-restaurant-my-restaurant.i.aivencloud.com:17118/defaultdb?ssl-mode=REQUIRED
+    url: jdbc:mysql://my-restaurant-my-restaurant.i.aivencloud.com:17118/newdb?ssl-mode=REQUIRED
     driverClassName: com.mysql.cj.jdbc.Driver
     username: avnadmin
     password: AVNS_4sbbIuBJgW85m8iwWZy
-#    url: "my-restaurant-my-restaurant.i.aivencloud.com"
-#    url: "jdbc:mysql://localhost:3307/restaurant_service_database_v2"
-#
+
+#    url: "jdbc:mysql://localhost:3307/restaurant_service_database_v3"
 #    driverClassName: "com.mysql.cj.jdbc.Driver"
 #    username: root
 #    password: 12345678
@@ -22,9 +21,11 @@ spring:
 #      physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 #      ddl-auto: validate
       ddl-auto: update
+      format_sql: true
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
     show-sql: true
 #    properties:
 #      hibernate:
@@ -41,10 +42,23 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+logging:
+  level:
+    org.hibernate.SQL: DEBUG          # Hiển thị câu lệnh SQL
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 
 
-
+#spring:
+#  jpa:
+#    properties:
+#      hibernate:
+#        format_sql: true   # Định dạng SQL cho dễ đọc
+#    show-sql: true         # Hiển thị SQL trên console
+#logging:
+#  level:
+#    org.hibernate.SQL: DEBUG          # Hiển thị câu lệnh SQL
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 #
 #spring:

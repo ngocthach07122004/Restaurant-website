@@ -21,7 +21,7 @@ public class NhanVienThuNganService {
              NhanVienThuNganMapper nhanVienThuNganMapper;
              public NhanVienThuNgan createNhanVienThuNgan (NhanVienThuNgan nhanvienthungan) {
                    NhanVienThuNgan newNhanVienThuNgan = nhanVienThuNganMapper.toNhanVienThuNgan(nhanvienthungan);
-                   newNhanVienThuNgan.setCccd(nhanvienthungan.getCccd());
+                   newNhanVienThuNgan.setMaNhanVienThuNgan(nhanvienthungan.getMaNhanVienThuNgan());
                     return nhanVienThuNganRepository.save(newNhanVienThuNgan);
              }
              public NhanVienThuNgan getSpecificNhanVienThuNgan (String maNhanVienThuNgan) {
