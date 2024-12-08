@@ -1,5 +1,13 @@
-.navbar {
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+.navbarAdmin {
     width: 100%;
     padding: 20px;
     display: flex;
+    background-image: url(https://img.freepik.com/free-vector/v915-red-blue_53876-174923.jpg?t=st=1733234362~exp=1733237962~hmac=a76b322d9de1d94c9f7104020afc12a23819a1af7709297e2a2f5cfc7ba41271&w=1380);
+    background-size: cover;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
 }   

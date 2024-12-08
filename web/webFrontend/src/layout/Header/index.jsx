@@ -20,7 +20,7 @@ const Header = () => {
     { path: '/promotions', label: 'KHUYẾN MÃI' },
     { path: '/services', label: 'DỊCH VỤ' },
     { path: '/news', label: 'TIN TỨC' },
-    { path: '/stores', label: 'CỬA HÀNG' },
+    { path: '/branch', label: 'CHI NHÁNH' },
     { path: '/contact', label: 'LIÊN HỆ' },
     { path: '/careers', label: 'TUYỂN DỤNG' }
   ];

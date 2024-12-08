@@ -16,6 +16,8 @@ import Discount from "../pages/Admin/Discount"
 import Employee from "../pages/Admin/Employee"
 import BranchManagement from "../pages/Admin/BranchManagement"
 import Success from "../pages/Message/Success";
+import Branch from "../pages/Branch";
+import Recruit from "../pages/Recruit";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 
@@ -39,6 +41,9 @@ const router = createBrowserRouter([
             {path: "menu/", element: <Menu />},
             {path: "menu/details/:id", element: <ProductDetail />},
             {path: "cart/", element: <Cart />},
+            {path: "successPayment/", element: <Success />},
+            {path: "branch/", element: <Branch />},
+            {path: "careers/", element: <Recruit />},
             {path: "successPayment/", element: <Success />},
             {path: "about/", element: <About />},
             {path: "contact/", element: <Contact />},
