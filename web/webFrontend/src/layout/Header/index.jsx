@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, ShoppingBag } from 'lucide-react';
-import logo from '../../assets/jollibee.png';
-import tel from '../../assets/delivery-lg-rs.png';
-import { CartContext } from '../../context/CartContext';
-import './styles.css';
+import React, { useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, ShoppingBag } from "lucide-react";
+import logo from "../../assets/jollibee.png";
+import tel from "../../assets/delivery-lg-rs.png";
+import { CartContext } from "../../context/CartContext";
+import "./styles.css";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,24 +14,24 @@ const Header = () => {
   const location = useLocation();
 
   const navLinks = [
-    { path: '/', label: 'TRANG CHỦ' },
-    { path: '/about', label: 'VỀ PIKABEE' },
-    { path: '/menu', label: 'THỰC ĐƠN' },
-    { path: '/promotions', label: 'KHUYẾN MÃI' },
-    { path: '/services', label: 'DỊCH VỤ' },
-    { path: '/news', label: 'TIN TỨC' },
-    { path: '/branch', label: 'CHI NHÁNH' },
-    { path: '/contact', label: 'LIÊN HỆ' },
-    { path: '/careers', label: 'TUYỂN DỤNG' }
+    { path: "/", label: "TRANG CHỦ" },
+    { path: "/about", label: "VỀ PIKABEE" },
+    { path: "/menu", label: "THỰC ĐƠN" },
+    { path: "/promotions", label: "KHUYẾN MÃI" },
+    { path: "/services", label: "DỊCH VỤ" },
+    { path: "/news", label: "TIN TỨC" },
+    { path: "/branch", label: "CHI NHÁNH" },
+    { path: "/contact", label: "LIÊN HỆ" },
+    { path: "/careers", label: "TUYỂN DỤNG" },
   ];
 
-  const userData = localStorage.getItem('userdata');
+  const userData = localStorage.getItem("userdata");
   const username = userData ? JSON.parse(userData).username : "---";
 
   return (
     <>
       {/* Top Bar */}
-      <div className="d-none d-lg-block" style={{ backgroundColor: '#FFB700' }}>
+      <div className="d-none d-lg-block" style={{ backgroundColor: "#FFB700" }}>
         <div className="container d-flex justify-content-end py-2 gap-4">
           <div className="d-flex gap-3 align-items-center">
             <button className="btn btn-link text-danger p-0">VN</button>
@@ -44,43 +44,125 @@ const Header = () => {
           </div>
           <div className="d-flex gap-3 align-items-center">
             <i className="bi bi-person-fill text-danger"></i>
-            <span className="text-danger">
-              <a
-                onClick={() => navigate('signup')}
-                style={{ color: 'black', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
-                onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
-                onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
-              >
-                ĐĂNG KÝ
-              </a>
-              /
-              <a
-                onClick={() => navigate('signin')}
-                style={{ color: 'black', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}
-                onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
-                onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
-              >
-                ĐĂNG NHẬP
-              </a>
-            </span>
-            <Link to='/cart'>
-              <div className='nav-bag'>
-                <ShoppingBag className='bi bi-handbag-fill' size={24} />
-                <span className='badge bg-danger rounded-pill bag-quantity'>
-                  <span>{cartItems.length}</span>
-                </span>
-              </div>
-            </Link>
+            {localStorage.getItem("login") !== "success" && (
+              <span className="text-danger">
+                <a
+                  onClick={() => navigate("signup")}
+                  style={{
+                    color: "black",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    textDecoration: "none",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.textDecoration = "underline")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.textDecoration = "none")
+                  }
+                >
+                  ĐĂNG KÝ
+                </a>
+                /
+                <a
+                  onClick={() => navigate("signin")}
+                  style={{
+                    color: "black",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    textDecoration: "none",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.textDecoration = "underline")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.textDecoration = "none")
+                  }
+                >
+                  ĐĂNG NHẬP
+                </a>
+              </span>
+            )}
+            <div
+              onClick={() => {
+                if (localStorage.getItem("login") === "success") {
+                  navigate("/cart");
+                } else {
+                  navigate("/signin");
+                }
+              }}
+            >
+              <Link to="/cart">
+                <div className="nav-bag">
+                  <ShoppingBag className="bi bi-handbag-fill" size={24} />
+                  <span className="badge bg-danger rounded-pill bag-quantity">
+                    <span>{cartItems.length}</span>
+                  </span>
+                </div>
+              </Link>
+            </div>
 
-            <Link to='/profile'>
-              {username}
-            </Link>
+            {/* <Link to="/profile">{localStorage.getItem("name")}</Link>
+
+            <p
+              onClick={() => {
+                localStorage.clear(); 
+                navigate("/");
+              }}
+            >
+              signout
+            </p> */}
+
+            {localStorage.getItem("login") === "success" && <span className="text-danger">
+                <a
+                  onClick={() => navigate("/profile")}
+                  style={{
+                    color: "black",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    textDecoration: "none",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.textDecoration = "underline")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.textDecoration = "none")
+                  }
+                >
+                  {localStorage.getItem("name")}
+                </a>
+                /
+                <a
+                  onClick={() => {localStorage.clear(); navigate("/");}}
+                  style={{
+                    color: "black",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    textDecoration: "none",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.textDecoration = "underline")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.textDecoration = "none")
+                  }
+                >
+                  Đăng xuất
+                </a>
+              </span>}
           </div>
         </div>
       </div>
 
       {/* Main Navigation */}
-      <nav className="main-nav navbar navbar-expand-lg" style={{ backgroundColor: '#E31837' }}>
+      <nav
+        className="main-nav navbar navbar-expand-lg"
+        style={{ backgroundColor: "#E31837" }}
+      >
         <div className="container-fluid">
           {/* Mobile Menu Button */}
           <button
@@ -93,23 +175,23 @@ const Header = () => {
 
           {/* Logo - Centered on mobile */}
           <Link className="navbar-brand mx-auto mx-lg-0" to="/">
-            <img
-              src={logo}
-              alt="Jollibee Logo"
-              height="80"
-            />
+            <img src={logo} alt="Jollibee Logo" height="80" />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}>
+          <div
+            className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
+          >
             <ul className="nav-list navbar-nav me-auto mb-2 mb-lg-0">
               {navLinks.map(({ path, label }) => (
                 <li key={path} className="nav-item">
                   <Link
                     to={path}
-                    className={`nav-link ${location.pathname === path ? 'active' : ''}`}
+                    className={`nav-link ${
+                      location.pathname === path ? "active" : ""
+                    }`}
                   >
-                    <span className='fw-bold fs-6'>{label}</span>
+                    <span className="fw-bold fs-6">{label}</span>
                   </Link>
                 </li>
               ))}
