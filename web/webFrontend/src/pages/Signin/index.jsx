@@ -16,6 +16,7 @@ const Signin = (props) => {
       "tenDangNhap": username,
       "matKhau": password
     }
+    console.log(payload);
     fetch(url, {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
@@ -25,13 +26,17 @@ const Signin = (props) => {
     .then(data => {
 
       console.log(data);
+      
       // localStorage.setItem('userdata', JSON.stringify(data));
       if(data['message'] === 'success') {
+        localStorage.setItem('login', 'success');
+        localStorage.setItem('name',data['entity']['ho'] + ' ' + data['entity']['ten']);
         localStorage.setItem('isLogin', true);
         localStorage.setItem('cccd', data['entity'].cccd);
         navigate('/')
       }
       else {
+        localStorage.setItem('login', 'fail');
         message.error('Sai tên đăng nhập hoặc mật khẩu!')
       }
     })
@@ -39,7 +44,7 @@ const Signin = (props) => {
   }
 
   return (
-    <div className={'container-fuild mainContainer'}>
+    <div className='container-fuild loginmainContainer'>
       <div className={'titleContainer'}>
         <div>Login</div>
       </div>

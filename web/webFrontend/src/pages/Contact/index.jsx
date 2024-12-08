@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import okhand from '../../assets/okhand.jpg'
 const Contact = () => {
   return (
-    <section class="bg-light py-3 py-md-5">
+    <section class="py-3 py-md-5">
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">

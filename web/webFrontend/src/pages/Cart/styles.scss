@@ -1,8 +1,12 @@
-// styles.scss
 .cart-page {
     font-family: 'Inter', sans-serif;
     background-color: #f8f9fa;
     padding: 2rem 0;
+    padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
 
     .card {
         max-width: 1200px;
@@ -11,6 +15,8 @@
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         overflow: hidden;
+        display: flex;
+        height: auto;
     }
 
     .cart {
@@ -171,7 +177,6 @@
         }
     }
 
-    // Responsive adjustments
     @media (max-width: 768px) {
         .card {
             flex-direction: column;
@@ -225,7 +230,6 @@
     }
 }
 
-// Animation 
 .cart-page {
   transition: transform 0.5s ease-in-out;
 }

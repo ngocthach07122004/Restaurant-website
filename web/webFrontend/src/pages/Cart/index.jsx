@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { MoveLeft, Trash2, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "./styles.scss";
+import './styles.scss';
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
@@ -18,21 +18,24 @@ const Cart = () => {
     const orderData = {
       thoiGianDat: new Date().toISOString().split("T")[0],
       tongGiaTien: total,
-      listMaKhuyenMai: [
-        { idKhuyenMai: "KM1" },
-        { idKhuyenMai: "KM2" },
-        { idKhuyenMai: "KM3" },
-      ],
-      maChiNhanh: { maChiNhanh: "1111" },
-      cccdKhachHang: { cccd: "2222" },
-      cccdNhanVienThuNgan: { cccd: "3333" },
+      // listMaKhuyenMai: [
+      //   { idKhuyenMai: "KM1" },
+      //   { idKhuyenMai: "KM2" },
+      //   { idKhuyenMai: "KM3" },
+      // ],
+      listMaKhuyenMai: [],
+      maChiNhanh: { maChiNhanh: "CN001" },
+      cccdKhachHang: { cccd: localStorage.getItem('cccd') },
+      cccdNhanVienThuNgan: { maNhanVienThuNgan: "TN016" },
       tinhTrangThanhToan: "DA THANH TOAN",
-      phuongThucThanhToan: ["ABC", "EFG", "JBM"],
+      phuongThucThanhToan: ["ABC"],
       listMonAnGioHang: cartItems.map((item) => ({
         monAn: { maMonAn: item.id },
         soLuong: item.quantity,
       })),
     };
+
+    // console.log(orderData);
 
     fetch("http://localhost:8080/donMonAn/create", {
       method: "POST",
@@ -63,7 +66,7 @@ const Cart = () => {
   }
 
   return (
-    <div className={`cart-page container ${isSliding ? "slide-out" : ""}`}>
+    <div className={`cart-page container-fluid ${isSliding ? "slide-out" : ""}`}>
       <div className="card w-100">
         <div className="row">
           <div className="col-md-8 cart">

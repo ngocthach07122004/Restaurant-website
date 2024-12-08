@@ -6,6 +6,7 @@ import { MoveLeft, Star } from 'lucide-react';
 import './styles.scss';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { CartContext } from '../../context/CartContext';
+import { ThumbsUp, ThumbsDown, Reply } from 'lucide-react'
 
 function Product() {
     const { id } = useParams();
@@ -34,7 +35,7 @@ function Product() {
         id: product.maMonAn,
         name: product.tenMonAn,
         price: product.gia,
-        // image: product.image,
+        image: product.anhMonAn,
       }  
       addToCart(productToAdd);
     };
@@ -64,9 +65,9 @@ function Product() {
                         <MoveLeft /> Back to Menu
                     </NavLink>
                     <div className="row">
-                        <div className="col-md-6 text-center">
+                        <div className="col-md-6 text-center justify-content-center align-items-center">
                             <img
-                                src={product.image || 'https://www.recipetineats.com/wp-content/uploads/2019/04/Beef-Pho_3.jpg'}
+                                src={product.anhMonAn || 'https://www.recipetineats.com/wp-content/uploads/2019/04/Beef-Pho_3.jpg'}
                                 alt={product.tenMonAn || "Product"}
                                 className="product-image img-fluid"
                             />
@@ -82,7 +83,7 @@ function Product() {
                                 <h3 className="product-price">
                                     {product.gia} VND
                                 </h3>
-                                <p className="product-description">{product.moTa}</p>
+                                {/* <p className="product-description">{product.moTa}</p> */}
                                 <button className="btn btn-buy">
                                     Buy Now
                                 </button>
@@ -93,13 +94,46 @@ function Product() {
                             <div className="product-details-section">
                                 <h3>Chi tiết</h3>
                                 <p className="text-muted">
-                                    Chi tiết sản phẩm sẽ được cập nhật chi tiết về món ăn, 
-                                    nguyên liệu, và thông tin bổ sung.
+                                    {product.moTa}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Comments box */}
+            <div className="row d-flex justify-content-center mt-5">
+                <div className="col-md-11 col-lg-9 col-xl-7">
+                    <div className="d-flex flex-start mb-4">
+                        <img 
+                            src="https://th.bing.com/th/id/OIP.vSLjVawLO3L3rbX3WtbJNwHaHa?rs=1&pid=ImgDetMain"
+                            alt="avatar"
+                            className="rounded-circle shadow-1-strong me-3"
+                            width="60"
+                            height="60"
+                        />
+                        <div className="card w-100">
+                            <div className="card-body p-4">
+                                <div>
+                                    <h5>Le Huy</h5>
+                                    <p className="small">3 hours ago</p>
+                                    <p>
+                                        Cứ mỗi buổi sáng, từ sáu giờ cho đến bảy giờ, chỉ trong quảng ấy thôi, vì ngoài giờ gánh phở hết, chung quanh nồi nước phở, ta thấy tụm năm tụm ba, các bệnh nhân đàn ông và đàn bà, các bác gác san, các thầy y tá, và cả đến các học sinh trường Thuốc nữa. Chừng ấy người đều hợp lòng trong sự thưởng thức món quà ngon, nâng cách ăn phở lên đến một nghệ thuật đáng kính.
+                                    </p>
+                                    <div className="d-flex justify-content-between align-items-center">
+                                        <div className="d-flex align-items-center">
+                                            <button className="btn btn-outline-primary"><ThumbsUp /></button>
+                                            <button className="btn btn-outline-danger ms-3"><ThumbsDown /></button>
+                                        </div>
+                                        <button className="btn btn-outline-primary"><Reply /></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

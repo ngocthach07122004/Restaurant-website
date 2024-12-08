@@ -11,8 +11,6 @@ begin
      update DonMonAn
      set tongGiaTien = tongGia 
      where maDon = new.maDon;
-
-     
 end; 
 
 
@@ -77,3 +75,9 @@ begin
     set ChiNhanh.doanhThu = ChiNhanh.doanhThu - old.tongGiaTien + new.tongGiaTien
     where ChiNhanh.maChiNhanh = DonMonAn.maChiNhanh; 
 end; 
+
+
+
+
+
+

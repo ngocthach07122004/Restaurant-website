@@ -80,13 +80,14 @@ const Menu = () => {
 
   return (
     <div className="menu-container"  style={{ 
-      backgroundImage: `url("https://via.placeholder.com/500")` 
+      backgroundImage: `url("https://plus.unsplash.com/premium_photo-1663852297514-2211cfb8ae9b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+      backgoundSize: "cover",
     }}>
       <SearchBar
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="🔎 Tìm kiếm sản phẩm..."
-      />
+      /> 
       <FilterBar
         categories={categories}
         selectedCategory={selectedCategory}
@@ -108,7 +109,7 @@ const Menu = () => {
             khauPhan={product.khauPhan?product.khauPhan:1}
             loaiMonAn={product.loaiMonAn?product.loaiMonAn:""} 
             moTa={product.moTa?(product.moTa.length>70?product.moTa.slice(0, 67)+"...": product.moTa):""}
-            // image={product.image}
+            image={product.anhMonAn}
           />
         ))}
       </div>
