@@ -61,7 +61,7 @@ const ProductCard = (props) => {
           <p className='button-container mt-auto'>{moTa}</p>
 
           <div class="button-container mt-auto">
-            <button class="btn btn-danger" onClick={handleAddToCart}>Add to cart</button>
+            <button class="btnAddToCart btn btn-danger" onClick={handleAddToCart}>Add to cart</button>
           </div>
       </div>
       
