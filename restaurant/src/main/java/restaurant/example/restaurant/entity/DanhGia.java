@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 @Data
@@ -24,7 +24,7 @@ public class DanhGia {
     String cccdKhachHang;
     String maMonAn;
     String noiDung;
-    LocalDateTime  thoiGian;
+    LocalDate  thoiGian;
 
 
 }

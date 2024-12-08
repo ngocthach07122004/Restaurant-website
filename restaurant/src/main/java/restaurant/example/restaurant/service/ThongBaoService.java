@@ -15,8 +15,9 @@ import restaurant.example.restaurant.helper.EntityHelper;
 import restaurant.example.restaurant.mapper.ThongBaoMapper;
 import restaurant.example.restaurant.repository.ThongBaoRepository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 

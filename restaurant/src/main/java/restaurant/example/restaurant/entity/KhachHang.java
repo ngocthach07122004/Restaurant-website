@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -22,7 +22,7 @@ public class KhachHang {
      @OneToOne
      @JoinColumn(name = "cccd", referencedColumnName = "cccd")
     ThongTin cccd   ;
-	LocalDateTime ngayThamGia ;
+	LocalDate ngayThamGia ;
 	String loaiKhachHang   ;
 
     @OneToMany(mappedBy = "cccdKhachHang")

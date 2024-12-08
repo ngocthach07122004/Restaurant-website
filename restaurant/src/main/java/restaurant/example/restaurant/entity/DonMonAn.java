@@ -9,7 +9,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class DonMonAn {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     String maDon 		 ;
-    LocalDateTime thoiGianDat 		 ;
+    LocalDate thoiGianDat 		 ;
     BigDecimal tongGiaTien 	;
 
     @OneToMany(mappedBy = "maDon")
