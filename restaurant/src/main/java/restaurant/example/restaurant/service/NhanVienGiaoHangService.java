@@ -1,12 +1,16 @@
 package restaurant.example.restaurant.service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
+import restaurant.example.restaurant.entity.NhanVien;
 import restaurant.example.restaurant.entity.NhanVienGiaoHang;
 import restaurant.example.restaurant.exception.AppException;
 import restaurant.example.restaurant.exception.ErrorCode;
+import restaurant.example.restaurant.helper.EntityHelper;
 import restaurant.example.restaurant.mapper.NhanVienGiaoHangMapper;
 import restaurant.example.restaurant.repository.NhanVienGiaoHangRepository;
 
@@ -19,9 +23,25 @@ import java.util.List;
 public class NhanVienGiaoHangService {
              NhanVienGiaoHangRepository nhanVienGiaoHangRepository;
              NhanVienGiaoHangMapper nhanVienGiaoHangMapper;
+    EntityManager entityManager;
+
+    EntityHelper entityHelper;
+
+    @Transactional
              public NhanVienGiaoHang createNhanVienGiaoHang (NhanVienGiaoHang nhanviengiaohang) {
                    NhanVienGiaoHang newNhanVienGiaoHang = nhanVienGiaoHangMapper.toNhanVienGiaoHang(nhanviengiaohang);
                    newNhanVienGiaoHang.setMaNhanVienGiaoHang(nhanviengiaohang.getMaNhanVienGiaoHang());
+                   if (nhanviengiaohang.getCccd() != null) {
+                    NhanVien cccd = entityHelper.findOrMerge_OTO(
+                            entityManager,
+                            nhanviengiaohang.getCccd(),
+                            NhanVien.class,
+                            nhanviengiaohang.getCccd().getMaNhanVien(),
+                            "NhanVien with ID "
+                    );
+                       newNhanVienGiaoHang.setCccd(cccd);
+                    }
+                    entityManager.persist(newNhanVienGiaoHang);
                    return nhanVienGiaoHangRepository.save(newNhanVienGiaoHang);
              }
              public NhanVienGiaoHang getSpecificNhanVienGiaoHang (String maNhanVienGiaoHang) {

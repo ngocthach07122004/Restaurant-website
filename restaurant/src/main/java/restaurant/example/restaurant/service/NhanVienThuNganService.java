@@ -1,12 +1,16 @@
 package restaurant.example.restaurant.service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
+import restaurant.example.restaurant.entity.NhanVien;
 import restaurant.example.restaurant.entity.NhanVienThuNgan;
 import restaurant.example.restaurant.exception.AppException;
 import restaurant.example.restaurant.exception.ErrorCode;
+import restaurant.example.restaurant.helper.EntityHelper;
 import restaurant.example.restaurant.mapper.NhanVienThuNganMapper;
 import restaurant.example.restaurant.repository.NhanVienThuNganRepository;
 
@@ -19,9 +23,25 @@ import java.util.List;
 public class NhanVienThuNganService {
              NhanVienThuNganRepository nhanVienThuNganRepository;
              NhanVienThuNganMapper nhanVienThuNganMapper;
+    EntityManager entityManager;
+
+    EntityHelper entityHelper;
+
+    @Transactional
              public NhanVienThuNgan createNhanVienThuNgan (NhanVienThuNgan nhanvienthungan) {
                    NhanVienThuNgan newNhanVienThuNgan = nhanVienThuNganMapper.toNhanVienThuNgan(nhanvienthungan);
                    newNhanVienThuNgan.setMaNhanVienThuNgan(nhanvienthungan.getMaNhanVienThuNgan());
+        if (nhanvienthungan.getCccd() != null) {
+            NhanVien cccd = entityHelper.findOrMerge_OTO(
+                    entityManager,
+                    nhanvienthungan.getCccd(),
+                    NhanVien.class,
+                    nhanvienthungan.getCccd().getMaNhanVien(),
+                    "NhanVien with ID "
+            );
+            newNhanVienThuNgan.setCccd(cccd);
+        }
+        entityManager.persist(newNhanVienThuNgan);
                     return nhanVienThuNganRepository.save(newNhanVienThuNgan);
              }
              public NhanVienThuNgan getSpecificNhanVienThuNgan (String maNhanVienThuNgan) {

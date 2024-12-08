@@ -18,8 +18,8 @@ public class NhanVienPhucVu {
     @Id
      String maNhanVienPhucVu;
      @OneToOne
-             @JoinColumn(name ="maNhanVien",referencedColumnName = "maNhanVien")
-    NhanVien maNhanVien  ;
+             @JoinColumn(name ="cccd",referencedColumnName = "maNhanVien")
+    NhanVien cccd  ;
 
     
 }
