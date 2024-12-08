@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { MoveLeft, Trash2, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "./styles.scss";
+import './styles.scss';
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
@@ -63,7 +63,7 @@ const Cart = () => {
   }
 
   return (
-    <div className={`cart-page container ${isSliding ? "slide-out" : ""}`}>
+    <div className={`cart-page container-fluid ${isSliding ? "slide-out" : ""}`}>
       <div className="card w-100">
         <div className="row">
           <div className="col-md-8 cart">

@@ -34,7 +34,7 @@ function Product() {
         id: product.maMonAn,
         name: product.tenMonAn,
         price: product.gia,
-        // image: product.image,
+        image: product.anhMonAn,
       }  
       addToCart(productToAdd);
     };
@@ -64,9 +64,9 @@ function Product() {
                         <MoveLeft /> Back to Menu
                     </NavLink>
                     <div className="row">
-                        <div className="col-md-6 text-center">
+                        <div className="col-md-6 text-center justify-content-center align-items-center">
                             <img
-                                src={product.image || 'https://www.recipetineats.com/wp-content/uploads/2019/04/Beef-Pho_3.jpg'}
+                                src={product.anhMonAn || 'https://www.recipetineats.com/wp-content/uploads/2019/04/Beef-Pho_3.jpg'}
                                 alt={product.tenMonAn || "Product"}
                                 className="product-image img-fluid"
                             />
@@ -82,7 +82,7 @@ function Product() {
                                 <h3 className="product-price">
                                     {product.gia} VND
                                 </h3>
-                                <p className="product-description">{product.moTa}</p>
+                                {/* <p className="product-description">{product.moTa}</p> */}
                                 <button className="btn btn-buy">
                                     Buy Now
                                 </button>
@@ -93,8 +93,7 @@ function Product() {
                             <div className="product-details-section">
                                 <h3>Chi tiết</h3>
                                 <p className="text-muted">
-                                    Chi tiết sản phẩm sẽ được cập nhật chi tiết về món ăn, 
-                                    nguyên liệu, và thông tin bổ sung.
+                                    {product.moTa}
                                 </p>
                             </div>
                         </div>
