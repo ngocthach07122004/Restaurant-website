@@ -63,7 +63,11 @@ const Recruit = () => {
 
   return (
     <div className="recruit-page">
-      <div className="card">
+      <div className="cardRecruit">
+        <img src="https://scontent.fsgn21-1.fna.fbcdn.net/v/t39.30808-6/432759400_938494181612417_8512233600984010341_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=O0TJOH-TqCEQ7kNvgH8ShLw&_nc_zt=23&_nc_ht=scontent.fsgn21-1.fna&_nc_gid=A5dybqVC5_8_xPQ3IyLQKZq&oh=00_AYBKOHi8gQHYWMZ5UaMXJADwSo-dOGqtwqIIdc390dTXAQ&oe=675B3C45"
+          className="w-100"
+          alt="Sample photo"
+        />
         <h1>Come join us</h1>
         <form onSubmit={handleSubmit} noValidate validated={validated.toString()} className={`needs-validation ${validated ? 'was-validated' : ''}`}>
           <div className="form-group">
