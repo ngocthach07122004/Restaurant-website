@@ -30,10 +30,12 @@ public class ChiNhanh {
     LocalDate  thoiGianDongCua;
 
     @OneToMany(mappedBy = "chiNhanh")
+    @JsonIgnore
     List<NhanVienQuanLy> listNhanVienQuanLy;
 
     @ManyToOne
     @JoinColumn(name="cccdQuanTriVien")
+
     QuanTriVien cccdQuanTriVien   ;
 
     @OneToMany(mappedBy = "maChiNhanh")
@@ -41,9 +43,11 @@ public class ChiNhanh {
     List<DonMonAn> listDonMonAn;
 
     @OneToMany(mappedBy = "maChiNhanh")
+    @JsonIgnore
     List<MaKhuyenMai> listMaKhuyenMai;
 
     @OneToMany(mappedBy = "maChiNhanh")
+            @JsonIgnore
     List<SuKienUuDai> listSuKienUuDai;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -52,6 +56,7 @@ public class ChiNhanh {
             inverseJoinColumns = @JoinColumn(name = "maMonAnChiNhanh")
 
     )
+    @JsonIgnore
     List<MonAnChiNhanh> listMonAnChiNhanh;
 
 
