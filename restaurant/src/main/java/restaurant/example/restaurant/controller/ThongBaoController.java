@@ -40,10 +40,11 @@ public class ThongBaoController {
      public String deleteThongBao (@PathVariable String maThongBao) {
             return thongBaoService.deleteThongBao(maThongBao);
      }
-    @MessageMapping("/sendNotification")
+    @MessageMapping("/send-notification")
     @SendTo("/topic/notifications")
-    public ThongBao sendNotification(ThongBao notification) {
-        return notification;
+    public ThongBao broadcastNotification(ThongBao thongBao) {
+
+        return thongBao;
     }
 
 }
