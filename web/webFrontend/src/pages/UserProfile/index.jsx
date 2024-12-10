@@ -191,13 +191,6 @@ const Profile = () => {
                       <button onClick={showEditModal} type="button" className="btn btn-primary">
                         Edit
                       </button>
-                      <button
-                        type="button"
-                        onClick={() => navigate("/student/printing_history")}
-                        className="btn btn-outline-primary ms-1"
-                      >
-                        View printing log
-                      </button>
                     </div>
                   </div>
                 </div>
