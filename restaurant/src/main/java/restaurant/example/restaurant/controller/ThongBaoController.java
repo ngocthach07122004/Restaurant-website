@@ -3,6 +3,8 @@ package restaurant.example.restaurant.controller;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 import restaurant.example.restaurant.entity.ThongBao;
 import restaurant.example.restaurant.service.ThongBaoService;
@@ -38,4 +40,10 @@ public class ThongBaoController {
      public String deleteThongBao (@PathVariable String maThongBao) {
             return thongBaoService.deleteThongBao(maThongBao);
      }
+    @MessageMapping("/sendNotification")
+    @SendTo("/topic/notifications")
+    public ThongBao sendNotification(ThongBao notification) {
+        return notification;
+    }
+
 }

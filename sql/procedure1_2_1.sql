@@ -13,21 +13,33 @@ in tenDangNhap_Arg varchar(255),
 in cccdQuanTriVien_Arg varchar(255)
 )
 begin
-    if exists ( select 1 from ThongTin where cccd_Arg = ThongTin.cccd  ) 
-    then 
-       SIGNAL SQLSTATE '45000'
-       SET MESSAGE_TEXT = 'Căn cước đã tồn tại trong hệ thống, vui lòng kiểm tra lại số căn cước'; 
-    end if;
+   
     if cccd_Arg is null or cccd_Arg = ''
     then 
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Trường này không được để trống, đây là khóa của dữ liệu'; 
+    end if;
+     if exists ( select 1 from ThongTin where cccd_Arg = ThongTin.cccd  ) 
+    then 
+       SIGNAL SQLSTATE '45000'
+       SET MESSAGE_TEXT = 'Căn cước đã tồn tại trong hệ thống, vui lòng kiểm tra lại số căn cước'; 
     end if;
 
     if CHAR_LENGTH(tenDangNhap_Arg) <6 and tenDangNhap_Arg not like ' %'
     then 
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Tên đăng nhập phải lớn hơn 5 ký tự'; 
+    end if;
+    if exists ( select 1 from ThongTin where tenDangNhap_Arg = tenDangNhap ) 
+    then
+       SIGNAL SQLSTATE '45000'
+       SET MESSAGE_TEXT = 'Tên đăng nhập đã tồn tại trong hệ thống, vui lòng chọn tên đăng nhập khác '; 
+    end if;
+
+    if exists ( select 1 from ThongTin where email_Arg = email ) 
+    then
+       SIGNAL SQLSTATE '45000'
+       SET MESSAGE_TEXT = 'Email đã tồn tại trong hệ thống, vui lòng chọn một email khác'; 
     end if;
 
     if CHAR_LENGTH(matKhau_Arg) <8 
@@ -43,23 +55,25 @@ begin
        SET MESSAGE_TEXT = 'Ngày sinh phải hợp lệ'; 
     end if;
 
-    if (maTaiKhoan_Arg = 'user')
-    then (
-      if (ngaySinh_Arg > CURDATE())
-      then
-       SIGNAL SQLSTATE '45000'
-       SET MESSAGE_TEXT = 'Ngày sinh phải lớn hơn ngày hiện tại';    
-    )
-    else
-    then
-       if ()
-    end if; 
+     IF (maTaiKhoan_Arg = 'user') THEN
+        IF (ngaySinh_Arg > CURDATE()) THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Ngày sinh phải nhỏ hơn hoặc bằng ngày hiện tại';
+        ELSE
+            IF (TIMESTAMPDIFF(YEAR, ngaySinh_Arg, CURDATE()) < 18) THEN
+                SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Bạn chưa đủ 18 tuổi để đăng ký thông tin';
+            END IF;
+        END IF;
+    END IF;
 
     if !REGEXP_LIKE(email_Arg, '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
     then 
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Email phải hợp lệ và đúng cú pháp định dạng email'; 
     end if;
+
+    
     
     
     
@@ -77,7 +91,6 @@ tenDangNhap_Arg,
 cccdQuanTriVien_Arg); 
     
 end; 
-
 
 
 

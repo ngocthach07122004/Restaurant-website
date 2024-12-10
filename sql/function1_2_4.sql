@@ -11,7 +11,7 @@ begin
    end if; 
    
    
-   select NhanVien.cccd into maNhanVien 
+   select NhanVien.maNhanVien into maNhanVien 
    from NhanVien join ThongTin on NhanVien.cccd = ThongTin.cccd
    where ThongTin.ten = tenNhanVien
    limit 1; 
@@ -19,11 +19,11 @@ begin
    then return tongGiaTien;
    end if;
    
-   select sum(MonAn.gia) into tongGiaTien from 
+   select sum(MonAn.gia * MonAnChiNhanh.soLuongMonAn) into tongGiaTien from 
    ChiNhanh join MonAnThuocVe on ChiNhanh.maChiNhanh = MonAnThuocVe.maChiNhanh
    join MonAn on MonAnThuocVe.maMonAn = MonAn.maMonAn 
    where ChiNhanh.maChiNhanh = (select NhanVien.maChiNhanh 
-   from NhanVien where NhanVien.cccd = maNhanVien ) 
+   from NhanVien where NhanVien.maNhanVien = maNhanVien ) 
    group by ChiNhanh.maChiNhanh;
 
    return tongGiaTien;

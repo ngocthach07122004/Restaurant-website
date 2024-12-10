@@ -132,33 +132,15 @@ public class ThongTinService {
                  }
 
              }
+
+
     @KafkaListener(topics = "notification-topic", groupId = "notification-group")
     @Transactional
     public void consumeNotification(ThongBao thongBao) {
         thongBao.setListThongTin(thongTinRepository.findAll());
 //        log.info("THONGBAO {}", thongBao);
         ThongBao responseThongBao =  thongBaoService.createThongBao(thongBao);
-//        List<ThongTin> listThongTin = thongTinRepository.findAll();
-        // Lấy tất cả người dùng từ database
-//        for (ThongTin thongTin : listThongTin) {
-//            // Thêm thông báo vào danh sách thông báo của người dùng
-////            thongTin.getListThongBao().add(thongBao);
-//
-//            List<ThongBao> listThongBao =  thongTin.getListThongBao();
-//            if(listThongBao == null){
-//                 listThongBao = new ArrayList<>();
-//            }
-//
-//            listThongBao.add(responseThongBao);
-//
-//            log.info("LIST {}",listThongBao);
-//
-//            thongTin.setListThongBao(listThongBao);
-//            log.info("THONGTIN {}",thongTin);
-//             thongTinRepository.save(thongTin);
-//        }
 
-//        log.info("NOTIFICATION {}", responseThongBao);
         messagingTemplate.convertAndSend("/topic/notifications", thongBao);
     }
     public List<ThongBao> getAllThongBaoOfThongTin (String cccd ){
