@@ -20,21 +20,20 @@ const BranchMap = () => {
   const fetchBranchData = async () => {
     try {
       const response = await axios.get('http://localhost:8080/chinhanh/all');
-      console.log(response.data);
-      console.log(typeof response.data);
-      const data = await response.data.json();
-      setBranches(data);
+      setBranches(response.data);
     } catch (error) {
       console.error('Error fetching branch data:', error);
     }
-  }
+  };
 
   useEffect(() => {
-    // Fetch branch data from the API
     fetchBranchData();
   }, []);
 
-  // Generate random coordinates within Ho Chi Minh City bounds
+  const handleApply = (branchId, branchName) => {
+    navigate("/careers", { state: { branchId, branchName } });
+  };
+
   const getRandomCoordinates = () => {
     const latMin = 10.762622;
     const latMax = 10.823099;
@@ -43,12 +42,6 @@ const BranchMap = () => {
     const lat = Math.random() * (latMax - latMin) + latMin;
     const lng = Math.random() * (lngMax - lngMin) + lngMin;
     return [lat, lng];
-  };
-
-  const handleApply = (branchId, branchName) => {
-    navigate("/careers", {
-      state: { branchId, branchName },
-    });
   };
 
   return (
@@ -60,7 +53,7 @@ const BranchMap = () => {
       {branches.map((branch, index) => (
         <Marker
           key={branch.maChiNhanh}
-          position={[branch.latitude || 10.762622, branch.longitude || 106.660172]} // Fallback to default coordinates
+          position={getRandomCoordinates()}
           icon={L.icon({
             iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-red.png',
             iconSize: [38, 95],
@@ -74,7 +67,6 @@ const BranchMap = () => {
           <Popup>
             <div>
               <strong>{branch.tenChiNhanh}</strong>
-              <br />
               <img
                 src={branch.imageUrl || IMAGE_URL[index % IMAGE_URL.length]}
                 alt={`Image of ${branch.tenChiNhanh}`}
@@ -90,12 +82,8 @@ const BranchMap = () => {
                 <strong>Close:</strong> {new Date(branch.thoiGianDongCua).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </p>
               <div>
-                <button onClick={() => navigate("/menu")} className="btn btn-danger">
-                  Đặt món
-                </button>
-                <button onClick={() => handleApply(branch.maChiNhanh, branch.tenChiNhanh)} className="ms-3 btn btn-danger">
-                  Apply
-                </button>
+                <button onClick={() => navigate("/menu")} className="btn btn-danger">Đặt món</button>
+                <button onClick={() => handleApply(branch.maChiNhanh, branch.tenChiNhanh)} className="ms-3 btn btn-danger">Apply</button>
               </div>
             </div>
           </Popup>
