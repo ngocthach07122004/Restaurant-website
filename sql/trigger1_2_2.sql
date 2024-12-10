@@ -2,7 +2,7 @@ create trigger tinh_TongGiaTien_DonMonAn
 before insert on DonMonAn 
 for each row
 begin 
-     declare tongGia decimal(15,2);
+     declare tongGia decimal(15,2) default 0 ;
      select sum(BaoGom.soLuongMonAn*MonAn.gia) into tongGia from 
      MonAn join BaoGom on MonAn.maMonAn = MonAn.maMonAn 
      join DonMonAn on BaoGom.maDon = DonMonAn.maDon
@@ -12,6 +12,12 @@ begin
      set tongGiaTien = tongGia 
      where maDon = new.maDon;
 end; 
+
+create trigger tinh_TongGiaTien_DonMonAn 
+before insert on DonMonAn 
+for each row 
+begin
+    declare tongGia decimal(15,2) default 0 ;
 
 
 

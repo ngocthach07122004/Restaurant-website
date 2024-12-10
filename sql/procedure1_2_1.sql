@@ -1,16 +1,16 @@
 create procedure handler_Insert_Table_ThongTin
 (
-     in cccd_Arg varchar(100),
-in tenDangNhap_Arg varchar(100),
-in matKhau_Arg varchar(100),
-in ho_Arg varchar(100),
-in ten_Arg varchar(100),
-in ngaySinh_Arg date,
-in email_Arg varchar(100),
+     in cccd_Arg varchar(255),
+in anhThongTin_Arg varchar(255),
+in email_Arg varchar(255),
 in gioiTinh_Arg char(1),
-in soDienThoai_Arg varchar(100),
-in maTaiKhoan_Arg varchar(100),
-in cccdQuanTriVien_Arg varchar(100)
+in ho_Arg varchar(255),
+in maTaiKhoan_Arg varchar(255),
+in matKhau_Arg varchar(255),
+in ngaySinh_Arg date,
+in ten_Arg varchar(255),
+in tenDangNhap_Arg varchar(255),
+in cccdQuanTriVien_Arg varchar(255)
 )
 begin 
     if cccd_Arg is null or cccd_Arg = ''
@@ -44,27 +44,21 @@ begin
        SET MESSAGE_TEXT = 'Email phải hợp lệ và đúng cú pháp định dạng email'; 
     end if;
     
-    if soDienThoai_Arg is null 
-    then 
-       SIGNAL SQLSTATE '45000'
-       SET MESSAGE_TEXT = 'Số điện thoại không được bỏ trống'; 
-    end if;
     
-    insert into ThongTin values( cccd_Arg,
-tenDangNhap_Arg,
-matKhau_Arg,
-ho_Arg,
-ten_Arg,
-ngaySinh_Arg,
+    
+    insert into ThongTin values( 
+      cccd_Arg,
+anhThongTin_Arg,
 email_Arg,
 gioiTinh_Arg,
-soDienThoai_Arg,
+ho_Arg,
 maTaiKhoan_Arg,
+matKhau_Arg,
+ngaySinh_Arg,
+ten_Arg,
+tenDangNhap_Arg,
 cccdQuanTriVien_Arg); 
     
-
-
-
 end; 
 
 
@@ -84,7 +78,7 @@ begin
       end if;
       select NhanVien.luong into oldSalary
       from NhanVien 
-      where NhanVien.cccd = maNhanVienArg;
+      where NhanVien.maNhanVien = maNhanVienArg;
 
       if oldSalary = -1
       then 
@@ -100,7 +94,7 @@ begin
 
       update NhanVien 
       set NhanVien.luong = newSalary
-      where NhanVien.cccd = maNhanVienArg;
+      where NhanVien.maNhanVien = maNhanVienArg;
         
       
 end;

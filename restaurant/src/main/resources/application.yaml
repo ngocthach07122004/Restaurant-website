@@ -2,18 +2,18 @@ server:
   port: 8080
 spring:
   application:
-#    name: restaurant-service
-    name: newdb
+    name: restaurant-service
+#    name: newdb
   datasource:
-    url: jdbc:mysql://my-restaurant-my-restaurant.i.aivencloud.com:17118/newdb?ssl-mode=REQUIRED
-    driverClassName: com.mysql.cj.jdbc.Driver
-    username: avnadmin
-    password: AVNS_4sbbIuBJgW85m8iwWZy
+#    url: jdbc:mysql://my-restaurant-my-restaurant.i.aivencloud.com:17118/newdb?ssl-mode=REQUIRED
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    username: avnadmin
+#    password: AVNS_4sbbIuBJgW85m8iwWZy
 
-#    url: "jdbc:mysql://localhost:3307/restaurant_service_database_v4"
-#    driverClassName: "com.mysql.cj.jdbc.Driver"
-#    username: root
-#    password: 12345678
+    url: "jdbc:mysql://localhost:3307/restaurant_service_database_v5"
+    driverClassName: "com.mysql.cj.jdbc.Driver"
+    username: root
+    password: 12345678
 #    username: avnadmin
 #    password: AVNS_4sbbIuBJgW85m8iwWZy
   jpa:
