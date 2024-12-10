@@ -2,8 +2,8 @@ create procedure tongKhachHangTaiChiNhanh (
      in maChiNhanhArg varchar(100)
 )
 begin
-   select count(distinct KhachHang.cccd) as tongSoKhach from
-   KhachHang join DonMonAn on KhachHang.cccd = cccdKhachHang 
+   select count(distinct KhachHang.maKhachHang) as tongSoKhach from
+   KhachHang join DonMonAn on KhachHang.maKhachHang = maKhachHang 
    where DonMonAn.maChiNhanh = maChiNhanhArg;
 end; 
 
@@ -11,14 +11,14 @@ end;
 -- tổng số tiền một khách đã đặt hàng tại chi nhánh 
 
 create procedure tongSoTienMotKhachDatTaiChiNhanh (
-    in cccdKhachHangArg varchar(100) , in maChiNhanhArg varchar(100)
+    in maKhachHangArg varchar(100) , in maChiNhanhArg varchar(100)
 )
 begin
    select concat(ThongTin.ho,' ',ThongTin.ten) as tenKhachHang from ThongTin NATURAL JOIN
    ( select  KhachHang.cccd,  sum (DonMonAn.tongGiaTien) as tongSoTien 
-    from KhachHang join DonMonAn ON KhachHang.cccd = DonMonAn.cccdKhachHang
-    where cccdKhachHang.maChiNhanh = maChiNhanhArg and KhachHang.cccd = cccdKhachHangArg
-    group by KhachHang.cccd
+    from KhachHang join DonMonAn ON KhachHang.maKhachHang = DonMonAn.cccdKhachHang
+    where DonMonAn.maChiNhanh = maChiNhanhArg and KhachHang.maKhachHang = maKhachHangArg
+    group by KhachHang.maKhachHang
     ) as tableTongSoTien ;
 end; 
 
