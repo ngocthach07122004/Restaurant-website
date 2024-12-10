@@ -1,5 +1,6 @@
 package restaurant.example.restaurant.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -21,9 +22,11 @@ public class QuanTriVien {
 	String moTaVaiTro 		;
 
     @OneToMany(mappedBy = "cccdQuanTriVien")
+    @JsonIgnore
     List<ThongTin> listThongTin;
 
     @OneToMany(mappedBy = "cccdQuanTriVien")
+    @JsonIgnore
     List<ChiNhanh> listChiNhanh;
 
     @OneToMany(mappedBy = "cccdQuanTriVien")

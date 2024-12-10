@@ -287,3 +287,26 @@ CREATE TABLE ThongBao(
  cccdQuanLy VARCHAR(100),  
  cccdQuanTriVien VARCHAR(100) 
  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- insert data
+
+
+insert into MonAnGioHang values ('MAGH101',2,'MM001');
+
+
+
+

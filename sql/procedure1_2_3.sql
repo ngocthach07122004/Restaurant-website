@@ -31,12 +31,13 @@ create procedure tongSoNhanVienLamViecHonMotThangTaiChiNhanh
 begin
     select count(distinct NhanVien.cccd ) as tongSoNhanVien
     from NhanVien 
-    where NhanVien.maChiNhanh = maChiNhanhArg and TIMESTAMPDIFF(MONTH, ngayVaoLam, CURDATE()) >=1; 
+    where NhanVien.maChiNhanh = maChiNhanhArg and 
+    TIMESTAMPDIFF(MONTH, ngayVaoLam, CURDATE()) >=1; 
 end; 
 
 
--- Tổng số đơn hàng và số tiền đã dùng của mỗi khách hàng trong chi nhánh A trong tháng nay
-create procedure tongSoDonHangTrongThangNayTaiChiNhanh(
+-- Tổng số đơn hàng và số tiền đã dùng của mỗi khách hàng trong chi nhánh A trong nam nay
+create procedure tongSoDonHangTrongNamNayTaiChiNhanh(
     in maChiNhanh_arg VARCHAR(255)
 )
 begin

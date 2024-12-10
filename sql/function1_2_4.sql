@@ -43,8 +43,8 @@ begin
    then return tongChiPhi;
    end if;
 
-   select cccd into maKhachHang 
-   from ThongTin 
+   select KhachHang.maKhachHang into maKhachHang 
+   from KhachHang join ThongTin on maKhachHang.cccd = ThongTin.cccd 
    where ThongTin.ten =  tenKhachHangArg and tenDangNhapArg = ThongTin.tenDangNhap
    and TIMESTAMPDIFF(YEAR, ThongTin.ngaySinh, CURDATE()) >=18;
    if maKhachHang = 'EMPTY'
