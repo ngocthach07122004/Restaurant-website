@@ -675,18 +675,20 @@
         {
           "request": {
             "method": "Put",
-            "body": {
-              "tenDangNhap": "",
-              "matKhau": "",
-              "ho": "",
-              "ten": "",
-              "ngaySinh": "",
-              "email": "",
-              "gioiTinh": "",
-              "soDienThoai": "",
-              "maTaiKhoan": "",
-              "cccdQuanTriVien": ""
-            },
+            "body":{
+              "cccd": "000000054",
+              "tenDangNhap": "ngochieu",
+              "matKhau": "12345678",
+              "ho": "Nguyen H",
+              "ten": "Ngoc Hieu",
+              "ngaySinh": "1999-04-16",
+              "email": "ngochieu@gmail.com",
+              "gioiTinh": "M",
+              "soDienThoai": [],
+              "maTaiKhoan": "user",
+              "anhThongTin": "https://cdn-icons-png.flaticon.com/512/1144/1144760.png",
+              "listThongBao": []
+          },
             "url": "http://localhost:8080/thongTin/update/{cccd}"
           }
         },
