@@ -19,6 +19,7 @@ begin
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Trường này không được để trống, đây là khóa của dữ liệu'; 
     end if;
+
      if exists ( select 1 from ThongTin where cccd_Arg = ThongTin.cccd  ) 
     then 
        SIGNAL SQLSTATE '45000'
@@ -30,13 +31,13 @@ begin
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Tên đăng nhập phải lớn hơn 5 ký tự'; 
     end if;
-    if exists ( select 1 from ThongTin where tenDangNhap_Arg = tenDangNhap ) 
+    if exists ( select 1 from ThongTin where tenDangNhap_Arg like tenDangNhap ) 
     then
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Tên đăng nhập đã tồn tại trong hệ thống, vui lòng chọn tên đăng nhập khác '; 
     end if;
 
-    if exists ( select 1 from ThongTin where email_Arg = email ) 
+    if exists ( select 1 from ThongTin where email_Arg like email ) 
     then
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Email đã tồn tại trong hệ thống, vui lòng chọn một email khác'; 

@@ -21,10 +21,11 @@ begin
    
    select sum(MonAn.gia * MonAnChiNhanh.soLuongMonAn) into tongGiaTien from 
    ChiNhanh join MonAnThuocVe on ChiNhanh.maChiNhanh = MonAnThuocVe.maChiNhanh
-   join MonAn on MonAnThuocVe.maMonAn = MonAn.maMonAn 
+   join MonAnChiNhanh on MonAnChiNhanh.maMonAnChiNhanh = MonAnThuocVe.maMonAnChiNhanh
+   join MonAn on MonAnChiNhanh.monAn = MonAn.maMonAn 
    where ChiNhanh.maChiNhanh = (select NhanVien.maChiNhanh 
    from NhanVien where NhanVien.maNhanVien = maNhanVien ) 
-   group by ChiNhanh.maChiNhanh;
+   -- group by ChiNhanh.maChiNhanh;
 
    return tongGiaTien;
  
@@ -43,8 +44,8 @@ begin
    then return tongChiPhi;
    end if;
 
-   select cccd into maKhachHang 
-   from ThongTin 
+   select KhachHang.maKhachHang into maKhachHang 
+   from KhachHang join ThongTin on maKhachHang.cccd = ThongTin.cccd 
    where ThongTin.ten =  tenKhachHangArg and tenDangNhapArg = ThongTin.tenDangNhap
    and TIMESTAMPDIFF(YEAR, ThongTin.ngaySinh, CURDATE()) >=18;
    if maKhachHang = 'EMPTY'

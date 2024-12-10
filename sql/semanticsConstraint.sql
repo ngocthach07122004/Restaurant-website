@@ -5,21 +5,23 @@ create trigger check_old_employee
 before insert on NhanVien 
 for each row 
 begin 
-     declare cccdNhanVien varchar(100) default 'EMPTY'; 
+     -- declare maNhanVien varchar(255) default 'EMPTY'; 
      declare dobNhanVien date; 
-     if new.cccd is null or new.cccd = ''
+     declare thongTinNhanVien varchar(255) default 'EMPTY';
+     if new.maNhanVien is null or new.maNhanVien = ''
      then 
      SIGNAL SQLSTATE '45000' 
      SET MESSAGE_TEXT = 'Mã nhân viên không hợp lệ'; 
      end if; 
 
-     select cccd into cccdNhanVien 
+     select cccd into thongTinNhanVien 
+     from ThongTin 
      where new.cccd = ThongTin.cccd; 
 
-     if  cccdNhanVien = 'EMPTY'
+     if  thongTinNhanVien = 'EMPTY'
      then 
      SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'Thông tin chưa tồn tại hoặc không được tại, vui lòng kiểm tra lại cccd';
+     SET MESSAGE_TEXT = 'Thông tin chưa tồn tại hoặc không được tạo, vui lòng kiểm tra lại ma';
      end if; 
      
      select ngaySinh into dobNhanVien 
@@ -40,7 +42,7 @@ begin
      SET MESSAGE_TEXT = 'Mức lương trả cho nhân viên tối thiểu phải lớn hơn hoặc bằng mức lương của khu vực 1'; 
      end if;
 
-     insert into NhanVien values(new.cccd,new.ngayVaoLam,new.luong,new.cccd_quan_ly,new.maChiNhanh);
+     -- insert into NhanVien values(new.cccd,new.ngayVaoLam,new.luong,new.cccd_quan_ly,new.maChiNhanh);
 
 end; 
 
@@ -64,24 +66,28 @@ end;
 
 
 create trigger handler_insert_max_food_inventory_allow
-before insert on MonAnThuocVe 
+before insert on MonAnChiNhanh 
 for each row
 begin
-     declare checkMonAn int default -1;
+     -- declare checkMonAn int default -1;
      declare tongMonAn int default 0;
-     select MonAnThuocVe.soLuongMonAn into checkMonAn from MonAnThuocVe
-     where new.maMonAn = MonAnThuocVe.maMonAn and new.maChiNhanh = MonAnThuocVe.maChiNhanh;
-     if checkMonAn <> -1
-     then
-     SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'Món ăn này đã tồn này ở nhà hàng này, vui lòng cập nhập số lượng của món ăn'; 
-     end if; 
+     -- select MonAnChiNhanh.soLuongMonAn into checkMonAn from MonAnChiNhanh
+     -- join MonAn on MonAnChiNhanh.monAn = MonAn.maMonAn 
+     -- join MonAnThuocVe on MonAnThuocVe.maMonAnChiNhanh = MonAnChiNhanh.maMonAnChiNhanh
+     -- join ChiNhanh on 
+     -- where new.maMonAn = MonAnChiNhanh.maMonAn and new.maChiNhanh = MonAnChiNhanh.maChiNhanh;
+     -- if checkMonAn <> -1
+     -- then
+     -- SIGNAL SQLSTATE '45000'
+     -- SET MESSAGE_TEXT = 'Món ăn này đã tồn này ở nhà hàng này, vui lòng cập nhập số lượng của món ăn'; 
+     -- end if; 
 
     
-     select sum(MonAnThuocVe.soLuongMonAn) into tongMonAn from MonAnThuocVe 
-     where new.maChiNhanh = MonAnThuocVe.maChiNhanh; 
+     select sum(MonAnChiNhanh.soLuongMonAn) into tongMonAn from MonAnChiNhanh 
+     join MonAnThuocVe on MonAnThuocVe.maMonAnChiNhanh = MonAnChiNhanh.maMonAnChiNhanh
+     group by MonAnThuocVe.maChiNhanh;
 
-     if tongMonAn + new.soLuongMonAn > 50
+     if tongMonAn + new.soLuongMonAn > 100
      then
      SIGNAL SQLSTATE '45000'
      SET MESSAGE_TEXT = 'Tổng số lượng món ăn vượt quá số lượng tồn kho cho phép'; 
@@ -89,15 +95,16 @@ begin
 end; 
 
 create trigger handler_update_max_food_inventory_allow
-before update on MonAnThuocVe 
+before update on MonAnChiNhanh 
 for each row
 begin
     
      declare tongMonAn int default 0;
-     select sum(MonAnThuocVe.soLuongMonAn) into tongMonAn from MonAnThuocVe 
-     where new.maChiNhanh = MonAnThuocVe.maChiNhanh; 
+     select sum(MonAnChiNhanh.soLuongMonAn) into tongMonAn from MonAnChiNhanh 
+     join MonAnThuocVe on MonAnThuocVe.maMonAnChiNhanh = MonAnChiNhanh.maMonAnChiNhanh
+     group by MonAnThuocVe.maChiNhanh;
 
-     if tongMonAn + new.soLuongMonAn - old.soLuongMonAn> 50
+     if tongMonAn + new.soLuongMonAn - old.soLuongMonAn > 100
      then
      SIGNAL SQLSTATE '45000'
      SET MESSAGE_TEXT = 'Tổng số lượng món ăn vượt quá số lượng tồn kho cho phép'; 
