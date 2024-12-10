@@ -11,10 +11,47 @@ const Profile = () => {
   const [maDonToFeedBack, setMaDonToFeedBack] = useState(null);
   const navigate = useNavigate();
   const [isAddFeedbackModalVisible, setIsAddFeedbackModalVisible] = useState(false);
-
-
   
+  // Edit Modal
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+  const [editFormData, setEditFormData] = useState({});
+
+  const showEditModal = () => {
+    setEditFormData(userData); // Pre-fill form with current user data
+    setIsEditModalVisible(true);
+  };
   
+  const closeEditModal = () => {
+    setIsEditModalVisible(false);
+  };
+
+  const handleEditFormSubmit = async () => {
+    try {
+      const url = `http://localhost:8080/thongTin/update/${userData.cccd}`;
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(editFormData),
+      });
+      if (response.ok) {
+        // Since the response is plain text, use response.text()
+        const message = await response.text();
+        console.log(message); // Should log "update success"
+  
+        // Optionally, you might want to refresh the user data
+        const userResponse = await fetch(`http://localhost:8080/thongTin/${userData.cccd}`);
+        const updatedUserData = await userResponse.json();
+        setUserData(updatedUserData); // Update user data state
+        setIsEditModalVisible(false); // Close modal
+      } else {
+        console.error('Error updating user data:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error updating user data:', error);
+    }
+  };
+  // End Edit Modal
+
   const handleCloseAddFeedbackModal = () => {
     setIsAddFeedbackModalVisible(false);
   };
@@ -151,7 +188,7 @@ const Profile = () => {
                     </p>
                     <p className="text-muted mb-4">{userData.email}</p>
                     <div className="d-flex justify-content-center mb-2">
-                      <button type="button" className="btn btn-primary">
+                      <button onClick={showEditModal} type="button" className="btn btn-primary">
                         Edit
                       </button>
                       <button
@@ -280,6 +317,107 @@ const Profile = () => {
         width={800}
       >
         <CreateFeedbackForm onSubmit={handleFormSubmit} onClose={handleCloseAddFeedbackModal} maDon={maDonToFeedBack}/>
+      </Modal>
+
+      <Modal
+        title="Edit Profile"
+        visible={isEditModalVisible}
+        onCancel={closeEditModal}
+        footer={[
+          <Button key="back" onClick={closeEditModal}>
+            Cancel
+          </Button>,
+          <Button key="submit" type="primary" onClick={handleEditFormSubmit}>
+            Save
+          </Button>,
+        ]}
+      >
+        {/* Form Fields */}
+        <form>
+          <div className="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
+              className="form-control"
+              value={editFormData.ho}
+              onChange={(e) => setEditFormData({ ...editFormData, ho: e.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <label>Last Name</label>
+            <input
+              type="text"
+              className="form-control"
+              value={editFormData.ten}
+              onChange={(e) => setEditFormData({ ...editFormData, ten: e.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <label>Birth Date</label>
+            <input
+              type="date"
+              className="form-control"
+              value={editFormData.ngaySinh}
+              onChange={(e) => setEditFormData({ ...editFormData, ngaySinh: e.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              className="form-control"
+              value={editFormData.tenDangNhap}
+              onChange={(e) => setEditFormData({ ...editFormData, tenDangNhap: e.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              className="form-control"
+              value={editFormData.email}
+              onChange={(e) => setEditFormData({ ...editFormData, email: e.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control"
+              value={editFormData.matKhau}
+              onChange={(e) => setEditFormData({ ...editFormData, matKhau: e.target.value })}
+            />
+            {editFormData.matKhau && editFormData.matKhau.length <= 8 && (
+              <small className="text-danger">Password must be greater than 8 characters.</small>
+            )}
+          </div>
+          <div className="form-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              className="form-control"
+              value={editFormData.confirmPassword}
+              onChange={(e) => setEditFormData({ ...editFormData, confirmPassword: e.target.value })}
+            />
+            {editFormData.confirmPassword && editFormData.confirmPassword !== editFormData.matKhau && (
+              <small className="text-danger">Passwords do not match.</small>
+            )}
+          </div>
+          <div className="form-group">
+            <label>Sex</label>
+            <select
+              className="form-control"
+              value={editFormData.gioiTinh}
+              onChange={(e) => setEditFormData({ ...editFormData, gioiTinh: e.target.value })}
+            >
+              <option value="">Select Sex</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+            {editFormData.gioiTinh === '' && <small className="text-danger">Please select your sex.</small>}
+          </div>
+          {/* Include other fields as necessary */}
+        </form>
       </Modal>
     </div>
   );
