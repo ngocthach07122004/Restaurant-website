@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Hotel, BadgeDollarSign, Home, ListOrdered, User, UserRoundCog, ShoppingBasket } from "lucide-react"
+import { Bell, Hotel, BadgeDollarSign, Home, ListOrdered, User, UserRoundCog, ShoppingBasket } from "lucide-react"
 import "./styles.scss";
 
 
@@ -35,6 +35,10 @@ const AdminMenu = () => {
                 <Link to="/admin/branch" className="listItem">
                     <Hotel />
                     <span className="listItemTitle">Branch</span>
+                </Link>
+                <Link to="/admin/notification" className="listItem">
+                    <Bell />
+                    <span className="listItemTitle">Notification</span>
                 </Link>
             </div>
         </div>

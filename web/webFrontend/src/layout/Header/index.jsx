@@ -4,6 +4,7 @@ import { Menu, ShoppingBag, User } from 'lucide-react';
 import logo from '../../assets/jollibee.png';
 import tel from '../../assets/delivery-lg-rs.png';
 import { CartContext } from '../../context/CartContext';
+import BellNotification from '../../components/BellNotification';
 import './styles.css';
 
 const Header = () => {
@@ -86,6 +87,7 @@ const Header = () => {
                     </span>
                   </div>
                 </Link>
+                <BellNotification />
                 <span className="text-danger">
                   <a
                     onClick={() => navigate('/profile')}
@@ -141,7 +143,7 @@ const Header = () => {
 
           {/* Logo - Centered on mobile */}
           <Link className="navbar-brand mx-auto mx-lg-0" to="/">
-            {/* <img src={logo} alt="Jollibee Logo" height="80" /> */}
+            <img src="https://thietkeaz.com/files/02-04-18/thiet-ke-logo-nha-hang-06.jpg?gidzl=s1dPB2HMtHlM0z0jBalK6TO5sI0pJz53d57K9p5FZKAR0z0WQ1oE5vjMWtTf6zr4aWA3SZdBUpm185VH7m" alt="Logo" height="80" />
           </Link>
 
           {/* Desktop Navigation */}
