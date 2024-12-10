@@ -1,17 +1,33 @@
-create trigger tinh_TongGiaTien_DonMonAn
-before insert on DonMonAn 
-for each row
-begin 
-     declare tongGia decimal(15,2);
-     select sum(BaoGom.soLuongMonAn*MonAn.gia) into tongGia from 
-     MonAn join BaoGom on MonAn.maMonAn = MonAn.maMonAn 
-     join DonMonAn on BaoGom.maDon = DonMonAn.maDon
-     group by MonAn.maMonAn;
+-- create trigger tinh_TongGiaTien_DonMonAn
+-- before insert on DonMonAn 
+-- for each row
+-- begin 
+--      declare tongGia decimal(15,2) default 0 ;
+--      select sum(BaoGom.soLuongMonAn*MonAn.gia) into tongGia from 
+--      MonAn join BaoGom on MonAn.maMonAn = MonAn.maMonAn 
+--      join DonMonAn on BaoGom.maDon = DonMonAn.maDon
+--      group by MonAn.maMonAn;
 
-     update DonMonAn
-     set tongGiaTien = tongGia 
-     where maDon = new.maDon;
+--      update DonMonAn
+--      set tongGiaTien = tongGia 
+--      where maDon = new.maDon;
+-- end; 
+
+create trigger tinh_TongGiaTien_DonMonAn 
+before insert on DonMonAn 
+for each row 
+begin
+    declare tongGia decimal(15,2) default 0 ;
+    select sum(MonAn.gia*MonAnGioHang.soLuong) into tongGia
+    from DonMonAn join BaoGom on DonMonAn.maDon = BaoGom.maDon 
+    join MonAnGioHang on BaoGom.maMonAnGioHang = MonAnGioHang.maMonAnGioHang
+    join MonAn on MonAnGioHang.monAn = MonAn.maMonAn; 
+
+    update DonMonAn
+    set tongGiaTien = tongGia
+    where DonMonAn.maDon = new.maDon;
 end; 
+
 
 
 
@@ -20,7 +36,7 @@ create trigger tinh_DoanhThu_DonMonAn
 after insert on ChiNhanh 
 for each row
 begin 
-    declare tongDoanhThu decimal(15,2);
+    declare tongDoanhThu decimal(15,2) default 0;
     select sum(DonMonAn.tongGiaTien) into tongDoanhThu
     from ChiNhanh join DonMonAn on ChiNhanh.maChiNhanh = DonMonAn.maChiNhanh
     group by ChiNhanh.maChiNhanh;
@@ -29,6 +45,7 @@ begin
     where ChiNhanh.maChiNhanh = new.maChiNhanh; 
     
 end; 
+
 
 
 create trigger tinhToan_Don_Dat_Huy_KhachHang 
@@ -41,17 +58,17 @@ begin
     SELECT SUM(CASE WHEN DonMonAn.tinhTrangDonMonAn = 'Y' THEN 1 ELSE 0 END)
     INTO tongDonDat
     FROM DonMonAn
-    WHERE DonMonAn.cccdKhachHang = NEW.cccd;
+    WHERE DonMonAn.cccdKhachHang = NEW.maKhachHang;
 
     SELECT SUM(CASE WHEN DonMonAn.tinhTrangDonMonAn = 'N' THEN 1 ELSE 0 END)
     INTO tongDonHuy
     FROM DonMonAn
-    WHERE DonMonAn.cccdKhachHang = NEW.cccd;
+    WHERE DonMonAn.cccdKhachHang = NEW.maKhachHang;
    
    update KhachHang
    set KhachHang.soDonDaDat = tongDonDat , 
    KhachHang.soDonDaHuy = tongDonHuy 
-   where KhachHang.cccd = new.cccd; 
+   where KhachHang.maKhachHang = new.maKhachHang; 
    
 end; 
 

@@ -55,7 +55,7 @@ public class DonMonAnService {
                     entityManager,
                     donMonAn.getCccdKhachHang(),
                     KhachHang.class,
-                    donMonAn.getCccdKhachHang().getCccd(),
+                    donMonAn.getCccdKhachHang().getMaKhachHang(),
                     "KhachHang with ID "
             );
             newDonMonAn.setCccdKhachHang(khachHang);
