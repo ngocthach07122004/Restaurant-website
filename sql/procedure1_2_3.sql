@@ -40,5 +40,8 @@ create procedure tongSoNhanVienLamViecHonMotThangTaiChiNhanh
 begin
     select count(distinct NhanVien.cccd ) as tongSoNhanVien
     from NhanVien 
-    where NhanVien.maChiNhanh = maChiNhanhArg and TIMESTAMPDIFF(MONTH, ngayVaoLam, CURDATE()) >=1; 
+    where NhanVien.maChiNhanh = maChiNhanhArg and 
+    TIMESTAMPDIFF(MONTH, ngayVaoLam, CURDATE()) >=1; 
 end; 
+
+
