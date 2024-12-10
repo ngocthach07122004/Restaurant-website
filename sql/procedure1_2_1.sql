@@ -12,7 +12,12 @@ in ten_Arg varchar(255),
 in tenDangNhap_Arg varchar(255),
 in cccdQuanTriVien_Arg varchar(255)
 )
-begin 
+begin
+    if exists ( select 1 from ThongTin where cccd_Arg = ThongTin.cccd  ) 
+    then 
+       SIGNAL SQLSTATE '45000'
+       SET MESSAGE_TEXT = 'Căn cước đã tồn tại trong hệ thống, vui lòng kiểm tra lại số căn cước'; 
+    end if;
     if cccd_Arg is null or cccd_Arg = ''
     then 
        SIGNAL SQLSTATE '45000'
@@ -37,6 +42,18 @@ begin
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Ngày sinh phải hợp lệ'; 
     end if;
+
+    if (maTaiKhoan_Arg = 'user')
+    then (
+      if (ngaySinh_Arg > CURDATE())
+      then
+       SIGNAL SQLSTATE '45000'
+       SET MESSAGE_TEXT = 'Ngày sinh phải lớn hơn ngày hiện tại';    
+    )
+    else
+    then
+       if ()
+    end if; 
 
     if !REGEXP_LIKE(email_Arg, '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
     then 
