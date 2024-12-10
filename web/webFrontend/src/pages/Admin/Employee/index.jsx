@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Select, Space, Tag } from 'antd';
+import React, { useState, useEffect } from "react";
+import { Table, Select, Space, Tag } from "antd";
 
 const { Option } = Select;
 
 const Employee = () => {
-  const [employeeType, setEmployeeType] = useState('all');
+  const [employeeType, setEmployeeType] = useState("all");
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const fetchEmployees = (type) => {
     setLoading(true);
-    let url = 'http://localhost:8080/nhanvien/all';
-    if (type !== 'all') {
+    let url = "http://localhost:8080/nhanvien/all";
+    if (type !== "all") {
       url = `http://localhost:8080/${type}/all`;
     }
     fetch(url)
@@ -22,7 +22,7 @@ const Employee = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error('Error fetching employees:', error);
+        console.error("Error fetching employees:", error);
         setLoading(false);
       });
   };
@@ -37,33 +37,28 @@ const Employee = () => {
 
   const columns = [
     {
-      title: 'CCCD',
-      dataIndex: 'cccd',
-      key: 'cccd',
+      title: "CCCD",
+      dataIndex: ["cccd", "cccd"],
+      key: "cccd.cccd",
     },
     {
-      title: 'Tên',
-      dataIndex: 'ten',
-      key: 'ten',
+      title: "Tên",
+      dataIndex: ["cccd", "ten"],
+      key: "ten",
     },
     {
-      title: 'Ngày vào làm',
-      dataIndex: 'ngayVaoLam',
-      key: 'ngayVaoLam',
+      title: "Ngày vào làm",
+      dataIndex: "ngayVaoLam",
+      key: "ngayVaoLam",
     },
     {
-      title: 'Lương',
-      dataIndex: 'luong',
-      key: 'luong',
+      title: "Lương",
+      dataIndex: "luong",
+      key: "luong",
     },
     {
-      title: 'Chi nhánh',
-      dataIndex: 'maChiNhanh',
-      key: 'maChiNhanh',
-    },
-    {
-      title: 'Action',
-      key: 'action',
+      title: "Action",
+      key: "action",
       render: (text, record) => (
         <Space size="middle">
           <Tag color="blue">Edit</Tag>
@@ -92,7 +87,7 @@ const Employee = () => {
         columns={columns}
         dataSource={employees}
         loading={loading}
-        rowKey="cccd"
+        rowKey="cccd.cccd"
       />
     </div>
   );

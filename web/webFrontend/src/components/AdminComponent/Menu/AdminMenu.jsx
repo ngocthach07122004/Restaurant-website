@@ -32,10 +32,10 @@ const AdminMenu = () => {
                     <UserRoundCog />
                     <span className="listItemTitle">Staff</span>
                 </Link>
-                <Link to="/admin/branch" className="listItem">
+                {/* <Link to="/admin/branch" className="listItem">
                     <Hotel />
                     <span className="listItemTitle">Branch</span>
-                </Link>
+                </Link> */}
                 <Link to="/admin/notification" className="listItem">
                     <Bell />
                     <span className="listItemTitle">Notification</span>

@@ -195,7 +195,7 @@ const Profile = () => {
                   </div>
                 </div>
 
-                <div className="card w-">
+                <div className="card" style={{ flex: "1", maxWidth: "66.67%" }}>
                   <div className="card-body">
                     <div className="row">
                       <div className="col-sm-3">
