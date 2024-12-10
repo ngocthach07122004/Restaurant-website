@@ -42,7 +42,7 @@ begin
      SET MESSAGE_TEXT = 'Mức lương trả cho nhân viên tối thiểu phải lớn hơn hoặc bằng mức lương của khu vực 1'; 
      end if;
 
-     -- insert into NhanVien values(new.cccd,new.ngayVaoLam,new.luong,new.cccd_quan_ly,new.maChiNhanh);
+    
 
 end; 
 
