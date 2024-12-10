@@ -170,7 +170,7 @@ const Profile = () => {
         <section style={{ backgroundColor: "#eee" }}>
           <div className="container py-5">
             <div className="d-flex justify-content-center">
-                <div className="card">
+                <div className="card" style={{ flex: "1", maxWidth: "33.33%" }}>
                   <div className="card-body text-center align-items-center">
                     <div className="flex justify-center">
                       <img

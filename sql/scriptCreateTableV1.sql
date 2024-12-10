@@ -112,6 +112,7 @@ create table DonMonAn (
     cccdKhachHang       varchar(255), 
     cccdNhanVienThuNgan varchar(255), 
     maChiNhanh          varchar(255), primary key (maDon));
+    
 create table DonTaiQuan (
     maDonTaiQuan varchar(255) not null, 
     yeuCauCuaKhachHang varchar(255), 

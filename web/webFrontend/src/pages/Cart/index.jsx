@@ -35,30 +35,30 @@ const Cart = () => {
       })),
     };
 
-    console.log(orderData);
+    // console.log(orderData);
 
-    // fetch("http://localhost:8080/donMonAn/create", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(orderData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log("Order created successfully:", data);
-    //     setIsSliding(true);
-    //     setTimeout(() => {
-    //       setIsPaymentSuccessful(true);
-    //     }, 500);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error creating order:", error);
-    //     setIsSliding(true);
-    //     setTimeout(() => {
-    //       setIsPaymentSuccessful(false);
-    //     }, 500);
-    //   });
+    fetch("http://localhost:8080/donMonAn/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Order created successfully:", data);
+        setIsSliding(true);
+        setTimeout(() => {
+          setIsPaymentSuccessful(true);
+        }, 500);
+      })
+      .catch((error) => {
+        console.error("Error creating order:", error);
+        setIsSliding(true);
+        setTimeout(() => {
+          setIsPaymentSuccessful(false);
+        }, 500);
+      });
   };
 
   if (isPaymentSuccessful) {
