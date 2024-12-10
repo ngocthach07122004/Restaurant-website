@@ -15,6 +15,7 @@ import Profile from "../pages/UserProfile";
 import Discount from "../pages/Admin/Discount"
 import Employee from "../pages/Admin/Employee"
 import BranchManagement from "../pages/Admin/BranchManagement"
+import Notification from "../pages/Admin/Notification"
 import Success from "../pages/Message/Success";
 import Branch from "../pages/Branch";
 import Recruit from "../pages/Recruit";
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
             {path: "discount/", element: <Discount />},
             {path: "employee/", element: <Employee />},
             {path: "branch/", element: <BranchManagement />},
+            {path: "notification/", element: <Notification />}
         ]
     }
 ]);

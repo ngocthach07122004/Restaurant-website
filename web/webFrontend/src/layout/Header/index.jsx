@@ -4,6 +4,7 @@ import { Menu, ShoppingBag, User } from 'lucide-react';
 import logo from '../../assets/jollibee.png';
 import tel from '../../assets/delivery-lg-rs.png';
 import { CartContext } from '../../context/CartContext';
+import BellNotification from '../../components/BellNotification';
 import './styles.css';
 
 const Header = () => {
@@ -89,6 +90,7 @@ const Header = () => {
                     </span>
                   </div>
                 </Link>
+                <BellNotification />
                 <span className="text-danger">
                   <a
                     onClick={() => navigate('/profile')}

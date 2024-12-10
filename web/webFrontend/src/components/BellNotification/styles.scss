@@ -1,0 +1,23 @@
+.bell-notification {
+  position: relative;
+  display: inline-block;
+}
+
+.bell-notification h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.bell-notification ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bell-notification li {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
