@@ -1,19 +1,18 @@
 create procedure handler_Insert_Table_ThongTin
 (
-     in cccd_Arg varchar(255),
-in anhThongTin_Arg varchar(255),
-in email_Arg varchar(255),
-in gioiTinh_Arg char(1),
-in ho_Arg varchar(255),
-in maTaiKhoan_Arg varchar(255),
-in matKhau_Arg varchar(255),
-in ngaySinh_Arg date,
-in ten_Arg varchar(255),
-in tenDangNhap_Arg varchar(255),
-in cccdQuanTriVien_Arg varchar(255)
+   in cccd_Arg varchar(255),
+   in anhThongTin_Arg varchar(255),
+   in email_Arg varchar(255),
+   in gioiTinh_Arg char(1),
+   in ho_Arg varchar(255),
+   in maTaiKhoan_Arg varchar(255),
+   in matKhau_Arg varchar(255),
+   in ngaySinh_Arg date,
+   in ten_Arg varchar(255),
+   in tenDangNhap_Arg varchar(255),
+   in cccdQuanTriVien_Arg varchar(255)
 )
 begin
-   
     if cccd_Arg is null or cccd_Arg = ''
     then 
        SIGNAL SQLSTATE '45000'
@@ -42,6 +41,7 @@ begin
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Email đã tồn tại trong hệ thống, vui lòng chọn một email khác'; 
     end if;
+    
 
     if CHAR_LENGTH(matKhau_Arg) <8 
     then 
@@ -73,30 +73,117 @@ begin
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Email phải hợp lệ và đúng cú pháp định dạng email'; 
     end if;
-
     
-    
-    
-    
-    insert into ThongTin values( 
+   insert into ThongTin values( 
       cccd_Arg,
-anhThongTin_Arg,
-email_Arg,
-gioiTinh_Arg,
-ho_Arg,
-maTaiKhoan_Arg,
-matKhau_Arg,
-ngaySinh_Arg,
-ten_Arg,
-tenDangNhap_Arg,
-cccdQuanTriVien_Arg); 
-    
+      anhThongTin_Arg,
+      email_Arg,
+      gioiTinh_Arg,
+      ho_Arg,
+      maTaiKhoan_Arg,
+      matKhau_Arg,
+      ngaySinh_Arg,
+      ten_Arg,
+      tenDangNhap_Arg,
+      cccdQuanTriVien_Arg); 
 end; 
 
 
 
 
+CREATE PROCEDURE handler_Update_Table_ThongTin(
+   IN cccd_Arg VARCHAR(255), -- Used as the unique identifier for the update
+   IN anhThongTin_Arg VARCHAR(255),
+   IN email_Arg VARCHAR(255),
+   IN gioiTinh_Arg CHAR(1),
+   IN ho_Arg VARCHAR(255),
+   IN maTaiKhoan_Arg VARCHAR(255),
+   IN matKhau_Arg VARCHAR(255),
+   IN ngaySinh_Arg DATE,
+   IN ten_Arg VARCHAR(255),
+   IN tenDangNhap_Arg VARCHAR(255),
+   IN cccdQuanTriVien_Arg VARCHAR(255)
+)
+BEGIN
+    -- Validate that the record exists before updating
+    IF NOT EXISTS (SELECT 1 FROM ThongTin WHERE cccd = cccd_Arg) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Không tìm thấy căn cước trong hệ thống để cập nhật.';
+    END IF;
 
+    -- Validate email uniqueness
+    IF EXISTS (SELECT 1 FROM ThongTin WHERE email = email_Arg AND cccd != cccd_Arg) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Email đã tồn tại trong hệ thống, vui lòng chọn một email khác.';
+    END IF;
+
+    -- Validate username uniqueness
+    IF EXISTS (SELECT 1 FROM ThongTin WHERE tenDangNhap = tenDangNhap_Arg AND cccd != cccd_Arg) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Tên đăng nhập đã tồn tại trong hệ thống, vui lòng chọn tên đăng nhập khác.';
+    END IF;
+
+    -- Validate minimum username length
+    IF CHAR_LENGTH(tenDangNhap_Arg) < 6 OR tenDangNhap_Arg LIKE ' %' THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Tên đăng nhập phải lớn hơn 5 ký tự và không chứa khoảng trắng.';
+    END IF;
+
+    -- Validate password length
+    IF CHAR_LENGTH(matKhau_Arg) < 8 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Mật khẩu phải lớn hơn hoặc bằng 8 ký tự.';
+    END IF;
+
+    -- Validate email format
+    IF NOT REGEXP_LIKE(email_Arg, '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$') THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Email phải hợp lệ và đúng cú pháp định dạng email.';
+    END IF;
+
+    -- Validate date format and age restriction for users
+    IF NOT (ngaySinh_Arg REGEXP '^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$') THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Ngày sinh phải hợp lệ.';
+    END IF;
+
+    IF maTaiKhoan_Arg = 'user' THEN
+        IF ngaySinh_Arg > CURDATE() THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Ngày sinh phải nhỏ hơn hoặc bằng ngày hiện tại.';
+        END IF;
+
+        IF TIMESTAMPDIFF(YEAR, ngaySinh_Arg, CURDATE()) < 18 THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Bạn chưa đủ 18 tuổi để cập nhật thông tin.';
+        END IF;
+    END IF;
+
+    -- Perform the update
+    UPDATE ThongTin
+    SET
+        anhThongTin = anhThongTin_Arg,
+        email = email_Arg,
+        gioiTinh = gioiTinh_Arg,
+        ho = ho_Arg,
+        maTaiKhoan = maTaiKhoan_Arg,
+        matKhau = matKhau_Arg,
+        ngaySinh = ngaySinh_Arg,
+        ten = ten_Arg,
+        tenDangNhap = tenDangNhap_Arg,
+        cccdQuanTriVien = cccdQuanTriVien_Arg
+    WHERE cccd = cccd_Arg;
+END;
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------
 
 create procedure handler_Update_NhanVien (in maNhanVienArg varchar(100), in newSalary decimal(15,2))
 begin
@@ -126,8 +213,6 @@ begin
       update NhanVien 
       set NhanVien.luong = newSalary
       where NhanVien.maNhanVien = maNhanVienArg;
-        
-      
 end;
 
 create procedure handler_Delete_ChiNhanh (
@@ -169,25 +254,3 @@ end;
 
 
 
-
-INSERT INTO ThongTin VALUES
-('000000038', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'minhphuc@gmail.com', 'M', 'Nguyen', 'user', 'User123@', '1997-01-05', 'Minh Phuc', 'minhphuc', '999999999'),
-('000000039', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'huynhmy@gmail.com', 'F', 'Le',      'user', 'User123@', '1998-04-12', 'Huynh My', 'huynhmy', '999999999'),
-('000000040', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'truongson@gmail.com', 'M', 'Ho',    'user', 'User123@', '2000-09-22', 'Truong Son', 'truongson', '999999999'),
-('000000041', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'ngocanh@gmail.com', 'F', 'Pham',    'user', 'User123@', '1999-03-14', 'Ngoc Anh', 'ngocanh', '999999999'),
-('000000042', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'huykhanh@gmail.com', 'M', 'Tran',   'user', 'User123@', '1996-10-30', 'Huy Khanh', 'huykhanh', '999999999'),
-('000000043', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'myhanh@gmail.com', 'F', 'Vo',       'user', 'User123@', '2002-07-21', 'My Hanh', 'myhanh', '999999999'),
-('000000044', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'daihai@gmail.com', 'M', 'Vu',       'user', 'User123@', '1995-05-10', 'Dai Hai', 'daihai', '999999999'),
-('000000045', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'thanhthu@gmail.com', 'F', 'Ngo',    'user', 'User123@', '1998-11-08', 'Thanh Thu', 'thanhthu', '999999999'),
-('000000046', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'hongan@gmail.com', 'M', 'Pham',     'user', 'User123@', '2001-02-15', 'Hong An', 'hongan', '999999999'),
-('000000047', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'maihoa@gmail.com', 'F', 'Nguyen',   'user', 'User123@', '1997-06-05', 'Mai Hoa', 'maihoa', '999999999'),
-('000000048', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'minhhieu@gmail.com', 'M', 'Le',     'user', 'User123@', '1994-09-14', 'Minh Hieu', 'minhhieu', '999999999'),
-('000000049', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'lanphuong@gmail.com', 'F', 'Bui',   'user', 'User123@', '2000-03-26', 'Lan Phuong', 'lanphuong', '999999999'),
-('000000050', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'hoanglong@gmail.com', 'M', 'Tran',  'user', 'User123@', '1995-12-02', 'Hoang Long', 'hoanglong', '999999999'),
-('000000051', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'khanhvy@gmail.com', 'F', 'Ho',      'user', 'User123@', '1999-08-19', 'Khanh Vy', 'khanhvy', '999999999'),
-('000000052', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'quocdat@gmail.com', 'M', 'Vu',      'user', 'User123@', '1996-07-11', 'Quoc Dat', 'quocdat', '999999999'),
-('000000053', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'minhthu@gmail.com', 'F', 'Ngo',     'user', 'User123@', '2002-01-28', 'Minh Thu', 'minhthu', '999999999'),
-('000000054', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'ngochieu@gmail.com', 'M', 'Nguyen', 'user', 'User123@', '1998-04-16', 'Ngoc Hieu', 'ngochieu', '999999999'),
-('000000055', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'thuytrang@gmail.com', 'F', 'Pham',  'user', 'User123@', '1997-03-18', 'Thuy Trang', 'thuytrang', '999999999'),
-('000000056', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'thanhdat@gmail.com', 'M', 'Le',     'user', 'User123@', '1995-06-14', 'Thanh Dat', 'thanhdat', '999999999'),
-('000000057', 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', 'hoangngoc@gmail.com', 'F', 'Tran',  'user', 'User123@', '2001-12-19', 'Hoang Ngoc', 'hoangngoc', '999999999');

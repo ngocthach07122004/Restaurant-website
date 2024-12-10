@@ -113,7 +113,6 @@ const Users = () => {
 
   return (
     <div>
-      hi mom, this is user UserManagement
       <Table columns={columns} dataSource={users} />
       <Modal
         title="User Details"

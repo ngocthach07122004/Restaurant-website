@@ -1,18 +1,3 @@
--- create trigger tinh_TongGiaTien_DonMonAn
--- before insert on DonMonAn 
--- for each row
--- begin 
---      declare tongGia decimal(15,2) default 0 ;
---      select sum(BaoGom.soLuongMonAn*MonAn.gia) into tongGia from 
---      MonAn join BaoGom on MonAn.maMonAn = MonAn.maMonAn 
---      join DonMonAn on BaoGom.maDon = DonMonAn.maDon
---      group by MonAn.maMonAn;
-
---      update DonMonAn
---      set tongGiaTien = tongGia 
---      where maDon = new.maDon;
--- end; 
-
 create trigger tinh_TongGiaTien_DonMonAn 
 before insert on DonMonAn 
 for each row 
@@ -22,14 +7,10 @@ begin
     from DonMonAn join BaoGom on DonMonAn.maDon = BaoGom.maDon 
     join MonAnGioHang on BaoGom.maMonAnGioHang = MonAnGioHang.maMonAnGioHang
     join MonAn on MonAnGioHang.monAn = MonAn.maMonAn; 
-
     update DonMonAn
     set tongGiaTien = tongGia
     where DonMonAn.maDon = new.maDon;
-end; 
-
-
-
+end;
 
 
 create trigger tinh_DoanhThu_DonMonAn 
@@ -43,10 +24,7 @@ begin
     update ChiNhanh
     set ChiNhanh.doanhThu = tongDoanhThu
     where ChiNhanh.maChiNhanh = new.maChiNhanh; 
-    
 end; 
-
-
 
 create trigger tinhToan_Don_Dat_Huy_KhachHang 
 after insert on KhachHang

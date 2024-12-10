@@ -55,7 +55,7 @@ const Signup = () => {
       email: data.email,
       gioiTinh: data.gender,
       soDienThoai: [data.phone],
-      maTaiKhoan: "",
+      maTaiKhoan: "user",
       cccdQuanTriVien: {
         cccd: "999999999",
       },

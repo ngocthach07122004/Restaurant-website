@@ -4,32 +4,31 @@ create function tinhTongTienMonAnQuanLyBoiNhanVien (
 returns decimal(15,2)
 DETERMINISTIC
 begin
-   declare tongGiaTien decimal(15,2) default 0; 
-   declare maNhanVien varchar(100) default 'notExist';
-   if tenNhanVien is null or tenNhanVien ='' then
-   return tongGiaTien;
-   end if; 
+   	declare tongGiaTien decimal(15,2) default 0; 
+   	declare maNhanVien varchar(100) default 'notExist';
+   	if tenNhanVien is null or tenNhanVien = '' 
+   		then return tongGiaTien;
+   	end if; 
    
+   	select NhanVien.maNhanVien into maNhanVien 
+   	from NhanVien 
+   	join ThongTin on NhanVien.cccd = ThongTin.cccd
+   	where ThongTin.ten = tenNhanVien
+   	limit 1; 
+   	if maNhanVien = 'notExist' 
+   		then return tongGiaTien;
+   	end if;
    
-   select NhanVien.maNhanVien into maNhanVien 
-   from NhanVien join ThongTin on NhanVien.cccd = ThongTin.cccd
-   where ThongTin.ten = tenNhanVien
-   limit 1; 
-   if maNhanVien = 'notExist' 
-   then return tongGiaTien;
-   end if;
-   
-   select sum(MonAn.gia * MonAnChiNhanh.soLuongMonAn) into tongGiaTien from 
-   ChiNhanh join MonAnThuocVe on ChiNhanh.maChiNhanh = MonAnThuocVe.maChiNhanh
-   join MonAnChiNhanh on MonAnChiNhanh.maMonAnChiNhanh = MonAnThuocVe.maMonAnChiNhanh
-   join MonAn on MonAnChiNhanh.monAn = MonAn.maMonAn 
-   where ChiNhanh.maChiNhanh = (select NhanVien.maChiNhanh 
-   from NhanVien where NhanVien.maNhanVien = maNhanVien ) 
-   -- group by ChiNhanh.maChiNhanh;
+   	select sum(MonAn.gia * MonAnChiNhanh.soLuongMonAn) into tongGiaTien 
+   	from ChiNhanh 
+   	join MonAnThuocVe on ChiNhanh.maChiNhanh = MonAnThuocVe.maChiNhanh
+   	join MonAn on MonAnThuocVe.maMonAn = MonAn.maMonAn 
+   	where ChiNhanh.maChiNhanh = (select NhanVien.maChiNhanh 
+   	from NhanVien where NhanVien.maNhanVien = maNhanVien ) 
+   	group by ChiNhanh.maChiNhanh;
 
-   return tongGiaTien;
- 
-end; 
+   	return tongGiaTien;
+end;
 
 -- Tính tổng số tiền phí vận chuyển đặt hàng bởi khách hàng A, khách hàng phải lớn hơn 18 tuổi 
 create function tongChiPhiVanChuyenCuaMotKhachHang (
