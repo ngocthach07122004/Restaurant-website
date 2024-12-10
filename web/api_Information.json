@@ -824,9 +824,20 @@
       "listApi": [
         {
           "request": {
-            "cccd": {
-                   "cccd": "123456789_2"
-              },
+            "cccd":{
+              "cccd": {
+                     "cccd": "123456789_1"
+                },
+            "ngayVaoLam":"2024-12-07",
+            "luong":"1000",
+            "cccdNhanVienQuanLy":{
+                  "cccd": "NVQL_01"
+            },
+            
+            "maChiNhanh": {
+                  "maChiNhanh": "1111"
+            }
+            },
           "ngayVaoLam":"2024-12-07",
           "luong":"1000",
           "cccdNhanVienQuanLy":{
@@ -975,8 +986,17 @@
           "request": {
             "method": "Post",
             "body": {
-              "cccd": ""
-            },
+              "cccd": {
+                   "maNhanVien":"0a3a85c1-163f-4d92-be7a-60b3be875b71"
+              },
+      "chiNhanh": {
+           "maChiNhanh":"1111"
+      },
+      "listThongBao":[],
+      "listNhanVien":[],
+      "listDonKhieuNai":[]
+      }
+      ,
             "url": "http://localhost:8080/nhanvienphucvu/create"
           }
         },

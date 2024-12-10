@@ -45,21 +45,7 @@ public class ThongTin {
     QuanTriVien cccdQuanTriVien 		;
 
     String anhThongTin;
-//    List<KhachHang> listKhachHang;
 
-//    @OneToMany(mappedBy = "cccdThongTin", cascade = CascadeType.ALL, orphanRemoval = true)
-
-//    @OneToMany(mappedBy = "cccdThongTin"  ,cascade = CascadeType.ALL , fetch = FetchType.EAGER)
-//    List<ThongBao> listThongBao;
-
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name ="ChuaThongBao",
-//            joinColumns = @JoinColumn(name = "cccd"),
-//            inverseJoinColumns = @JoinColumn(name = "maThongBao")
-//
-//    )
-//    List<ThongBao> listThongBao;
         @ManyToMany(mappedBy = "listThongTin")
     List<ThongBao> listThongBao;
 
