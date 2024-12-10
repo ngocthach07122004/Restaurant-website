@@ -43,13 +43,15 @@ public class DonMonAn {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cccdNhanVienThuNgan" )
+            @JsonIgnore
     NhanVienThuNgan cccdNhanVienThuNgan 	 ;
 
     String tinhTrangThanhToan  ;
-
-    @CollectionTable(name = "PhuongThucThanhToan", joinColumns = @JoinColumn(name = "maDon"))
-    @Column(name = "phuongThucThanhToan")
-    List<String> phuongThucThanhToan;
+//    @ElementCollection
+//    @CollectionTable(name = "PhuongThucThanhToan", joinColumns = @JoinColumn(name = "maDon"))
+//    @Column(name = "phuongThucThanhToan")
+//    List<String> phuongThucThanhToan;
+    String phuongThucThanhToan;
 
 
 
@@ -59,6 +61,7 @@ public class DonMonAn {
             inverseJoinColumns = @JoinColumn(name = "maMonAnGioHang")
 
     )
+            @JsonIgnore
     List<MonAnGioHang> listMonAnGioHang;
 
 
