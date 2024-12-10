@@ -75,7 +75,7 @@ const OrderManagement = () => {
         })
         .then(res => res.json())
         .then(data => {
-            setOrders(data);
+            // setOrders(data);
             console.log(data); 
         })
     //    .then(data => setUsers(data))
@@ -85,7 +85,6 @@ const OrderManagement = () => {
 
     return (
         <div>   
-            hi mom, this is order management page
             <Table columns={columns} dataSource={orders} />
         </div>
     )

@@ -144,7 +144,7 @@ const Header = () => {
 
           {/* Logo - Centered on mobile */}
           <Link className="navbar-brand mx-auto mx-lg-0" to="/">
-            <img src={logo} alt="Jollibee Logo" height="80" />
+            {/* <img src={logo} alt="Jollibee Logo" height="80" /> */}
           </Link>
 
           {/* Desktop Navigation */}

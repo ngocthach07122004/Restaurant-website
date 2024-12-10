@@ -1,3 +1,17 @@
+create table ThongTin (
+    cccd            varchar(255) not null, 
+    anhThongTin     varchar(255), 
+    email           varchar(255), 
+    gioiTinh        varchar(255), 
+    ho              varchar(255), 
+    maTaiKhoan      varchar(255), 
+    matKhau         varchar(255), 
+    ngaySinh        date, 
+    ten             varchar(255), 
+    tenDangNhap     varchar(255), 
+    cccdQuanTriVien varchar(255), 
+    primary key (cccd)); 
+
 create table BangLaiXe (cccd varchar(255) not null, bangLaiXe varchar(255)) 
 create table BaoGom (maDon varchar(255) not null, maMonAnGioHang varchar(255) not null) 
 create table ChiNhanh (maChiNhanh varchar(255) not null, diaChi varchar(255), moTa varchar(255), tenChiNhanh varchar(255), thoiGianDongCua date, thoiGianMoCua date, trangThaiHoatDong varchar(255), cccdQuanTriVien varchar(255), primary key (maChiNhanh)) 
@@ -8,7 +22,13 @@ create table DonGiaoHang (maDonGiaoHang varchar(255) not null, diaChiNhan varcha
 create table DonKhieuNai (maDonKhieuNai varchar(255) not null, noiDung varchar(255), thoiGian date, cccdKhachHang varchar(255), cccdNhanVienQuanLy varchar(255), donMonAn varchar(255), primary key (maDonKhieuNai)) 
 create table DonMonAn (maDon varchar(255) not null, phuongThucThanhToan varbinary(255), thoiGianDat date, tinhTrangThanhToan varchar(255), tongGiaTien decimal(38,2), cccdKhachHang varchar(255), cccdNhanVienThuNgan varchar(255), maChiNhanh varchar(255), primary key (maDon)) 
 create table DonTaiQuan (maDonTaiQuan varchar(255) not null, yeuCauCuaKhachHang varchar(255), maDon varchar(255), maNhanVienPhucVu varchar(255), primary key (maDonTaiQuan)) 
-create table KhachHang (maKhachHang varchar(255) not null, loaiKhachHang varchar(255), ngayThamGia date, soDonDaDat integer not null, soDonDaHuy integer not null, cccd varchar(255), primary key (maKhachHang)) 
+create table KhachHang (
+    maKhachHang     varchar(255) not null, 
+    loaiKhachHang   varchar(255), 
+    ngayThamGia     date, 
+    soDonDaDat      integer not null, 
+    soDonDaHuy      integer not null, 
+    cccd            varchar(255), primary key (maKhachHang));
 create table MaKhuyenMai (idKhuyenMai varchar(255) not null, dieuKienDung varchar(255), giaTriGiamGia decimal(38,2), moTa varchar(255), maChiNhanh varchar(255), maDon varchar(255), primary key (idKhuyenMai)) 
 create table MaKhuyenMaiKhachHang (maMaKhuyenMaiKhachHang varchar(255) not null, soLuong integer not null, maKhuyenMai varchar(255), primary key (maMaKhuyenMaiKhachHang)) 
 create table MonAn (maMonAn varchar(255) not null, anhMonAn varchar(255), gia decimal(38,2), khauPhan varchar(255), loaiMonAn varchar(255), moTa varchar(255), tenMonAn varchar(255), thoiGianHoanTat varchar(255), primary key (maMonAn)) 
@@ -29,8 +49,7 @@ create table SuDung (cccd varchar(255) not null, bienSoXe varchar(255) not null)
 create table SuKienUuDai (maUuDai varchar(255) not null, giaTriGiamGia decimal(38,2), loaiMa varchar(255), maChiNhanh varchar(255), primary key (maUuDai)) 
 create table ThoiGianSuKien (maUuDai varchar(255) not null, thoiGianSuKien varchar(255)) 
 create table ThongBao (maThongBao varchar(255) not null, noiDungThongBao varchar(255), thoiGian datetime(6), cccdNhanVienQuanLy varchar(255), cccdQuanTriVien varchar(255), primary key (maThongBao)) 
-create table ThongTin (cccd varchar(255) not null, anhThongTin varchar(255), email varchar(255), gioiTinh varchar(255), ho varchar(255), maTaiKhoan varchar(255), matKhau varchar(255), ngaySinh date, ten varchar(255), tenDangNhap varchar(255), cccdQuanTriVien varchar(255), primary key (cccd)) 
-alter table DonGiaoHang drop index UKt8mi8tvehyi2sp429ouea2pa2
+
 alter table DonGiaoHang add constraint UKt8mi8tvehyi2sp429ouea2pa2 unique (maDon)
 alter table DonTaiQuan drop index UKl7c0j5qn7c2ftjlurkmjsl5ts
 alter table DonTaiQuan add constraint UKl7c0j5qn7c2ftjlurkmjsl5ts unique (maDon)

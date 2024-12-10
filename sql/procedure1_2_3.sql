@@ -23,15 +23,6 @@ begin
 end; 
 
 
--- create procedure hienCacMaKhuyenMaiTaiChiNhanhTheoNgay (
---     in ngayBatDauArg date , in ngayKetThucArg date, in maChiNhanhArg varchar(100)
--- )
--- begin
---      select ThoiGianMaKhuyenMai.thoiGianHetHan, ThoiGianMaKhuyenMai.thoiGianPhatHanh,  MaKhuyenMai.ten
---      from  MaKhuyenMai join ThoiGianMaKhuyenMai on MaKhuyenMai.idKhuyenMai = ThoiGianMaKhuyenMai.idKhuyenMai
---      where  MaKhuyenMai.maChiNhanh= maChiNhanhArg and thoiGianHetHan < ngayKetThucArg and ngayBatDauArg > thoiGianPhatHanh;
--- end; 
-
 
 create procedure tongSoNhanVienLamViecHonMotThangTaiChiNhanh
 (
@@ -42,3 +33,29 @@ begin
     from NhanVien 
     where NhanVien.maChiNhanh = maChiNhanhArg and TIMESTAMPDIFF(MONTH, ngayVaoLam, CURDATE()) >=1; 
 end; 
+
+
+-- Tổng số đơn hàng và số tiền đã dùng của mỗi khách hàng trong chi nhánh A trong tháng nay
+create procedure tongSoDonHangTrongThangNayTaiChiNhanh(
+    in maChiNhanh_arg VARCHAR(255)
+)
+begin
+    select   
+        KhachHang.maKhachHang,
+        ThongTin.ho,
+        ThongTin.ten,
+        count(DonMonAn.maDon) AS tongSoDonHang,
+        sum(DonMonAn.tongGiaTien) AS tongSoTien
+    from KhachHang
+    inner join DonMonAn on KhachHang.maKhachHang = DonMonAn.cccdKhachHang
+    inner join ThongTin ON KhachHang.cccd = ThongTin.cccd
+    where DonMonAn.maChiNhanh = maChiNhanh_arg
+    and MONTH(DonMonAn.thoiGianDat) = MONTH(CURDATE())
+    and YEAR(DonMonAn.thoiGianDat) = YEAR(CURDATE())
+    group by KhachHang.maKhachHang, ThongTin.ho, ThongTin.ten
+    order by tongSoTien desc;
+end;
+
+
+
+

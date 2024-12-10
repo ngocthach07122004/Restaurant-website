@@ -132,8 +132,8 @@ const Profile = () => {
       <div className="container-feedback">
         <section style={{ backgroundColor: "#eee" }}>
           <div className="container py-5">
-            <div className="row">
-                <div className="card mb-4">
+            <div className="d-flex justify-content-center">
+                <div className="card">
                   <div className="card-body text-center align-items-center">
                     <div className="flex justify-center">
                       <img
@@ -165,7 +165,7 @@ const Profile = () => {
                   </div>
                 </div>
 
-                <div className="card mb-8">
+                <div className="card w-">
                   <div className="card-body">
                     <div className="row">
                       <div className="col-sm-3">
@@ -219,55 +219,9 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-              <Table className="w-full lg:w-3/5" columns={columns} dataSource={data} />
-
-
-                {/* <div className="row">
-                  <div className="col-md-12">
-                    <div className="card mb-10 flex">
-                      <div className="card-body">
-                        <ul className="list-group list-group-flush">
-                          {orderLog
-                            .sort(
-                              (a, b) =>
-                                new Date(b.timer_start) -
-                                new Date(a.timer_start)
-                            ) // Sort in descending order by purchase_time
-                            .slice(0, 4) // Take the 4 most recent logs
-                            .map((log) => (
-                              <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <div>
-                                  <strong>
-                                    <span className="text-red-500 text-2xl">
-                                      {-log.page_cost}
-                                    </span>
-                                  </strong>{" "}
-                                  {log.status === "pending" ? (
-                                    <strong className="text-yellow-600">
-                                      [ON PENDING]
-                                    </strong>
-                                  ) : (
-                                    <strong className="text-green-600">
-                                      [DONE]
-                                    </strong>
-                                  )}
-                                  <span>
-                                    [
-                                    {new Date(log.timer_start).toLocaleString()}
-                                    ]
-                                  </span>
-                                  <br />
-                                  <strong>Order's name:</strong>{" "}
-                                  {log.order_name} <br />
-                                </div>
-                              </li>
-                            ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
+                
             </div>
+              <Table className="w-full lg:w-3/5" columns={columns} dataSource={data} />
           </div>
         </section>
       </div>
