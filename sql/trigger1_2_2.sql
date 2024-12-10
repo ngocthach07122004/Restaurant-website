@@ -33,12 +33,12 @@ begin
    declare tongDonDat int default 0;
    declare tongDonHuy int default 0; 
 
-    SELECT SUM(CASE WHEN DonMonAn.tinhTrangDonMonAn = 'Y' THEN 1 ELSE 0 END)
+    SELECT SUM(CASE WHEN DonMonAn.tinhTrangThanhToan = 'Y' THEN 1 ELSE 0 END)
     INTO tongDonDat
     FROM DonMonAn
     WHERE DonMonAn.cccdKhachHang = NEW.maKhachHang;
 
-    SELECT SUM(CASE WHEN DonMonAn.tinhTrangDonMonAn = 'N' THEN 1 ELSE 0 END)
+    SELECT SUM(CASE WHEN DonMonAn.tinhTrangThanhToan = 'N' THEN 1 ELSE 0 END)
     INTO tongDonHuy
     FROM DonMonAn
     WHERE DonMonAn.cccdKhachHang = NEW.maKhachHang;

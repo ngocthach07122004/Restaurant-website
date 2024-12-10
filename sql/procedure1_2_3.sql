@@ -23,14 +23,14 @@ begin
 end; 
 
 
-create procedure hienCacMaKhuyenMaiTaiChiNhanhTheoNgay (
-    in ngayBatDauArg date , in ngayKetThucArg date, in maChiNhanhArg varchar(100)
-)
-begin
-     select ThoiGianMaKhuyenMai.thoiGianHetHan, ThoiGianMaKhuyenMai.thoiGianPhatHanh,  MaKhuyenMai.ten
-     from  MaKhuyenMai join ThoiGianMaKhuyenMai on MaKhuyenMai.idKhuyenMai = ThoiGianMaKhuyenMai.idKhuyenMai
-     where  MaKhuyenMai.maChiNhanh= maChiNhanhArg and thoiGianHetHan < ngayKetThucArg and ngayBatDauArg > thoiGianPhatHanh;
-end; 
+-- create procedure hienCacMaKhuyenMaiTaiChiNhanhTheoNgay (
+--     in ngayBatDauArg date , in ngayKetThucArg date, in maChiNhanhArg varchar(100)
+-- )
+-- begin
+--      select ThoiGianMaKhuyenMai.thoiGianHetHan, ThoiGianMaKhuyenMai.thoiGianPhatHanh,  MaKhuyenMai.ten
+--      from  MaKhuyenMai join ThoiGianMaKhuyenMai on MaKhuyenMai.idKhuyenMai = ThoiGianMaKhuyenMai.idKhuyenMai
+--      where  MaKhuyenMai.maChiNhanh= maChiNhanhArg and thoiGianHetHan < ngayKetThucArg and ngayBatDauArg > thoiGianPhatHanh;
+-- end; 
 
 
 create procedure tongSoNhanVienLamViecHonMotThangTaiChiNhanh
