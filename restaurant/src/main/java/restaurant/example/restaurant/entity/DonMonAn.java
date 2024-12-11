@@ -34,6 +34,7 @@ public class DonMonAn {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name= "maChiNhanh")
+            @JsonIgnore
     ChiNhanh maChiNhanh;
 
     @ManyToOne(cascade = CascadeType.ALL)
