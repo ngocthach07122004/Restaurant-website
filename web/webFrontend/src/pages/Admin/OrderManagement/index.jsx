@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Space, Table, Tag } from 'antd';
 import { toast } from "react-toastify";
-import { Button, Input, Form } from "antd";
+import { Button, Input, Formm } from "antd";
 import { useNavigate } from 'react-router-dom';
 
 const OrderManagement = () => {
     const [isReceived, setIsReceived] = useState(false);
     const [orders, setOrders] = useState([]);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const handleShowDetail = (id) => navigate(`${id}`);
 
@@ -18,19 +19,19 @@ const OrderManagement = () => {
       // render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Ten mon an',
-      dataIndex: 'tenMonAn',
-      key: 'tenMonAn',
+      title: 'Thoi gian dat',
+      dataIndex: 'thoiGianDat',
+      key: 'thoiGianDat',
     },
     {
-      title: 'Gia',
-      dataIndex: 'gia',
-      key: 'gia',
+      title: 'Tong gia tien',
+      dataIndex: 'tongGiaTien',
+      key: 'tongGiaTien',
     },
     {
-      title: 'Mo ta',
-      dataIndex: 'moTa',
-      key: 'moTa',
+      title: 'Tinh trang thanh toan',
+      dataIndex: 'tinhTrangThanhToan',
+      key: 'tinhTrangThanhToan',
     },
     // {
     //   title: 'Quan Tri Vien',
@@ -64,8 +65,9 @@ const OrderManagement = () => {
   ];
 
 
-    useEffect(() => {
+    useEffect( () => {
         // Fetch users from API
+        setLoading(true)
         const url = "http://localhost:8080/donMonAn/all"
         fetch(url, {
             method: 'GET',
@@ -75,17 +77,18 @@ const OrderManagement = () => {
         })
         .then(res => res.json())
         .then(data => {
-            // setOrders(data);
+            setOrders(data);
             console.log(data); 
         })
-    //    .then(data => setUsers(data))
+      //  .then(data => setUsers(data))
         .catch(error => console.error('Error:', error))
+        .finally(() => setLoading(false))
     }, [isReceived])
 
 
     return (
         <div>   
-            <Table columns={columns} dataSource={orders} />
+            <Table columns={columns} dataSource={orders} loading={loading}/>
         </div>
     )
 }

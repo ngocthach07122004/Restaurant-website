@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Users = () => {
   const [isReceived, setIsReceived] = useState(false);
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null); // For storing the selected user
@@ -93,6 +94,7 @@ const Users = () => {
   ];
 
   useEffect(() => {
+    setLoading(true)
     // Fetch users from API
     const url = "http://localhost:8080/thongTin/all";
     fetch(url, {
@@ -109,11 +111,12 @@ const Users = () => {
       //    .then(data => setUsers(data))
       .catch((error) => console.error("Error:", error));
       setIsReceived(true);
+      setLoading(false);
   }, [isReceived]);
 
   return (
     <div>
-      <Table columns={columns} dataSource={users} />
+      <Table columns={columns} dataSource={users} loading={loading}/>
       <Modal
         title="User Details"
         visible={isModalVisible}

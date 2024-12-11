@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Client } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
+import { Bell } from "lucide-react"
 import './styles.scss'; // Import CSS for styling
 
 const BellNotification = () => {
@@ -35,7 +36,7 @@ const BellNotification = () => {
 
   return (
     <div className="bell-notification">
-      <h2>Notifications</h2>
+      <Bell size={24} />
       <ul>
         {notifications.map((notification, index) => (
           <li key={index}>{notification.message}</li>
