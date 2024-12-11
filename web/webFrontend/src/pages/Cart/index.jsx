@@ -16,7 +16,7 @@ const Cart = () => {
 
   const handleCreateOrder = () => {
     const orderData = {
-      thoiGianDat: new Date().toISOString().split("T")[0],
+      thoiGianDat: new Date().toISOString(),
       tongGiaTien: total,
       // listMaKhuyenMai: [
       //   { idKhuyenMai: "KM1" },
@@ -25,17 +25,18 @@ const Cart = () => {
       // ],
       listMaKhuyenMai: [],
       maChiNhanh: { maChiNhanh: "CN001" },
-      cccdKhachHang: { cccd: localStorage.getItem('cccd') },
+      cccdKhachHang: { cccd: "KH00001" },
       cccdNhanVienThuNgan: { maNhanVienThuNgan: "TN016" },
-      tinhTrangThanhToan: "DA THANH TOAN",
-      phuongThucThanhToan: ["ABC"],
+      tinhTrangThanhToan: "Chưa thanh toán",
+      phuongThucThanhToan: "Tiền mặt",
       listMonAnGioHang: cartItems.map((item) => ({
         monAn: { maMonAn: item.id },
         soLuong: item.quantity,
       })),
     };
 
-    // console.log(orderData);
+
+    console.log(orderData);
 
     fetch("http://localhost:8080/donMonAn/create", {
       method: "POST",

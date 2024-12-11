@@ -30,6 +30,7 @@ const Signin = (props) => {
       // localStorage.setItem('userdata', JSON.stringify(data));
       if(data['message'] === 'success') {
         localStorage.setItem('login', 'success');
+        // localStorage.setItem('maKhachHang', data['entity']['maKhachHang']);
         localStorage.setItem('name',data['entity']['ho'] + ' ' + data['entity']['ten']);
         localStorage.setItem('isLogin', true);
         localStorage.setItem('cccd', data['entity'].cccd);
