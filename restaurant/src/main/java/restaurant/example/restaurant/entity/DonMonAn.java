@@ -34,17 +34,17 @@ public class DonMonAn {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name= "maChiNhanh")
-            @JsonIgnore
+@JsonIgnore
     ChiNhanh maChiNhanh;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cccdKhachHang" )
-            @JsonIgnore
+@JsonIgnore
     KhachHang cccdKhachHang;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cccdNhanVienThuNgan" )
-            @JsonIgnore
+     @JsonIgnore
     NhanVienThuNgan cccdNhanVienThuNgan 	 ;
 
     String tinhTrangThanhToan  ;
