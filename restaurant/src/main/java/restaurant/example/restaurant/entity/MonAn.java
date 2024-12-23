@@ -27,19 +27,14 @@ public class MonAn {
     String loaiMonAn;
     String thoiGianHoanTat ;
     String anhMonAn;
-
     @OneToMany(mappedBy = "monAn")
     @JsonIgnore
     List<MonAnGioHang>  listMonAnGioHang;
-//    @OneToMany(mappedBy = "monAn", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
-//    @JsonManagedReference("monAn-reference")
-//     List<BaoGom> listBaoGom = new ArrayList<>();
 @ManyToMany(cascade = CascadeType.ALL)
 @JoinTable(name ="ChuaMonAn",
         joinColumns = @JoinColumn(name = "maMonAn"),
         inverseJoinColumns = @JoinColumn(name = "maUuDai")
 
 )
-
         List<SuKienUuDai> listSuKienUuDai;
 }

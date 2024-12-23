@@ -23,12 +23,12 @@ import java.util.List;
 public class ChiNhanhService {
              ChiNhanhRepository chiNhanhRepository;
              ChiNhanhMapper chiNhanhMapper;
-             @PersistenceContext
-             EntityManager entityManager;
+
          
              EntityHelper entityHelper;
-         
-             @Transactional
+    @PersistenceContext
+    EntityManager entityManager;
+    @Transactional
              public ChiNhanh createChiNhanh (ChiNhanh chiNhanh) {
                    ChiNhanh newChiNhanh = chiNhanhMapper.toChiNhanh(chiNhanh);
                    newChiNhanh.setMaChiNhanh(chiNhanh.getMaChiNhanh());
