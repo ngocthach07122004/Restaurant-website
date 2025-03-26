@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, ShoppingBag, User } from 'lucide-react';
-import logo from '../../assets/jollibee.png';
-import tel from '../../assets/delivery-lg-rs.png';
-import { CartContext } from '../../context/CartContext';
-import BellNotification from '../../components/BellNotification';
-import './styles.css';
+import React, { useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, ShoppingBag, User } from "lucide-react";
+import logo from "../../assets/jollibee.png";
+import tel from "../../assets/delivery-lg-rs.png";
+import { CartContext } from "../../context/CartContext";
+import BellNotification from "../../components/BellNotification";
+import "./styles.css";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -15,21 +15,21 @@ const Header = () => {
   const location = useLocation();
 
   const navLinks = [
-    { path: '/', label: 'TRANG CHỦ' },
-    { path: '/about', label: 'VỀ PIKABEE' },
-    { path: '/menu', label: 'THỰC ĐƠN' },
-    { path: '/branch', label: 'CHI NHÁNH' },
-    { path: '/contact', label: 'LIÊN HỆ' },
-    { path: '/careers', label: 'TUYỂN DỤNG' },
+    { path: "/", label: "TRANG CHỦ" },
+    { path: "/about", label: "VỀ PIKABEE" },
+    { path: "/menu", label: "THỰC ĐƠN" },
+    { path: "/branch", label: "CHI NHÁNH" },
+    { path: "/contact", label: "LIÊN HỆ" },
+    { path: "/careers", label: "TUYỂN DỤNG" },
   ];
 
-  const userData = localStorage.getItem('userdata');
-  const username = userData ? JSON.parse(userData).username : '---';
+  const userData = localStorage.getItem("userdata");
+  const username = userData ? JSON.parse(userData).username : "---";
 
   return (
     <>
       {/* Top Bar */}
-      <div className="d-none d-lg-block" style={{ backgroundColor: '#FFB700' }}>
+      <div className="d-none d-lg-block" style={{ backgroundColor: "#FFB700" }}>
         <div className="container d-flex justify-content-end py-2 gap-4">
           <div className="d-flex gap-3 align-items-center">
             <button className="btn btn-link text-danger p-0">VN</button>
@@ -42,41 +42,49 @@ const Header = () => {
           </div>
           <div className="d-flex gap-3 align-items-center">
             <i className="bi bi-person-fill text-danger"></i>
-            {localStorage.getItem('login') !== 'success' ? (
+            {localStorage.getItem("login") !== "success" ? (
               <span className="text-danger">
                 <a
-                  onClick={() => navigate('signup')}
+                  onClick={() => navigate("signup")}
                   style={{
-                    color: 'black',
-                    fontSize: '14px',
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
-                    textDecoration: 'none',
+                    color: "black",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    textDecoration: "none",
                   }}
-                  onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-                  onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.textDecoration = "underline")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.textDecoration = "none")
+                  }
                 >
                   ĐĂNG KÝ
                 </a>
                 /
                 <a
-                  onClick={() => navigate('signin')}
+                  onClick={() => navigate("signin")}
                   style={{
-                    color: 'black',
-                    fontSize: '14px',
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
-                    textDecoration: 'none',
+                    color: "black",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    textDecoration: "none",
                   }}
-                  onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-                  onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.textDecoration = "underline")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.textDecoration = "none")
+                  }
                 >
                   ĐĂNG NHẬP
                 </a>
               </span>
             ) : (
               <div className="d-flex gap-3">
-                <Link to='/profile'>
+                <Link to="/profile">
                   <User />
                 </Link>
                 <Link to="/cart">
@@ -90,34 +98,43 @@ const Header = () => {
                 <BellNotification />
                 <span className="text-danger">
                   <a
-                    onClick={() => navigate('/profile')}
+                    onClick={() => navigate("/profile")}
                     style={{
-                      color: 'black',
-                      fontSize: '14px',
-                      fontWeight: 'bold',
-                      cursor: 'pointer',
-                      textDecoration: 'none',
+                      color: "black",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      textDecoration: "none",
                     }}
-                    onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-                    onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.textDecoration = "underline")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.style.textDecoration = "none")
+                    }
                   >
-                    {localStorage.getItem('name')}
+                    {/* {localStorage.getItem('name')} */}
+                    {username}
                   </a>
                   /
                   <a
                     onClick={() => {
                       localStorage.clear();
-                      navigate('/');
+                      navigate("/");
                     }}
                     style={{
-                      color: 'black',
-                      fontSize: '14px',
-                      fontWeight: 'bold',
-                      cursor: 'pointer',
-                      textDecoration: 'none',
+                      color: "black",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      textDecoration: "none",
                     }}
-                    onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-                    onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.textDecoration = "underline")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.style.textDecoration = "none")
+                    }
                   >
                     Đăng xuất
                   </a>
@@ -129,7 +146,10 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <nav className="main-nav navbar navbar-expand-lg" style={{ backgroundColor: '#E31837' }}>
+      <nav
+        className="main-nav navbar navbar-expand-lg"
+        style={{ backgroundColor: "#E31837" }}
+      >
         <div className="container-fluid">
           {/* Mobile Menu Button */}
           <button
@@ -143,17 +163,25 @@ const Header = () => {
 
           {/* Logo - Centered on mobile */}
           <Link className="navbar-brand mx-auto mx-lg-0" to="/">
-            <img src="https://thietkeaz.com/files/02-04-18/thiet-ke-logo-nha-hang-06.jpg?gidzl=s1dPB2HMtHlM0z0jBalK6TO5sI0pJz53d57K9p5FZKAR0z0WQ1oE5vjMWtTf6zr4aWA3SZdBUpm185VH7m" alt="Logo" height="80" />
+            <img
+              src="https://thietkeaz.com/files/02-04-18/thiet-ke-logo-nha-hang-06.jpg?gidzl=s1dPB2HMtHlM0z0jBalK6TO5sI0pJz53d57K9p5FZKAR0z0WQ1oE5vjMWtTf6zr4aWA3SZdBUpm185VH7m"
+              alt="Logo"
+              height="80"
+            />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}>
+          <div
+            className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
+          >
             <ul className="nav-list navbar-nav me-auto mb-2 mb-lg-0">
               {navLinks.map(({ path, label }) => (
                 <li key={path} className="nav-item">
                   <Link
                     to={path}
-                    className={`nav-link ${location.pathname === path ? 'active' : ''}`}
+                    className={`nav-link ${
+                      location.pathname === path ? "active" : ""
+                    }`}
                   >
                     <span className="fw-bold fs-6">{label}</span>
                   </Link>

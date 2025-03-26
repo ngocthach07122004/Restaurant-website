@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
-import './styles.scss';
-import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../../context/CartContext';
-import { Star } from 'lucide-react';
+import React, { useContext } from "react";
+import "./styles.scss";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import { Star } from "lucide-react";
+import pictureImage from "../../DataStore/Picture";
+const pictureLength = pictureImage.length;
 
 const ProductCard = (props) => {
   const navigate = useNavigate();
@@ -11,14 +13,15 @@ const ProductCard = (props) => {
   const handleClickProductCard = () => {
     navigate(`details/${props.id}`);
   };
-  const moTa = props.moTa.length > 142 ? props.moTa.slice(0, 142) : props.moTa.padEnd(142);
+  const moTa =
+    props.moTa.length > 142 ? props.moTa.slice(0, 142) : props.moTa.padEnd(142);
 
   const handleAddToCart = () => {
     const product = {
       id: props.id,
       name: props.name,
       price: props.price,
-      image: props.image
+      image: props.image,
     };
     addToCart(product);
   };
@@ -28,26 +31,35 @@ const ProductCard = (props) => {
       <div className="card p-3">
         <div className="d-flex justify-content-between align-items-center ">
           <div className="mt-2">
-            <h4 className="text-uppercase">4/5<Star color='#ffc107' size={20} />
-                  <Star color='#ffc107' size={20} />
-                  <Star color='#ffc107' size={20} />
-                  <Star color='#ffc107' size={20} />
-                  <Star size={20} /></h4>
+            <h4 className="text-uppercase">
+              4/5
+              <Star color="#ffc107" size={20} />
+              <Star color="#ffc107" size={20} />
+              <Star color="#ffc107" size={20} />
+              <Star color="#ffc107" size={20} />
+              <Star size={20} />
+            </h4>
             <div className="mt-3">
               <h5 className="text-uppercase mb-0">{props.loaiMonAn}</h5>
-              <div className='productname'>
+              <div className="productname">
                 <h1 className="main-heading mt-0">{props.name}</h1>
               </div>
               <div className="d-flex flex-row user-ratings">
-                <div className="ratings">
-                  
-                </div>
+                <div className="ratings"></div>
                 <h6 className="text-muted ml-1">{props.price} VND</h6>
               </div>
             </div>
           </div>
           <div className="image">
-            <img className='image' onClick={handleClickProductCard} src={props.image || 'https://www.recipetineats.com/wp-content/uploads/2019/04/Beef-Pho_3.jpg'} alt='' />
+            <img
+              className="image"
+              onClick={handleClickProductCard}
+              src={
+                pictureImage[parseInt(props.image.slice(2))] ||
+                "https://www.recipetineats.com/wp-content/uploads/2019/04/Beef-Pho_3.jpg"
+              }
+              alt=""
+            />
           </div>
         </div>
 
@@ -60,18 +72,22 @@ const ProductCard = (props) => {
                   <span></span>
               </div> */}
         </div>
-        <p className='button-container mt-auto'>{moTa}</p>
+        <p className="button-container mt-auto">{moTa}</p>
 
         <div className="button-container mt-auto">
-          <button className="btnAddToCart btn btn-danger" onClick={handleAddToCart}>Add to cart</button>
+          <button
+            className="btnAddToCart btn btn-danger"
+            onClick={handleAddToCart}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
-
     </div>
-  )
+  );
 
-
-  {/* <div className='card'>
+  {
+    /* <div className='card'>
       <div>
         <img
           onClick={handleClickProductCard}
@@ -85,7 +101,8 @@ const ProductCard = (props) => {
       <div>
         <button className='button' onClick={handleAddToCart}>Add to cart</button>
       </div>
-    </div> */}
+    </div> */
+  }
 };
 
 export default ProductCard;

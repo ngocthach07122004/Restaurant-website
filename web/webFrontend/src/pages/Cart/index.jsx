@@ -2,17 +2,23 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { MoveLeft, Trash2, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import './styles.scss';
-
+import "./styles.scss";
+import pictureImage from "../../DataStore/Picture";
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(null);
   const [isSliding, setIsSliding] = useState(false);
   const navigate = useNavigate();
-  const subTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const subTotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
   const discount = 0;
   const total = subTotal - discount;
-  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   const handleCreateOrder = () => {
     const orderData = {
@@ -34,7 +40,6 @@ const Cart = () => {
         soLuong: item.quantity,
       })),
     };
-
 
     console.log(orderData);
 
@@ -67,7 +72,9 @@ const Cart = () => {
   }
 
   return (
-    <div className={`cart-page container-fluid ${isSliding ? "slide-out" : ""}`}>
+    <div
+      className={`cart-page container-fluid ${isSliding ? "slide-out" : ""}`}
+    >
       <div className="card w-100">
         <div className="row">
           <div className="col-md-8 cart">
@@ -84,7 +91,9 @@ const Cart = () => {
               </div>
             </div>
             {cartItems.length === 0 ? (
-              <div className="alert alert-info text-center">Your cart is empty</div>
+              <div className="alert alert-info text-center">
+                Your cart is empty
+              </div>
             ) : (
               <table className="table">
                 <thead>
@@ -102,7 +111,10 @@ const Cart = () => {
                       <td>
                         <img
                           className="img-fluid table-img"
-                          src={item.image || "https://via.placeholder.com/150"}
+                          src={
+                            pictureImage[parseInt(item.image.slice(2))] ||
+                            "https://via.placeholder.com/150"
+                          }
                           alt={item.name}
                           width="80"
                           height="80"
@@ -114,7 +126,10 @@ const Cart = () => {
                           className="btn btn-outline-primary btn-sm"
                           type="button"
                           onClick={() =>
-                            updateQuantity(item.id, Math.max(1, item.quantity - 1))
+                            updateQuantity(
+                              item.id,
+                              Math.max(1, item.quantity - 1)
+                            )
                           }
                           aria-label="Decrease quantity"
                         >
@@ -124,7 +139,9 @@ const Cart = () => {
                         <button
                           className="btn btn-outline-primary btn-sm"
                           type="button"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
                           aria-label="Increase quantity"
                         >
                           <Plus size={16} />
@@ -175,7 +192,10 @@ const Cart = () => {
             </form>
             <div
               className="row"
-              style={{ borderTop: "1px solid rgba(0,0,0,.1)", padding: "2vh 0" }}
+              style={{
+                borderTop: "1px solid rgba(0,0,0,.1)",
+                padding: "2vh 0",
+              }}
             >
               <div className="col">TOTAL PRICE</div>
               <div className="col text-right">{total}₫</div>

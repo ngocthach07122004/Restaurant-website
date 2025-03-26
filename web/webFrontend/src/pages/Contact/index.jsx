@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "antd";
-import okhand from '../../assets/okhand.jpg'
+import okhand from "../../assets/okhand.jpg";
 const Contact = () => {
   return (
     <section class="py-3 py-md-5">
