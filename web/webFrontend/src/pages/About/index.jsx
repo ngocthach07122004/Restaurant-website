@@ -1,58 +1,74 @@
-import React from 'react';
-import { Col, Row } from 'antd';
-import limb from "../../assets/limb.jpg";
-import okhand from "../../assets/okhand.jpg";
-import hamburger from "../../assets/hamburger.jpg";
-import dessert from "../../assets/dessert.jpg";
-import './styles.scss'; 
+import React from "react";
+import { Col, Row } from "antd";
+import bk01 from "../../assets/bku01.jpeg";
+import res1 from "../../assets/res1.jpg";
+import res2 from "../../assets/res2.jpg";
+
+import styles from "./styles.scss";
+import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 const About = () => (
-  <>
-<section class="py-3 py-md-5">
-  <div class="container">
-    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-      <div class="col-12 col-lg-6 col-xl-5">
-        <img class="img-fluid rounded" loading="lazy" src={okhand} alt="About 1"/>
+  <div class={cx("wrapper_about container")}>
+    <div class={cx("wrapper_about_row row")}>
+      <div class="col-sm-12 col-md-12 col-lg-6">
+        <img className={cx("warpper_picture")} src={bk01} alt="bk01" />
       </div>
-      <div class="col-12 col-lg-6 col-xl-7">
-        <div class="row justify-content-xl-center">
-          <div class="col-12 col-xl-11">
-            <h2 class="mb-3">Who Are We?</h2>
-            <p class="lead fs-4 text-secondary mb-3">Là một thương hiệu bắt chước jollibee. Chấm hết.</p>
-            <p class="mb-5">PikaBee hiện có dưới 10000000 cửa hàng tại Việt Nam và nhiều hơn hoặc bằng 0 cửa hàng tại các quốc gia trên khắp thế giới như Mỹ, Hong Kong, các tiểu vương quốc Ả Rập Thống Nhất, Qatar, Brunei, Trung Quốc và cả Nhật Bản.</p>
-            <div class="row gy-4 gy-md-0 gx-xxl-5X">
-              <div class="col-12 col-md-6">
-                <div class="d-flex">
-                  <div class="me-4 text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-                      <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 class="h4 mb-3">Các tiêu chuẩn</h2>
-                    <p class="text-secondary mb-0">Các hoạt động tại cửa hàng được hỗ trợ đắc lực bởi các chuyên gia có kinh nghiệm trong lĩnh vực Marketing, Kỹ thuật và Quản lý Công nghệ thông tin.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="d-flex">
-                  <div class="me-4 text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-                      <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 class="h4 mb-3">Sứ mệnh</h2>
-                    <p class="text-secondary mb-0">Tất cả những gì mà chúng tôi phải làm là mang đến những hương vị tuyệt vời trong từng món ăn, mang lại niềm vui ẩm thực cho tất cả mọi người.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="col-sm-12 col-md-12 col-lg-6">
+        <div>
+          <h2>Giới thiệu về trường</h2>
+          <p>
+            Tên trường: Đại học Bách Khoa Đại học Quốc Gia TPHCM, tên tiếng Anh
+            là Ho Chi Minh City University of Technology, viết tắt là HCMUT.
+            –Địa chỉ: 268 Lý Thường Kiệt, P.14, Q.10, TP. Hồ Chí Minh Tiền thân
+            của trường là Trung tâm Kỹ thuật Quốc gia được đổi tên thành Đại học
+            Bách Khoa TPHCM vào năm 1976 với 5 khoa chuyên ngành: Điện – Điện
+            tử, Xây Dựng, Thủy lợi, Hóa học và Cơ khí. Đến năm 1996, Đại học
+            Bách Khoa chính thức trở thành thành viên của Đại học Quốc gia TP.
+            Hồ Chí Minh. Nhà trường luôn phấn đấu để trở thành cơ sở đào tạo đại
+            học đạt trình độ cao với đa ngành đa lĩnh vực, đồng thời là trung
+            tâm nghiên cứu khoa học công nghệ hàng đầu của khu vực miền Nam nói
+            riêng và của cả nước nói chung. Đội ngũ lãnh đạo nhà trường cũng
+            luôn phấn đấu để đưa đại học Bách Khoa trở thành địa chỉ đáng tin
+            cậy và hấp dẫn đối với những nhà đầu tư phát triển công nghệ và với
+            giới doanh nghiệp trong nước cũng như quốc tế. Đại học Bách Khoa có
+            đội ngũ cán bộ công nhân viên chức gồm hơn 930 người, trong đó có 9
+            giáo sư, 103 phó giáo sư, hơn 338 Tiến sĩ, hơn 443 Thạc sĩ và 99
+            Giảng viên có trình độ đại học. Mỗi giảng viên đều có dày dạn kinh
+            nghiệm, có nhiệt huyết đối với các hoạt động đào tạo và nghiên cứu
+            khoa học, chuyển giao công nghệ. Nhà trường cũng đang từng bước nâng
+            cao chất lượng giảng viên để xây dựng một trường đại học vững mạnh,
+            phục vụ đất nước.{" "}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class={cx("wrapper_about_row row")}>
+      <div class="col-sm-12 col-md-12 col-lg-6">
+        <img className={cx("warpper_picture")} src={res2} alt="bk03" />
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-6">
+        <div>
+          <h2>Giới thiệu về dự án PIKABEE</h2>
+          <p>
+            Hệ thống quản lý nhà hàng phục vụ ăn uống tại các chi nhánh và cung
+            cấp dịch vụ đặt đồ ăn giao tận nơi giúp đáp ứng nhu cầu ẩm thực của
+            khách hàng một cách thuận tiện và linh hoạt. Với hệ thống nhiều chi
+            nhánh trải rộng khắp các khu vực, khách hàng có thể lựa chọn dùng
+            bữa tại nhà hàng hoặc đặt món trực tuyến thông qua website và ứng
+            dụng. Để sử dụng dịch vụ, khách hàng cần tạo tài khoản, từ đó có thể
+            đặt món, theo dõi đơn hàng, thanh toán linh hoạt bằng nhiều phương
+            thức và nhận thông báo về các chương trình ưu đãi. Hệ thống cũng cho
+            phép khách hàng đánh giá chất lượng dịch vụ và gửi phản hồi đến tổng
+            đài để cải thiện trải nghiệm. Mỗi chi nhánh được vận hành bởi đội
+            ngũ nhân viên chuyên biệt, bao gồm nhân viên quản lý, phục vụ, tổng
+            đài, thu ngân, giao hàng và bếp. Nhà hàng còn ứng dụng công nghệ
+            hiện đại trong quản lý đơn hàng, phân tích hành vi khách hàng và tối
+            ưu quy trình vận hành, giúp nâng cao chất lượng phục vụ và mở rộng
+            quy mô kinh doanh một cách hiệu quả.{" "}
+          </p>
         </div>
       </div>
     </div>
   </div>
-</section>
-  </>
 );
 export default About;

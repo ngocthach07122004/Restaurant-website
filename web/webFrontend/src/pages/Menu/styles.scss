@@ -31,3 +31,41 @@
   max-width: calc(33.33% - 20px);
   box-sizing: border-box; /* Ensures padding/borders don't overflow the card width */
 }
+
+//paginate
+
+.wrapper_paginate {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 10px;
+}
+
+.pagination li {
+  margin: 0 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.pagination .active {
+  background-color: rgb(176, 6, 6);
+  color: white;
+  font-weight: bold;
+}
+.pagination {
+  .previous a,
+  .next a {
+    text-decoration: none;
+    color: rgb(215, 99, 10);
+    font-weight: 700;
+    // border-radius: 1px solid rgb(14, 134, 194);
+  }
+}

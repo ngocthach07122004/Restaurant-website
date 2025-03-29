@@ -1,10 +1,11 @@
 import React from "react";
 import { Row, Col } from "antd";
-import okhand from "../../assets/okhand.jpg";
+// import okhand from "../../assets/okhand.jpg";
+import res1 from "../../assets/res1.jpg";
 const Contact = () => {
   return (
     <section class="py-3 py-md-5">
-      <div class="container">
+      {/* <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
             <h3 class="fs-6 text-secondary mb-2 text-uppercase text-center">
@@ -16,7 +17,7 @@ const Contact = () => {
             <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div class="container">
         <div class="row gy-3 gy-md-4 gy-lg-0 align-items-xl-center">
@@ -24,7 +25,7 @@ const Contact = () => {
             <img
               class="img-fluid rounded"
               loading="lazy"
-              src={okhand}
+              src={res1}
               alt="Get in Touch"
             />
           </div>
