@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.scss";
 import { message } from "antd";
-import singin from "../../assets/signin.jpg";
+import signin from "../../assets/signin.jpg";
 
 const Signin = (props) => {
   const [username, setUsername] = useState("");
@@ -52,7 +52,7 @@ const Signin = (props) => {
     <div
       className="container-fuild loginmainContainer"
       style={{
-        backgroundImage: `url(${singin})`,
+        backgroundImage: `url(${signin})`,
         backgroundSize: "cover",
         minHeight: "70vh",
       }}

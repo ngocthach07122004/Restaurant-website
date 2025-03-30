@@ -7,14 +7,19 @@ import bogoBk from "../../assets/HCMUT_official_logo.png";
 import { CartContext } from "../../context/CartContext";
 import BellNotification from "../../components/BellNotification";
 import "./styles.css";
-
+import styles from "./styles.module.scss";
+import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 const Header = () => {
   const navigate = useNavigate();
+  const [stateBellNotification, setStateBellNotification] = useState(false);
   const { cartItems } = useContext(CartContext);
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
   const location = useLocation();
-
+  const handleBellNotificationClick = () => {
+    setStateBellNotification(!stateBellNotification);
+  };
   const navLinks = [
     { path: "/", label: "TRANG CHỦ" },
     { path: "/about", label: "VỀ PIKABEE" },
@@ -30,7 +35,10 @@ const Header = () => {
   return (
     <>
       {/* Top Bar */}
-      <div className="d-none d-lg-block" style={{ backgroundColor: "#FFB700" }}>
+      <div
+        className={cx("wrapper_top_header", "d-none", "d-lg-block")}
+        style={{ backgroundColor: "#FFB700" }}
+      >
         <div className="container d-flex justify-content-end py-2 gap-4">
           <div className="d-flex gap-3 align-items-center">
             <button className="btn btn-link text-danger p-0">VN</button>
@@ -96,7 +104,12 @@ const Header = () => {
                     </span>
                   </div>
                 </Link>
-                <BellNotification />
+                <div onClick={handleBellNotificationClick}>
+                  <BellNotification
+                    stateNotification={stateBellNotification}
+                    setStateBellNotification={setStateBellNotification}
+                  />
+                </div>
                 <span className="text-danger">
                   <a
                     onClick={() => navigate("/profile")}
@@ -148,7 +161,12 @@ const Header = () => {
 
       {/* Main Navigation */}
       <nav
-        className="main-nav navbar navbar-expand-lg"
+        className={cx(
+          "wrapper_main_header",
+          "main-nav",
+          "navbar",
+          "navbar-expand-lg"
+        )}
         style={{ backgroundColor: "#E31837" }}
       >
         <div className="container-fluid">
