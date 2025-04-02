@@ -1,6 +1,7 @@
 package restaurant.example.restaurant.exception;
 
 public enum ErrorCode {
+
          CHINHANH_NOT_EXIST ("1","CHINHANH is not exist, please try again"),
          DONKHIEUNAI_NOT_EXIST ("2","DONKHIEUNAI is not exist, please try again"),
          DONMONAN_NOT_EXIST ("3","DONMONAN is not exist, please try again"),
@@ -10,6 +11,7 @@ public enum ErrorCode {
          SUKIENUUDAI_NOT_EXIST ("7","SUKIENUUDAI is not exist, please try again"),
          THONGBAO_NOT_EXIST ("8","THONGBAO is not exist, please try again"),
          THONGTIN_NOT_EXIST ("9","THONGTIN is not exist, please try again"),
+    COMMENT_NOT_EXIST ("10","COMMENT is not exist, please check again information"),
          USERNAME_NOT_EXIST("401","USERNAME is not exits, please try again"),
          USERNAME_ALREADY_EXIST("401", "USERNAME already exits, please chose another usename");
      private ErrorCode (String code , String message ) {

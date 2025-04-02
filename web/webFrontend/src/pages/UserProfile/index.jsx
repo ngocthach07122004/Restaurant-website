@@ -8,6 +8,7 @@ const pictureDefault =
   "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp";
 
 const Profile = () => {
+  const [totalBill, setTotalBill] = useState(0);
   const [userData, setUserData] = useState({});
   const [orders, setOrders] = useState([]);
   const [isReceived, setIsReceived] = useState(false);
@@ -48,7 +49,8 @@ const Profile = () => {
           `http://localhost:8080/thongTin/${userData.cccd}`
         );
         const updatedUserData = await userResponse.json();
-        setUserData(updatedUserData); // Update user data state
+        setUserData(updatedUserData);
+        console.log("check", updatedUserData); // Update user data state
         setIsEditModalVisible(false); // Close modal
       } else {
         console.error("Error updating user data:", response.statusText);
@@ -85,7 +87,8 @@ const Profile = () => {
 
   useEffect(() => {
     // Fetch users from API
-    const url = "http://localhost:8080/donMonAn/all";
+    const idAccount = localStorage.getItem("cccd");
+    const url = `http://localhost:8080/donMonAn/all/${idAccount}`;
     fetch(url, {
       method: "GET",
       headers: {
@@ -95,7 +98,12 @@ const Profile = () => {
       .then((res) => res.json())
       .then((data) => {
         setOrders(data);
-        console.log(data);
+        const totalBillCal = data.reduce(
+          (acc, bill) => acc + bill.tongGiaTien,
+          0
+        );
+        setTotalBill(totalBillCal);
+        // console.log(data);
       })
       //    .then(data => setUsers(data))
       .catch((error) => console.error("Error:", error));
@@ -111,7 +119,7 @@ const Profile = () => {
       .then((data) => {
         setUserData(data);
         setReceiveData(true);
-        console.log(cccd);
+        // console.log(cccd);
       })
       .catch((err) => console.log(err));
   }, [receiveData]);
@@ -119,29 +127,29 @@ const Profile = () => {
   const columns = [
     {
       title: "ID",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "maDon",
+      key: "maDon",
     },
     {
       title: "Date",
-      dataIndex: "orderDate",
-      key: "orderDate",
+      dataIndex: "thoiGianDat",
+      key: "thoiGianDat",
       render: (text) => {
         return text;
       },
     },
     {
       title: "Total",
-      dataIndex: "totalPrice",
-      key: "totalPrice",
+      dataIndex: "tongGiaTien",
+      key: "tongGiaTien",
       render: (text) => {
-        return text + "VND";
+        return text.toLocaleString("de-DE") + "VND";
       },
     },
     {
       title: "Payment method",
-      dataIndex: "paymentMethod",
-      key: "paymentMethod",
+      dataIndex: "phuongThucThanhToan",
+      key: "phuongThucThanhToan",
     },
     {
       title: "Status",
@@ -248,19 +256,21 @@ const Profile = () => {
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
-                      <p className="mb-0">Balance</p>
+                      <p className="mb-0">UserName</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">{userData.balance}</p>
+                      <p className="text-muted mb-0">{userData.tenDangNhap}</p>
                     </div>
                   </div>
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
-                      <p className="mb-0">Money has spent</p>
+                      <p className="mb-0">Total bill</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">{userData.money_spent}</p>
+                      <p className="text-muted mb-0">
+                        {totalBill.toLocaleString("de-DE")} VND
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -269,7 +279,7 @@ const Profile = () => {
             <Table
               className="w-full lg:w-3/5"
               columns={columns}
-              dataSource={data}
+              dataSource={orders}
             />
           </div>
         </section>

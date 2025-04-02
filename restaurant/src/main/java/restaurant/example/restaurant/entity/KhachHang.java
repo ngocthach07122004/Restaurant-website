@@ -25,9 +25,9 @@ public class KhachHang {
 	LocalDate ngayThamGia ;
 	String loaiKhachHang   ;
 
-    @OneToMany(mappedBy = "cccdKhachHang")
-
-    List<DonMonAn> listDonMonAn ;
+//    @OneToMany(mappedBy = "cccdKhachHang")
+//
+//    List<DonMonAn> listDonMonAn ;
 
     @OneToMany(mappedBy = "cccdKhachHang")
     List<DonKhieuNai> listDonKhieuNai ;

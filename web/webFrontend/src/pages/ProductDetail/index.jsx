@@ -8,11 +8,16 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { CartContext } from "../../context/CartContext";
 import { ThumbsUp, ThumbsDown, Reply } from "lucide-react";
 import pictureImage from "../../DataStore/Picture";
+import styles from "./styles.scss";
+import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
+
 function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(CartContext);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -29,7 +34,7 @@ function Product() {
     };
     fetchProduct();
   }, [id]);
-
+  console.log("123");
   const handleAddToCart = () => {
     const productToAdd = {
       id: product.maMonAn,
@@ -100,6 +105,31 @@ function Product() {
       </div>
 
       {/* Comments box */}
+      {/* 
+      <div
+        className={cx(
+          "wrapper_box_commentComponent",
+          "d-flex",
+          "flex-row",
+          "align-items-center",
+          "mb-4"
+        )}
+      > */}
+      <div className="form-outline flex-fill mb-0">
+        <textarea
+          className={cx("wrapper_box_comment", "form-control")}
+          id="textAreaExample"
+          rows="4"
+          placeholder="Bình luận của bạn về món ăn này"
+          value={comment}
+          onChange={(e) => {
+            console.log(comment);
+            setComment(e.target.value);
+          }}
+        ></textarea>
+      </div>
+      {/* </div> */}
+
       <div className="row d-flex justify-content-center mt-5">
         <div className="col-md-11 col-lg-9 col-xl-7">
           <div className="d-flex flex-start mb-4">
@@ -110,6 +140,7 @@ function Product() {
               width="60"
               height="60"
             />
+
             <div className="card w-100">
               <div className="card-body p-4">
                 <div>

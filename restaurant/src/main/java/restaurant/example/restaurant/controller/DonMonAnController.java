@@ -33,6 +33,10 @@ public class DonMonAnController {
      public List<DonMonAn> getAllDonMonAn (){
           return donMonAnService.getAllDonMonAn();
      }
+     @GetMapping("/all/{cccdKhachHang}")
+     List<DonMonAn> getAllDonMonAnByIdKhachHang(@PathVariable String cccdKhachHang){
+          return donMonAnService.getAllDonMonAnByCccd(cccdKhachHang);
+     }
      @PutMapping("/update/{maDon}")
      public String updateDonMonAn (@PathVariable String maDon,@RequestBody DonMonAn donMonAn) {
          return donMonAnService.updateDonMonAn(maDon,donMonAn);

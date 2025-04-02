@@ -12,5 +12,6 @@ import java.util.List;
 public interface DonMonAnRepository extends JpaRepository<DonMonAn,String> {
 //    @EntityGraph(attributePaths = {"listBaoGom"})
 //    List<DonMonAn> findAll();
+//List<DonMonAn> findAllByCccdKhachHang(String cccdKhachHang);
 }
 

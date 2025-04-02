@@ -4,7 +4,22 @@ import { MoveLeft, Trash2, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./styles.scss";
 import pictureImage from "../../DataStore/Picture";
+
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Tháng bắt đầu từ 0, cần cộng 1
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+}
+
+// Ví dụ: "2024-12-07T15:30:00"
+
 const Cart = () => {
+  const cccdAccount = localStorage.getItem("cccd");
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(null);
   const [isSliding, setIsSliding] = useState(false);
@@ -22,7 +37,7 @@ const Cart = () => {
 
   const handleCreateOrder = () => {
     const orderData = {
-      thoiGianDat: new Date().toISOString(),
+      thoiGianDat: formatDate(new Date()),
       tongGiaTien: total,
       // listMaKhuyenMai: [
       //   { idKhuyenMai: "KM1" },
@@ -31,9 +46,9 @@ const Cart = () => {
       // ],
       listMaKhuyenMai: [],
       maChiNhanh: { maChiNhanh: "CN001" },
-      cccdKhachHang: { cccd: "KH00001" },
+      cccdKhachHang: cccdAccount,
       cccdNhanVienThuNgan: { maNhanVienThuNgan: "TN016" },
-      tinhTrangThanhToan: "Chưa thanh toán",
+      tinhTrangThanhToan: "Dã thanh toán",
       phuongThucThanhToan: "Tiền mặt",
       listMonAnGioHang: cartItems.map((item) => ({
         monAn: { maMonAn: item.id },
@@ -41,7 +56,7 @@ const Cart = () => {
       })),
     };
 
-    console.log(orderData);
+    // console.log(orderData);
 
     fetch("http://localhost:8080/donMonAn/create", {
       method: "POST",

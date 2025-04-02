@@ -46,18 +46,18 @@ public class KhachHangService {
         }
         entityManager.persist(newKhachHang);
 
-        if (khachhang.getListDonMonAn() != null) {
-                     List<DonMonAn> updatedDonMonAnList = entityHelper.updateOrCreateRelatedEntities_OTM(
-                             newKhachHang.getListDonMonAn(),
-                             DonMonAn::getMaDon, // Hàm lấy ID
-                             id -> entityManager.find(DonMonAn.class, id), // Hàm tìm kiếm trong cơ sở dữ liệu
-                             donMonAn -> donMonAn.setCccdKhachHang(newKhachHang), // Thiết lập quan hệ ngược
-                             donMonAn -> entityManager.merge(donMonAn) // Lưu entity mới hoặc cập nhật
-                     );
-
-                     // Gán lại danh sách đã xử lý
-                     newKhachHang.setListDonMonAn(updatedDonMonAnList);
-                 }
+//        if (khachhang.getListDonMonAn() != null) {
+//                     List<DonMonAn> updatedDonMonAnList = entityHelper.updateOrCreateRelatedEntities_OTM(
+//                             newKhachHang.getListDonMonAn(),
+//                             DonMonAn::getMaDon, // Hàm lấy ID
+//                             id -> entityManager.find(DonMonAn.class, id), // Hàm tìm kiếm trong cơ sở dữ liệu
+//                             donMonAn -> donMonAn.setCccdKhachHang(newKhachHang), // Thiết lập quan hệ ngược
+//                             donMonAn -> entityManager.merge(donMonAn) // Lưu entity mới hoặc cập nhật
+//                     );
+//
+//                     // Gán lại danh sách đã xử lý
+//                     newKhachHang.setListDonMonAn(updatedDonMonAnList);
+//                 }
                  if (khachhang.getListDonKhieuNai() != null) {
                     List<DonKhieuNai> updatedDonKhieuNaiList = entityHelper.updateOrCreateRelatedEntities_OTM(
                             newKhachHang.getListDonKhieuNai(),

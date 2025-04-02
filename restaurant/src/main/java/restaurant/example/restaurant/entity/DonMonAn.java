@@ -10,6 +10,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class DonMonAn {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     String maDon 		 ;
-    LocalDate thoiGianDat 		 ;
+    LocalDateTime thoiGianDat 		 ;
     BigDecimal tongGiaTien 	;
 
     @OneToMany(mappedBy = "maDon")
@@ -36,11 +37,12 @@ public class DonMonAn {
     @JoinColumn(name= "maChiNhanh")
 @JsonIgnore
     ChiNhanh maChiNhanh;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="cccdKhachHang" )
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="cccdKhachHang" )
-@JsonIgnore
-    KhachHang cccdKhachHang;
+//    KhachHang cccdKhachHang;
+    String  cccdKhachHang;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cccdNhanVienThuNgan" )

@@ -15,15 +15,18 @@ import restaurant.example.restaurant.helper.EntityHelper;
 import restaurant.example.restaurant.mapper.DonMonAnMapper;
 import restaurant.example.restaurant.mapper.MonAnMapper;
 import restaurant.example.restaurant.repository.DonMonAnRepository;
+import restaurant.example.restaurant.repository.KhachHangRepository;
+import restaurant.example.restaurant.repository.ThongTinRepository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class DonMonAnService {
+
     DonMonAnRepository donMonAnRepository;
     //             DonMonAnBaoGomMonAnRepository donMonAnBaoGomMonAnRepository;
     DonMonAnMapper donMonAnMapper;
@@ -50,16 +53,20 @@ public class DonMonAnService {
         }
 
 //        MANY TO ONE
-        if (donMonAn.getCccdKhachHang() != null) {
-            KhachHang khachHang = entityHelper.findOrMerge_MTO(
-                    entityManager,
-                    donMonAn.getCccdKhachHang(),
-                    KhachHang.class,
-                    donMonAn.getCccdKhachHang().getMaKhachHang(),
-                    "KhachHang with ID "
-            );
-            newDonMonAn.setCccdKhachHang(khachHang);
-        }
+//        if (donMonAn.getCccdKhachHang() != null) {
+//            KhachHang khachHang = entityHelper.findOrMerge_MTO(
+//                    entityManager,
+//                    donMonAn.getCccdKhachHang(),
+//                    KhachHang.class,
+//                    donMonAn.getCccdKhachHang().getCccd(),
+//                    "KhachHang with ID "
+//            );
+//            System.out.println(khachHang);
+//            newDonMonAn.setCccdKhachHang(khachHang);
+//
+//
+//
+//        }
 
 //        MANY TO ONE
         if (donMonAn.getCccdNhanVienThuNgan() != null) {
@@ -127,6 +134,17 @@ public class DonMonAnService {
         donMonAnRepository.save(donMonAnUpdate);
         return "update success";
 
+    }
+    public List<DonMonAn> getAllDonMonAnByCccd( String cccd){
+        List<DonMonAn> allDonMonAn = donMonAnRepository.findAll();
+        return allDonMonAn.stream().filter(donMonAn -> donMonAn.getCccdKhachHang().equals(cccd)).collect(Collectors.toList());
+
+//        for (DonMonAn donMonAn:allDonMonAn) {
+//            if (donMonAn.getCccdKhachHang().equals(cccd){
+//                listDonMonAn.add(donMonAn);
+//            }
+//        }
+//        return listDonMonAn;
     }
     public String deleteDonMonAn (String maDonMonAn) {
         donMonAnRepository.deleteById(maDonMonAn);
