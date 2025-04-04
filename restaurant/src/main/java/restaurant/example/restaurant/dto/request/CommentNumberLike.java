@@ -16,8 +16,19 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 
 public class CommentNumberLike {
-
-
     int numberLike;
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
