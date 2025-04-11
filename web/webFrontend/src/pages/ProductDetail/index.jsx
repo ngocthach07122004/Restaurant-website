@@ -115,7 +115,9 @@ function Product() {
           "mb-4"
         )}
       > */}
-      <div className="form-outline flex-fill mb-0">
+
+      {/* comment  */}
+      {/* <div className="form-outline flex-fill mb-0">
         <textarea
           className={cx("wrapper_box_comment", "form-control")}
           id="textAreaExample"
@@ -127,7 +129,7 @@ function Product() {
             setComment(e.target.value);
           }}
         ></textarea>
-      </div>
+      </div> */}
       {/* </div> */}
 
       <div className="row d-flex justify-content-center mt-5">
