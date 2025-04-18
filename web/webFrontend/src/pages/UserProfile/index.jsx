@@ -192,7 +192,7 @@ const Profile = () => {
                 <div className="card-body text-center align-items-center">
                   <div className="flex justify-center">
                     <img
-                      src={pictureProfile}
+                      src={pictureDefault}
                       alt="avatar"
                       className="rounded-circle img-fluid"
                       style={{ width: "150px" }}

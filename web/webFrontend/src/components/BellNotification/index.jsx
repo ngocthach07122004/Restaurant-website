@@ -31,33 +31,6 @@ const notificationData = [
 const BellNotification = ({ stateNotification, setStateBellNotification }) => {
   const [notifications, setNotifications] = useState(notificationData);
 
-  // useEffect(() => {
-  //   // Tạo kết nối WebSocket
-  //   const socket = new SockJS("http://localhost:8080/ws");
-  //   const stompClient = new Client({
-  //     webSocketFactory: () => socket,
-  //     debug: function (str) {
-  //       console.log(str); // Debug kết nối
-  //     },
-  //     onConnect: () => {
-  //       console.log("Connected to WebSocket");
-  //       // Subscribe tới topic notifications
-  //       stompClient.subscribe("/topic/notifications", (message) => {
-  //         const notification = JSON.parse(message.body);
-  //         setNotifications((prev) => [...prev, notification]);
-  //       });
-  //     },
-  //     onStompError: (frame) => {
-  //       console.error("Broker reported error: ", frame.headers["message"]);
-  //       console.error("Additional details: ", frame.body);
-  //     },
-  //   });
-
-  //   stompClient.activate();
-
-  //   return () => stompClient.deactivate(); // Dừng kết nối khi component bị huỷ
-  // }, []);
-
   const notificationRef = useRef(null); // Tạo ref để tham chiếu danh sách thông báo
 
   // Xử lý click bên ngoài

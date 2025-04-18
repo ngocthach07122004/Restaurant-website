@@ -76,3 +76,16 @@
 .wrapperLogoBk {
   margin: 0 10px 0 4px;
 }
+
+/* language  */
+.wrapper_language {
+  padding-left: 16px;
+}
+.wrapper_handle_response {
+  padding-left: 6px;
+}
+/* right side */
+.wrapper_right_side_nav {
+  background-color: #ff9200;
+  border-radius: 8px;
+}

@@ -18,6 +18,20 @@ An easy-to-use, fast food ordering platform 🚀
 
 ---
 
+## Sone picture about website
+
+![alt text](image-1.png)
+
+![alt text](image-6.png)
+
+![alt text](image-2.png)
+
+![alt text](image-5.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
 ## 🛠️ Technology Stack
 
 | Layer       | Tech Stack                              |
