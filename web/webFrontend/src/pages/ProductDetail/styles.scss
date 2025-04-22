@@ -171,11 +171,37 @@
 }
 
 // box comment
+
 // .wrapper_box_commentComponent {
 //   display: flex;
 //   justify-content: center;
 // }
-.wrapper_box_comment {
+
+.wrapper_box_comment_parent {
+  margin-top: 35px;
+}
+
+.wrapper_outside_comment_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper_box_comment_food {
+  display: inline-block;
   width: 50%;
   justify-self: center;
+  height: 38px;
+}
+.wrapper_sent_comment {
+  border-width: 0px;
+  background-color: #ef3245;
+  color: white;
+  font-weight: 500;
+  border-radius: 3px;
+  padding: 7px 15px;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+  }
 }
